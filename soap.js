@@ -1,12 +1,14 @@
 var canvas = document.getElementById('canvas');
+var snippet = document.getElementById('snippet');
 var lyricsTextField = document.getElementById('lyrics');
 var ctx = canvas.getContext('2d');
+var snippetCtx = snippet.getContext('2d');
 var imageData;
 var data;
 var annotations;
+const img = new Image();
 
 function loadImage() {
-  const img = new Image();
   img.onload = function() {
     // Resize canvas to fit the image
     canvas.width = this.width;
@@ -16,13 +18,14 @@ function loadImage() {
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     data = imageData.data;
 
-    fetch("chinese-document-hint.json")
+    fetch("assets/chinese-censor-document.json")
       .then(response => response.json())
       .then(json => {
         annotations = json.responses[0].textAnnotations;
-        colorWords(json)});
+        colorWords(json)
+      });
   }
-  img.src = 'chinese.png';
+  img.src = 'assets/chinese-censor.png';
 }
 
 function processClick(event) {
@@ -70,6 +73,7 @@ function colorWords(json) {
   }
 }
 
+/** Convert a OCR rectangle into a pair of points. */
 function getStartEnd(boundingPoly) {
   function helper(axis, func) {
     var result = boundingPoly.vertices[0][axis];

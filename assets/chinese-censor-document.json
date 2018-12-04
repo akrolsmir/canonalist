@@ -1,0 +1,4681 @@
+{
+  "responses": [
+    {
+      "textAnnotations": [
+        {
+          "locale": "zh",
+          "description": "丘一名翠間枝與\n本宮正曲不同\n陸游詞\n客路苦思歸句愁似繭絲千緒很夢裏鏡\n|| 湖烟雨韻看山無重數制樽前消盡少年\n|狂句備著送春語韻花落燕飛庭戶數\n||年光如許嶺。\n一. 又一體\n紫釵記\n京兆選才人韻起送向長安蒲津制飄飄\n九宮大茂商詞宮人长九中呂宮引\n",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 2,
+                "y": 13
+              },
+              {
+                "x": 462,
+                "y": 13
+              },
+              {
+                "x": 462,
+                "y": 735
+              },
+              {
+                "x": 2,
+                "y": 735
+              }
+            ]
+          }
+        },
+        {
+          "description": "丘一名翠間枝與",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 438,
+                "y": 224
+              },
+              {
+                "x": 462,
+                "y": 224
+              },
+              {
+                "x": 460,
+                "y": 375
+              },
+              {
+                "x": 436,
+                "y": 375
+              }
+            ]
+          }
+        },
+        {
+          "description": "本宮正曲不同",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 418,
+                "y": 250
+              },
+              {
+                "x": 439,
+                "y": 250
+              },
+              {
+                "x": 438,
+                "y": 373
+              },
+              {
+                "x": 417,
+                "y": 373
+              }
+            ]
+          }
+        },
+        {
+          "description": "陸游詞",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 419,
+                "y": 523
+              },
+              {
+                "x": 461,
+                "y": 523
+              },
+              {
+                "x": 460,
+                "y": 632
+              },
+              {
+                "x": 418,
+                "y": 632
+              }
+            ]
+          }
+        },
+        {
+          "description": "客路苦思歸句愁似繭絲千緒很夢裏鏡",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 352,
+                "y": 55
+              },
+              {
+                "x": 402,
+                "y": 56
+              },
+              {
+                "x": 395,
+                "y": 707
+              },
+              {
+                "x": 345,
+                "y": 707
+              }
+            ]
+          }
+        },
+        {
+          "description": "|",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 287,
+                "y": 13
+              },
+              {
+                "x": 333,
+                "y": 13
+              },
+              {
+                "x": 333,
+                "y": 26
+              },
+              {
+                "x": 287,
+                "y": 26
+              }
+            ]
+          }
+        },
+        {
+          "description": "|",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 287,
+                "y": 32
+              },
+              {
+                "x": 333,
+                "y": 32
+              },
+              {
+                "x": 333,
+                "y": 45
+              },
+              {
+                "x": 287,
+                "y": 45
+              }
+            ]
+          }
+        },
+        {
+          "description": "湖烟雨韻看山無重數制樽前消盡少年",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 286,
+                "y": 60
+              },
+              {
+                "x": 333,
+                "y": 60
+              },
+              {
+                "x": 334,
+                "y": 702
+              },
+              {
+                "x": 287,
+                "y": 702
+              }
+            ]
+          }
+        },
+        {
+          "description": "|",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 225,
+                "y": 28
+              },
+              {
+                "x": 275,
+                "y": 29
+              },
+              {
+                "x": 275,
+                "y": 43
+              },
+              {
+                "x": 225,
+                "y": 42
+              }
+            ]
+          }
+        },
+        {
+          "description": "狂句備著送春語韻花落燕飛庭戶數",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 224,
+                "y": 52
+              },
+              {
+                "x": 274,
+                "y": 53
+              },
+              {
+                "x": 267,
+                "y": 735
+              },
+              {
+                "x": 217,
+                "y": 735
+              }
+            ]
+          }
+        },
+        {
+          "description": "|",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 162,
+                "y": 14
+              },
+              {
+                "x": 205,
+                "y": 13
+              },
+              {
+                "x": 205,
+                "y": 25
+              },
+              {
+                "x": 162,
+                "y": 26
+              }
+            ]
+          }
+        },
+        {
+          "description": "|",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 163,
+                "y": 32
+              },
+              {
+                "x": 206,
+                "y": 31
+              },
+              {
+                "x": 206,
+                "y": 43
+              },
+              {
+                "x": 163,
+                "y": 44
+              }
+            ]
+          }
+        },
+        {
+          "description": "年光如許嶺",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 162,
+                "y": 46
+              },
+              {
+                "x": 206,
+                "y": 45
+              },
+              {
+                "x": 211,
+                "y": 245
+              },
+              {
+                "x": 167,
+                "y": 246
+              }
+            ]
+          }
+        },
+        {
+          "description": "。",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 167,
+                "y": 252
+              },
+              {
+                "x": 210,
+                "y": 251
+              },
+              {
+                "x": 210,
+                "y": 263
+              },
+              {
+                "x": 167,
+                "y": 264
+              }
+            ]
+          }
+        },
+        {
+          "description": "一",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 107,
+                "y": 38
+              },
+              {
+                "x": 147,
+                "y": 39
+              },
+              {
+                "x": 147,
+                "y": 50
+              },
+              {
+                "x": 107,
+                "y": 49
+              }
+            ]
+          }
+        },
+        {
+          "description": ".",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 106,
+                "y": 63
+              },
+              {
+                "x": 146,
+                "y": 64
+              },
+              {
+                "x": 146,
+                "y": 75
+              },
+              {
+                "x": 106,
+                "y": 74
+              }
+            ]
+          }
+        },
+        {
+          "description": "又一體",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 105,
+                "y": 129
+              },
+              {
+                "x": 145,
+                "y": 130
+              },
+              {
+                "x": 141,
+                "y": 257
+              },
+              {
+                "x": 101,
+                "y": 256
+              }
+            ]
+          }
+        },
+        {
+          "description": "紫釵記",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 101,
+                "y": 514
+              },
+              {
+                "x": 141,
+                "y": 514
+              },
+              {
+                "x": 140,
+                "y": 629
+              },
+              {
+                "x": 100,
+                "y": 629
+              }
+            ]
+          }
+        },
+        {
+          "description": "京兆選才人韻起送向長安蒲津制飄飄",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 41,
+                "y": 53
+              },
+              {
+                "x": 83,
+                "y": 53
+              },
+              {
+                "x": 76,
+                "y": 708
+              },
+              {
+                "x": 34,
+                "y": 708
+              }
+            ]
+          }
+        },
+        {
+          "description": "九宮大茂商詞宮人长九中呂宮引",
+          "boundingPoly": {
+            "vertices": [
+              {
+                "x": 2,
+                "y": 67
+              },
+              {
+                "x": 37,
+                "y": 67
+              },
+              {
+                "x": 41,
+                "y": 392
+              },
+              {
+                "x": 6,
+                "y": 392
+              }
+            ]
+          }
+        }
+      ],
+      "fullTextAnnotation": {
+        "pages": [
+          {
+            "property": {
+              "detectedLanguages": [
+                {
+                  "languageCode": "zh",
+                  "confidence": 0.95
+                }
+              ]
+            },
+            "width": 510,
+            "height": 749,
+            "blocks": [
+              {
+                "boundingBox": {
+                  "vertices": [
+                    {
+                      "x": 419,
+                      "y": 224
+                    },
+                    {
+                      "x": 462,
+                      "y": 224
+                    },
+                    {
+                      "x": 460,
+                      "y": 375
+                    },
+                    {
+                      "x": 417,
+                      "y": 375
+                    }
+                  ]
+                },
+                "paragraphs": [
+                  {
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 419,
+                          "y": 224
+                        },
+                        {
+                          "x": 462,
+                          "y": 224
+                        },
+                        {
+                          "x": 460,
+                          "y": 375
+                        },
+                        {
+                          "x": 417,
+                          "y": 375
+                        }
+                      ]
+                    },
+                    "words": [
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 438,
+                              "y": 224
+                            },
+                            {
+                              "x": 462,
+                              "y": 224
+                            },
+                            {
+                              "x": 460,
+                              "y": 375
+                            },
+                            {
+                              "x": 436,
+                              "y": 375
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 438,
+                                  "y": 224
+                                },
+                                {
+                                  "x": 462,
+                                  "y": 224
+                                },
+                                {
+                                  "x": 462,
+                                  "y": 240
+                                },
+                                {
+                                  "x": 438,
+                                  "y": 240
+                                }
+                              ]
+                            },
+                            "text": "丘",
+                            "confidence": 0.81
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 437,
+                                  "y": 242
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 242
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 262
+                                },
+                                {
+                                  "x": 437,
+                                  "y": 262
+                                }
+                              ]
+                            },
+                            "text": "一",
+                            "confidence": 0.1
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 437,
+                                  "y": 272
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 272
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 292
+                                },
+                                {
+                                  "x": 437,
+                                  "y": 292
+                                }
+                              ]
+                            },
+                            "text": "名",
+                            "confidence": 0.75
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 437,
+                                  "y": 294
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 294
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 310
+                                },
+                                {
+                                  "x": 437,
+                                  "y": 310
+                                }
+                              ]
+                            },
+                            "text": "翠",
+                            "confidence": 0.81
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 437,
+                                  "y": 313
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 313
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 331
+                                },
+                                {
+                                  "x": 437,
+                                  "y": 331
+                                }
+                              ]
+                            },
+                            "text": "間",
+                            "confidence": 0.89
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 436,
+                                  "y": 338
+                                },
+                                {
+                                  "x": 460,
+                                  "y": 338
+                                },
+                                {
+                                  "x": 460,
+                                  "y": 356
+                                },
+                                {
+                                  "x": 436,
+                                  "y": 356
+                                }
+                              ]
+                            },
+                            "text": "枝",
+                            "confidence": 0.72
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 436,
+                                  "y": 359
+                                },
+                                {
+                                  "x": 460,
+                                  "y": 359
+                                },
+                                {
+                                  "x": 460,
+                                  "y": 375
+                                },
+                                {
+                                  "x": 436,
+                                  "y": 375
+                                }
+                              ]
+                            },
+                            "text": "與",
+                            "confidence": 0.9
+                          }
+                        ],
+                        "confidence": 0.71
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 418,
+                              "y": 250
+                            },
+                            {
+                              "x": 439,
+                              "y": 250
+                            },
+                            {
+                              "x": 438,
+                              "y": 373
+                            },
+                            {
+                              "x": 417,
+                              "y": 373
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 418,
+                                  "y": 250
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 250
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 268
+                                },
+                                {
+                                  "x": 418,
+                                  "y": 268
+                                }
+                              ]
+                            },
+                            "text": "本",
+                            "confidence": 0.76
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 418,
+                                  "y": 273
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 273
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 289
+                                },
+                                {
+                                  "x": 418,
+                                  "y": 289
+                                }
+                              ]
+                            },
+                            "text": "宮",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 418,
+                                  "y": 291
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 291
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 306
+                                },
+                                {
+                                  "x": 418,
+                                  "y": 306
+                                }
+                              ]
+                            },
+                            "text": "正",
+                            "confidence": 0.75
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 418,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 439,
+                                  "y": 329
+                                },
+                                {
+                                  "x": 418,
+                                  "y": 329
+                                }
+                              ]
+                            },
+                            "text": "曲",
+                            "confidence": 0.83
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 417,
+                                  "y": 334
+                                },
+                                {
+                                  "x": 438,
+                                  "y": 334
+                                },
+                                {
+                                  "x": 438,
+                                  "y": 351
+                                },
+                                {
+                                  "x": 417,
+                                  "y": 351
+                                }
+                              ]
+                            },
+                            "text": "不"
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "LINE_BREAK"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 417,
+                                  "y": 356
+                                },
+                                {
+                                  "x": 438,
+                                  "y": 356
+                                },
+                                {
+                                  "x": 438,
+                                  "y": 373
+                                },
+                                {
+                                  "x": 417,
+                                  "y": 373
+                                }
+                              ]
+                            },
+                            "text": "同",
+                            "confidence": 0.95
+                          }
+                        ],
+                        "confidence": 0.71
+                      }
+                    ],
+                    "confidence": 0.71
+                  }
+                ],
+                "blockType": "TEXT",
+                "confidence": 0.71
+              },
+              {
+                "boundingBox": {
+                  "vertices": [
+                    {
+                      "x": 3,
+                      "y": 9
+                    },
+                    {
+                      "x": 467,
+                      "y": 14
+                    },
+                    {
+                      "x": 459,
+                      "y": 737
+                    },
+                    {
+                      "x": -4,
+                      "y": 732
+                    }
+                  ]
+                },
+                "paragraphs": [
+                  {
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 103,
+                          "y": 10
+                        },
+                        {
+                          "x": 467,
+                          "y": 14
+                        },
+                        {
+                          "x": 459,
+                          "y": 737
+                        },
+                        {
+                          "x": 96,
+                          "y": 733
+                        }
+                      ]
+                    },
+                    "words": [
+                      {
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 419,
+                              "y": 523
+                            },
+                            {
+                              "x": 461,
+                              "y": 523
+                            },
+                            {
+                              "x": 460,
+                              "y": 632
+                            },
+                            {
+                              "x": 418,
+                              "y": 632
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 419,
+                                  "y": 523
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 523
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 551
+                                },
+                                {
+                                  "x": 419,
+                                  "y": 551
+                                }
+                              ]
+                            },
+                            "text": "陸",
+                            "confidence": 0.98
+                          },
+                          {
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 419,
+                                  "y": 556
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 556
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 588
+                                },
+                                {
+                                  "x": 419,
+                                  "y": 588
+                                }
+                              ]
+                            },
+                            "text": "游",
+                            "confidence": 1
+                          },
+                          {
+                            "property": {
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 419,
+                                  "y": 597
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 597
+                                },
+                                {
+                                  "x": 461,
+                                  "y": 632
+                                },
+                                {
+                                  "x": 419,
+                                  "y": 632
+                                }
+                              ]
+                            },
+                            "text": "詞",
+                            "confidence": 0.98
+                          }
+                        ],
+                        "confidence": 0.98
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 352,
+                              "y": 55
+                            },
+                            {
+                              "x": 402,
+                              "y": 56
+                            },
+                            {
+                              "x": 395,
+                              "y": 707
+                            },
+                            {
+                              "x": 345,
+                              "y": 707
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 352,
+                                  "y": 55
+                                },
+                                {
+                                  "x": 402,
+                                  "y": 55
+                                },
+                                {
+                                  "x": 402,
+                                  "y": 90
+                                },
+                                {
+                                  "x": 352,
+                                  "y": 90
+                                }
+                              ]
+                            },
+                            "text": "客",
+                            "confidence": 0.99
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 352,
+                                  "y": 97
+                                },
+                                {
+                                  "x": 402,
+                                  "y": 97
+                                },
+                                {
+                                  "x": 402,
+                                  "y": 131
+                                },
+                                {
+                                  "x": 352,
+                                  "y": 131
+                                }
+                              ]
+                            },
+                            "text": "路",
+                            "confidence": 0.99
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 351,
+                                  "y": 137
+                                },
+                                {
+                                  "x": 401,
+                                  "y": 137
+                                },
+                                {
+                                  "x": 401,
+                                  "y": 172
+                                },
+                                {
+                                  "x": 351,
+                                  "y": 172
+                                }
+                              ]
+                            },
+                            "text": "苦",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 351,
+                                  "y": 176
+                                },
+                                {
+                                  "x": 401,
+                                  "y": 176
+                                },
+                                {
+                                  "x": 401,
+                                  "y": 214
+                                },
+                                {
+                                  "x": 351,
+                                  "y": 214
+                                }
+                              ]
+                            },
+                            "text": "思",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 350,
+                                  "y": 230
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 230
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 261
+                                },
+                                {
+                                  "x": 350,
+                                  "y": 261
+                                }
+                              ]
+                            },
+                            "text": "歸",
+                            "confidence": 0.99
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 350,
+                                  "y": 249
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 249
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 284
+                                },
+                                {
+                                  "x": 350,
+                                  "y": 284
+                                }
+                              ]
+                            },
+                            "text": "句",
+                            "confidence": 0.22
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 350,
+                                  "y": 306
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 306
+                                },
+                                {
+                                  "x": 400,
+                                  "y": 349
+                                },
+                                {
+                                  "x": 350,
+                                  "y": 349
+                                }
+                              ]
+                            },
+                            "text": "愁",
+                            "confidence": 0.85
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 349,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 399,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 399,
+                                  "y": 386
+                                },
+                                {
+                                  "x": 349,
+                                  "y": 386
+                                }
+                              ]
+                            },
+                            "text": "似",
+                            "confidence": 0.95
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 349,
+                                  "y": 392
+                                },
+                                {
+                                  "x": 399,
+                                  "y": 392
+                                },
+                                {
+                                  "x": 399,
+                                  "y": 427
+                                },
+                                {
+                                  "x": 349,
+                                  "y": 427
+                                }
+                              ]
+                            },
+                            "text": "繭",
+                            "confidence": 0.92
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 348,
+                                  "y": 435
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 435
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 465
+                                },
+                                {
+                                  "x": 348,
+                                  "y": 465
+                                }
+                              ]
+                            },
+                            "text": "絲",
+                            "confidence": 0.93
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 348,
+                                  "y": 463
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 463
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 498
+                                },
+                                {
+                                  "x": 348,
+                                  "y": 498
+                                }
+                              ]
+                            },
+                            "text": "千",
+                            "confidence": 0.92
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 348,
+                                  "y": 512
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 512
+                                },
+                                {
+                                  "x": 398,
+                                  "y": 551
+                                },
+                                {
+                                  "x": 348,
+                                  "y": 551
+                                }
+                              ]
+                            },
+                            "text": "緒",
+                            "confidence": 0.92
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 347,
+                                  "y": 556
+                                },
+                                {
+                                  "x": 397,
+                                  "y": 556
+                                },
+                                {
+                                  "x": 397,
+                                  "y": 590
+                                },
+                                {
+                                  "x": 347,
+                                  "y": 590
+                                }
+                              ]
+                            },
+                            "text": "很",
+                            "confidence": 0.09
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 347,
+                                  "y": 594
+                                },
+                                {
+                                  "x": 397,
+                                  "y": 594
+                                },
+                                {
+                                  "x": 397,
+                                  "y": 633
+                                },
+                                {
+                                  "x": 347,
+                                  "y": 633
+                                }
+                              ]
+                            },
+                            "text": "夢",
+                            "confidence": 0.43
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 346,
+                                  "y": 647
+                                },
+                                {
+                                  "x": 396,
+                                  "y": 647
+                                },
+                                {
+                                  "x": 396,
+                                  "y": 682
+                                },
+                                {
+                                  "x": 346,
+                                  "y": 682
+                                }
+                              ]
+                            },
+                            "text": "裏",
+                            "confidence": 0.89
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 346,
+                                  "y": 682
+                                },
+                                {
+                                  "x": 396,
+                                  "y": 682
+                                },
+                                {
+                                  "x": 396,
+                                  "y": 708
+                                },
+                                {
+                                  "x": 346,
+                                  "y": 708
+                                }
+                              ]
+                            },
+                            "text": "鏡",
+                            "confidence": 0.9
+                          }
+                        ],
+                        "confidence": 0.8
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 287,
+                              "y": 13
+                            },
+                            {
+                              "x": 333,
+                              "y": 13
+                            },
+                            {
+                              "x": 333,
+                              "y": 26
+                            },
+                            {
+                              "x": 287,
+                              "y": 26
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 13
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 13
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 26
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 26
+                                }
+                              ]
+                            },
+                            "text": "|",
+                            "confidence": 0.97
+                          }
+                        ],
+                        "confidence": 0.97
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 287,
+                              "y": 32
+                            },
+                            {
+                              "x": 333,
+                              "y": 32
+                            },
+                            {
+                              "x": 333,
+                              "y": 45
+                            },
+                            {
+                              "x": 287,
+                              "y": 45
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 32
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 32
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 45
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 45
+                                }
+                              ]
+                            },
+                            "text": "|",
+                            "confidence": 0.97
+                          }
+                        ],
+                        "confidence": 0.97
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 286,
+                              "y": 60
+                            },
+                            {
+                              "x": 333,
+                              "y": 60
+                            },
+                            {
+                              "x": 334,
+                              "y": 702
+                            },
+                            {
+                              "x": 287,
+                              "y": 702
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 60
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 60
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 91
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 91
+                                }
+                              ]
+                            },
+                            "text": "湖",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 98
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 98
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 129
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 129
+                                }
+                              ]
+                            },
+                            "text": "烟",
+                            "confidence": 0.95
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 136
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 136
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 167
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 167
+                                }
+                              ]
+                            },
+                            "text": "雨",
+                            "confidence": 0.99
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 169
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 169
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 208
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 208
+                                }
+                              ]
+                            },
+                            "text": "韻",
+                            "confidence": 0.87
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 288,
+                                  "y": 226
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 226
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 264
+                                },
+                                {
+                                  "x": 288,
+                                  "y": 264
+                                }
+                              ]
+                            },
+                            "text": "看",
+                            "confidence": 0.94
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 265
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 265
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 300
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 300
+                                }
+                              ]
+                            },
+                            "text": "山",
+                            "confidence": 0.92
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 288,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 347
+                                },
+                                {
+                                  "x": 288,
+                                  "y": 347
+                                }
+                              ]
+                            },
+                            "text": "無",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 382
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 382
+                                }
+                              ]
+                            },
+                            "text": "重",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 389
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 389
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 420
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 420
+                                }
+                              ]
+                            },
+                            "text": "數",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 425
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 425
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 459
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 459
+                                }
+                              ]
+                            },
+                            "text": "制",
+                            "confidence": 0.38
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 470
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 470
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 508
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 508
+                                }
+                              ]
+                            },
+                            "text": "樽",
+                            "confidence": 0.66
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 519
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 519
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 554
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 554
+                                }
+                              ]
+                            },
+                            "text": "前",
+                            "confidence": 0.95
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 557
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 557
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 592
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 592
+                                }
+                              ]
+                            },
+                            "text": "消",
+                            "confidence": 0.94
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 288,
+                                  "y": 606
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 606
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 637
+                                },
+                                {
+                                  "x": 288,
+                                  "y": 637
+                                }
+                              ]
+                            },
+                            "text": "盡",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 287,
+                                  "y": 636
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 636
+                                },
+                                {
+                                  "x": 333,
+                                  "y": 663
+                                },
+                                {
+                                  "x": 287,
+                                  "y": 663
+                                }
+                              ]
+                            },
+                            "text": "少",
+                            "confidence": 0.96
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 288,
+                                  "y": 671
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 671
+                                },
+                                {
+                                  "x": 334,
+                                  "y": 702
+                                },
+                                {
+                                  "x": 288,
+                                  "y": 702
+                                }
+                              ]
+                            },
+                            "text": "年",
+                            "confidence": 0.97
+                          }
+                        ],
+                        "confidence": 0.89
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 225,
+                              "y": 28
+                            },
+                            {
+                              "x": 275,
+                              "y": 29
+                            },
+                            {
+                              "x": 275,
+                              "y": 43
+                            },
+                            {
+                              "x": 225,
+                              "y": 42
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 225,
+                                  "y": 28
+                                },
+                                {
+                                  "x": 275,
+                                  "y": 28
+                                },
+                                {
+                                  "x": 275,
+                                  "y": 43
+                                },
+                                {
+                                  "x": 225,
+                                  "y": 43
+                                }
+                              ]
+                            },
+                            "text": "|",
+                            "confidence": 0.65
+                          }
+                        ],
+                        "confidence": 0.65
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 224,
+                              "y": 52
+                            },
+                            {
+                              "x": 274,
+                              "y": 53
+                            },
+                            {
+                              "x": 267,
+                              "y": 735
+                            },
+                            {
+                              "x": 217,
+                              "y": 735
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 224,
+                                  "y": 52
+                                },
+                                {
+                                  "x": 274,
+                                  "y": 52
+                                },
+                                {
+                                  "x": 274,
+                                  "y": 79
+                                },
+                                {
+                                  "x": 224,
+                                  "y": 79
+                                }
+                              ]
+                            },
+                            "text": "狂",
+                            "confidence": 0.7
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 224,
+                                  "y": 77
+                                },
+                                {
+                                  "x": 274,
+                                  "y": 77
+                                },
+                                {
+                                  "x": 274,
+                                  "y": 116
+                                },
+                                {
+                                  "x": 224,
+                                  "y": 116
+                                }
+                              ]
+                            },
+                            "text": "句",
+                            "confidence": 0.78
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 223,
+                                  "y": 136
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 136
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 179
+                                },
+                                {
+                                  "x": 223,
+                                  "y": 179
+                                }
+                              ]
+                            },
+                            "text": "備",
+                            "confidence": 0.89
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 223,
+                                  "y": 182
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 182
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 216
+                                },
+                                {
+                                  "x": 223,
+                                  "y": 216
+                                }
+                              ]
+                            },
+                            "text": "著",
+                            "confidence": 0.95
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 223,
+                                  "y": 222
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 222
+                                },
+                                {
+                                  "x": 273,
+                                  "y": 257
+                                },
+                                {
+                                  "x": 223,
+                                  "y": 257
+                                }
+                              ]
+                            },
+                            "text": "送",
+                            "confidence": 0.89
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 222,
+                                  "y": 263
+                                },
+                                {
+                                  "x": 272,
+                                  "y": 263
+                                },
+                                {
+                                  "x": 272,
+                                  "y": 297
+                                },
+                                {
+                                  "x": 222,
+                                  "y": 297
+                                }
+                              ]
+                            },
+                            "text": "春",
+                            "confidence": 1
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 222,
+                                  "y": 303
+                                },
+                                {
+                                  "x": 272,
+                                  "y": 303
+                                },
+                                {
+                                  "x": 272,
+                                  "y": 338
+                                },
+                                {
+                                  "x": 222,
+                                  "y": 338
+                                }
+                              ]
+                            },
+                            "text": "語",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 221,
+                                  "y": 344
+                                },
+                                {
+                                  "x": 271,
+                                  "y": 344
+                                },
+                                {
+                                  "x": 271,
+                                  "y": 379
+                                },
+                                {
+                                  "x": 221,
+                                  "y": 379
+                                }
+                              ]
+                            },
+                            "text": "韻",
+                            "confidence": 0.61
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 221,
+                                  "y": 383
+                                },
+                                {
+                                  "x": 271,
+                                  "y": 383
+                                },
+                                {
+                                  "x": 271,
+                                  "y": 422
+                                },
+                                {
+                                  "x": 221,
+                                  "y": 422
+                                }
+                              ]
+                            },
+                            "text": "花",
+                            "confidence": 0.87
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 220,
+                                  "y": 435
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 435
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 473
+                                },
+                                {
+                                  "x": 220,
+                                  "y": 473
+                                }
+                              ]
+                            },
+                            "text": "落",
+                            "confidence": 1
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 220,
+                                  "y": 477
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 477
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 512
+                                },
+                                {
+                                  "x": 220,
+                                  "y": 512
+                                }
+                              ]
+                            },
+                            "text": "燕",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 220,
+                                  "y": 518
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 518
+                                },
+                                {
+                                  "x": 270,
+                                  "y": 552
+                                },
+                                {
+                                  "x": 220,
+                                  "y": 552
+                                }
+                              ]
+                            },
+                            "text": "飛",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 219,
+                                  "y": 560
+                                },
+                                {
+                                  "x": 269,
+                                  "y": 560
+                                },
+                                {
+                                  "x": 269,
+                                  "y": 591
+                                },
+                                {
+                                  "x": 219,
+                                  "y": 591
+                                }
+                              ]
+                            },
+                            "text": "庭",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 218,
+                                  "y": 581
+                                },
+                                {
+                                  "x": 269,
+                                  "y": 581
+                                },
+                                {
+                                  "x": 269,
+                                  "y": 632
+                                },
+                                {
+                                  "x": 218,
+                                  "y": 632
+                                }
+                              ]
+                            },
+                            "text": "戶",
+                            "confidence": 0.95
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 217,
+                                  "y": 660
+                                },
+                                {
+                                  "x": 268,
+                                  "y": 660
+                                },
+                                {
+                                  "x": 268,
+                                  "y": 736
+                                },
+                                {
+                                  "x": 217,
+                                  "y": 736
+                                }
+                              ]
+                            },
+                            "text": "數",
+                            "confidence": 0.84
+                          }
+                        ],
+                        "confidence": 0.89
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 162,
+                              "y": 14
+                            },
+                            {
+                              "x": 205,
+                              "y": 13
+                            },
+                            {
+                              "x": 205,
+                              "y": 25
+                            },
+                            {
+                              "x": 162,
+                              "y": 26
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 162,
+                                  "y": 13
+                                },
+                                {
+                                  "x": 205,
+                                  "y": 13
+                                },
+                                {
+                                  "x": 205,
+                                  "y": 26
+                                },
+                                {
+                                  "x": 162,
+                                  "y": 26
+                                }
+                              ]
+                            },
+                            "text": "|",
+                            "confidence": 0.93
+                          }
+                        ],
+                        "confidence": 0.93
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 163,
+                              "y": 32
+                            },
+                            {
+                              "x": 206,
+                              "y": 31
+                            },
+                            {
+                              "x": 206,
+                              "y": 43
+                            },
+                            {
+                              "x": 163,
+                              "y": 44
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 163,
+                                  "y": 31
+                                },
+                                {
+                                  "x": 206,
+                                  "y": 31
+                                },
+                                {
+                                  "x": 206,
+                                  "y": 44
+                                },
+                                {
+                                  "x": 163,
+                                  "y": 44
+                                }
+                              ]
+                            },
+                            "text": "|",
+                            "confidence": 0.7
+                          }
+                        ],
+                        "confidence": 0.7
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 162,
+                              "y": 46
+                            },
+                            {
+                              "x": 206,
+                              "y": 45
+                            },
+                            {
+                              "x": 211,
+                              "y": 245
+                            },
+                            {
+                              "x": 167,
+                              "y": 246
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 162,
+                                  "y": 45
+                                },
+                                {
+                                  "x": 206,
+                                  "y": 45
+                                },
+                                {
+                                  "x": 206,
+                                  "y": 82
+                                },
+                                {
+                                  "x": 162,
+                                  "y": 82
+                                }
+                              ]
+                            },
+                            "text": "年",
+                            "confidence": 0.51
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 164,
+                                  "y": 89
+                                },
+                                {
+                                  "x": 208,
+                                  "y": 89
+                                },
+                                {
+                                  "x": 208,
+                                  "y": 126
+                                },
+                                {
+                                  "x": 164,
+                                  "y": 126
+                                }
+                              ]
+                            },
+                            "text": "光",
+                            "confidence": 0.85
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 164,
+                                  "y": 133
+                                },
+                                {
+                                  "x": 208,
+                                  "y": 133
+                                },
+                                {
+                                  "x": 208,
+                                  "y": 170
+                                },
+                                {
+                                  "x": 164,
+                                  "y": 170
+                                }
+                              ]
+                            },
+                            "text": "如",
+                            "confidence": 0.85
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 166,
+                                  "y": 179
+                                },
+                                {
+                                  "x": 210,
+                                  "y": 179
+                                },
+                                {
+                                  "x": 210,
+                                  "y": 212
+                                },
+                                {
+                                  "x": 166,
+                                  "y": 212
+                                }
+                              ]
+                            },
+                            "text": "許",
+                            "confidence": 0.96
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 167,
+                                  "y": 216
+                                },
+                                {
+                                  "x": 211,
+                                  "y": 216
+                                },
+                                {
+                                  "x": 211,
+                                  "y": 246
+                                },
+                                {
+                                  "x": 167,
+                                  "y": 246
+                                }
+                              ]
+                            },
+                            "text": "嶺",
+                            "confidence": 0.78
+                          }
+                        ],
+                        "confidence": 0.79
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 167,
+                              "y": 252
+                            },
+                            {
+                              "x": 210,
+                              "y": 251
+                            },
+                            {
+                              "x": 210,
+                              "y": 263
+                            },
+                            {
+                              "x": 167,
+                              "y": 264
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 167,
+                                  "y": 251
+                                },
+                                {
+                                  "x": 210,
+                                  "y": 251
+                                },
+                                {
+                                  "x": 210,
+                                  "y": 264
+                                },
+                                {
+                                  "x": 167,
+                                  "y": 264
+                                }
+                              ]
+                            },
+                            "text": "。",
+                            "confidence": 0.44
+                          }
+                        ],
+                        "confidence": 0.44
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 107,
+                              "y": 38
+                            },
+                            {
+                              "x": 147,
+                              "y": 39
+                            },
+                            {
+                              "x": 147,
+                              "y": 50
+                            },
+                            {
+                              "x": 107,
+                              "y": 49
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 107,
+                                  "y": 38
+                                },
+                                {
+                                  "x": 147,
+                                  "y": 38
+                                },
+                                {
+                                  "x": 147,
+                                  "y": 50
+                                },
+                                {
+                                  "x": 107,
+                                  "y": 50
+                                }
+                              ]
+                            },
+                            "text": "一",
+                            "confidence": 0.12
+                          }
+                        ],
+                        "confidence": 0.12
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 106,
+                              "y": 63
+                            },
+                            {
+                              "x": 146,
+                              "y": 64
+                            },
+                            {
+                              "x": 146,
+                              "y": 75
+                            },
+                            {
+                              "x": 106,
+                              "y": 74
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 106,
+                                  "y": 63
+                                },
+                                {
+                                  "x": 146,
+                                  "y": 63
+                                },
+                                {
+                                  "x": 146,
+                                  "y": 75
+                                },
+                                {
+                                  "x": 106,
+                                  "y": 75
+                                }
+                              ]
+                            },
+                            "text": ".",
+                            "confidence": 0.84
+                          }
+                        ],
+                        "confidence": 0.84
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 105,
+                              "y": 129
+                            },
+                            {
+                              "x": 145,
+                              "y": 130
+                            },
+                            {
+                              "x": 141,
+                              "y": 257
+                            },
+                            {
+                              "x": 101,
+                              "y": 256
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 104,
+                                  "y": 129
+                                },
+                                {
+                                  "x": 145,
+                                  "y": 129
+                                },
+                                {
+                                  "x": 145,
+                                  "y": 157
+                                },
+                                {
+                                  "x": 104,
+                                  "y": 157
+                                }
+                              ]
+                            },
+                            "text": "又",
+                            "confidence": 0.54
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 102,
+                                  "y": 156
+                                },
+                                {
+                                  "x": 143,
+                                  "y": 156
+                                },
+                                {
+                                  "x": 143,
+                                  "y": 194
+                                },
+                                {
+                                  "x": 102,
+                                  "y": 194
+                                }
+                              ]
+                            },
+                            "text": "一",
+                            "confidence": 0.96
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "LINE_BREAK"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 101,
+                                  "y": 209
+                                },
+                                {
+                                  "x": 142,
+                                  "y": 209
+                                },
+                                {
+                                  "x": 142,
+                                  "y": 257
+                                },
+                                {
+                                  "x": 101,
+                                  "y": 257
+                                }
+                              ]
+                            },
+                            "text": "體",
+                            "confidence": 0.98
+                          }
+                        ],
+                        "confidence": 0.82
+                      }
+                    ],
+                    "confidence": 0.84
+                  },
+                  {
+                    "boundingBox": {
+                      "vertices": [
+                        {
+                          "x": 2,
+                          "y": 52
+                        },
+                        {
+                          "x": 145,
+                          "y": 53
+                        },
+                        {
+                          "x": 138,
+                          "y": 708
+                        },
+                        {
+                          "x": -5,
+                          "y": 707
+                        }
+                      ]
+                    },
+                    "words": [
+                      {
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 101,
+                              "y": 514
+                            },
+                            {
+                              "x": 141,
+                              "y": 514
+                            },
+                            {
+                              "x": 140,
+                              "y": 629
+                            },
+                            {
+                              "x": 100,
+                              "y": 629
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 101,
+                                  "y": 514
+                                },
+                                {
+                                  "x": 141,
+                                  "y": 514
+                                },
+                                {
+                                  "x": 141,
+                                  "y": 547
+                                },
+                                {
+                                  "x": 101,
+                                  "y": 547
+                                }
+                              ]
+                            },
+                            "text": "紫",
+                            "confidence": 0.98
+                          },
+                          {
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 100,
+                                  "y": 555
+                                },
+                                {
+                                  "x": 140,
+                                  "y": 555
+                                },
+                                {
+                                  "x": 140,
+                                  "y": 588
+                                },
+                                {
+                                  "x": 100,
+                                  "y": 588
+                                }
+                              ]
+                            },
+                            "text": "釵",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 100,
+                                  "y": 596
+                                },
+                                {
+                                  "x": 140,
+                                  "y": 596
+                                },
+                                {
+                                  "x": 140,
+                                  "y": 629
+                                },
+                                {
+                                  "x": 100,
+                                  "y": 629
+                                }
+                              ]
+                            },
+                            "text": "記",
+                            "confidence": 0.99
+                          }
+                        ],
+                        "confidence": 0.98
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 41,
+                              "y": 53
+                            },
+                            {
+                              "x": 83,
+                              "y": 53
+                            },
+                            {
+                              "x": 76,
+                              "y": 708
+                            },
+                            {
+                              "x": 34,
+                              "y": 708
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 41,
+                                  "y": 53
+                                },
+                                {
+                                  "x": 83,
+                                  "y": 53
+                                },
+                                {
+                                  "x": 83,
+                                  "y": 81
+                                },
+                                {
+                                  "x": 41,
+                                  "y": 81
+                                }
+                              ]
+                            },
+                            "text": "京",
+                            "confidence": 0.77
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 41,
+                                  "y": 83
+                                },
+                                {
+                                  "x": 83,
+                                  "y": 83
+                                },
+                                {
+                                  "x": 83,
+                                  "y": 118
+                                },
+                                {
+                                  "x": 41,
+                                  "y": 118
+                                }
+                              ]
+                            },
+                            "text": "兆",
+                            "confidence": 0.9
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 40,
+                                  "y": 135
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 135
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 170
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 170
+                                }
+                              ]
+                            },
+                            "text": "選",
+                            "confidence": 0.94
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 40,
+                                  "y": 173
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 173
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 201
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 201
+                                }
+                              ]
+                            },
+                            "text": "才",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 40,
+                                  "y": 204
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 204
+                                },
+                                {
+                                  "x": 82,
+                                  "y": 239
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 239
+                                }
+                              ]
+                            },
+                            "text": "人",
+                            "confidence": 0.96
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 39,
+                                  "y": 252
+                                },
+                                {
+                                  "x": 81,
+                                  "y": 252
+                                },
+                                {
+                                  "x": 81,
+                                  "y": 294
+                                },
+                                {
+                                  "x": 39,
+                                  "y": 294
+                                }
+                              ]
+                            },
+                            "text": "韻",
+                            "confidence": 0.92
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 39,
+                                  "y": 305
+                                },
+                                {
+                                  "x": 81,
+                                  "y": 305
+                                },
+                                {
+                                  "x": 81,
+                                  "y": 344
+                                },
+                                {
+                                  "x": 39,
+                                  "y": 344
+                                }
+                              ]
+                            },
+                            "text": "起",
+                            "confidence": 0.93
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 38,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 80,
+                                  "y": 352
+                                },
+                                {
+                                  "x": 80,
+                                  "y": 384
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 384
+                                }
+                              ]
+                            },
+                            "text": "送",
+                            "confidence": 0.94
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 38,
+                                  "y": 386
+                                },
+                                {
+                                  "x": 80,
+                                  "y": 386
+                                },
+                                {
+                                  "x": 80,
+                                  "y": 418
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 418
+                                }
+                              ]
+                            },
+                            "text": "向",
+                            "confidence": 0.94
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 37,
+                                  "y": 427
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 427
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 462
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 462
+                                }
+                              ]
+                            },
+                            "text": "長",
+                            "confidence": 0.98
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 37,
+                                  "y": 470
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 470
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 505
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 505
+                                }
+                              ]
+                            },
+                            "text": "安",
+                            "confidence": 0.99
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 37,
+                                  "y": 513
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 513
+                                },
+                                {
+                                  "x": 79,
+                                  "y": 548
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 548
+                                }
+                              ]
+                            },
+                            "text": "蒲",
+                            "confidence": 0.72
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 36,
+                                  "y": 558
+                                },
+                                {
+                                  "x": 78,
+                                  "y": 558
+                                },
+                                {
+                                  "x": 78,
+                                  "y": 590
+                                },
+                                {
+                                  "x": 36,
+                                  "y": 590
+                                }
+                              ]
+                            },
+                            "text": "津",
+                            "confidence": 1
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 36,
+                                  "y": 591
+                                },
+                                {
+                                  "x": 78,
+                                  "y": 591
+                                },
+                                {
+                                  "x": 78,
+                                  "y": 626
+                                },
+                                {
+                                  "x": 36,
+                                  "y": 626
+                                }
+                              ]
+                            },
+                            "text": "制",
+                            "confidence": 0.54
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 35,
+                                  "y": 642
+                                },
+                                {
+                                  "x": 77,
+                                  "y": 642
+                                },
+                                {
+                                  "x": 77,
+                                  "y": 678
+                                },
+                                {
+                                  "x": 35,
+                                  "y": 678
+                                }
+                              ]
+                            },
+                            "text": "飄",
+                            "confidence": 0.83
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "EOL_SURE_SPACE"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 35,
+                                  "y": 680
+                                },
+                                {
+                                  "x": 77,
+                                  "y": 680
+                                },
+                                {
+                                  "x": 77,
+                                  "y": 708
+                                },
+                                {
+                                  "x": 35,
+                                  "y": 708
+                                }
+                              ]
+                            },
+                            "text": "飄",
+                            "confidence": 1
+                          }
+                        ],
+                        "confidence": 0.89
+                      },
+                      {
+                        "property": {
+                          "detectedLanguages": [
+                            {
+                              "languageCode": "zh"
+                            }
+                          ]
+                        },
+                        "boundingBox": {
+                          "vertices": [
+                            {
+                              "x": 2,
+                              "y": 67
+                            },
+                            {
+                              "x": 37,
+                              "y": 67
+                            },
+                            {
+                              "x": 41,
+                              "y": 392
+                            },
+                            {
+                              "x": 6,
+                              "y": 392
+                            }
+                          ]
+                        },
+                        "symbols": [
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 2,
+                                  "y": 67
+                                },
+                                {
+                                  "x": 36,
+                                  "y": 67
+                                },
+                                {
+                                  "x": 36,
+                                  "y": 84
+                                },
+                                {
+                                  "x": 2,
+                                  "y": 84
+                                }
+                              ]
+                            },
+                            "text": "九",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 3,
+                                  "y": 86
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 86
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 106
+                                },
+                                {
+                                  "x": 3,
+                                  "y": 106
+                                }
+                              ]
+                            },
+                            "text": "宮",
+                            "confidence": 0.75
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 3,
+                                  "y": 114
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 114
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 134
+                                },
+                                {
+                                  "x": 3,
+                                  "y": 134
+                                }
+                              ]
+                            },
+                            "text": "大",
+                            "confidence": 0.85
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 3,
+                                  "y": 137
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 137
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 154
+                                },
+                                {
+                                  "x": 3,
+                                  "y": 154
+                                }
+                              ]
+                            },
+                            "text": "茂",
+                            "confidence": 0.36
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 3,
+                                  "y": 158
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 158
+                                },
+                                {
+                                  "x": 37,
+                                  "y": 175
+                                },
+                                {
+                                  "x": 3,
+                                  "y": 175
+                                }
+                              ]
+                            },
+                            "text": "商",
+                            "confidence": 0.43
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 4,
+                                  "y": 179
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 179
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 196
+                                },
+                                {
+                                  "x": 4,
+                                  "y": 196
+                                }
+                              ]
+                            },
+                            "text": "詞",
+                            "confidence": 0.59
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 4,
+                                  "y": 195
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 195
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 221
+                                },
+                                {
+                                  "x": 4,
+                                  "y": 221
+                                }
+                              ]
+                            },
+                            "text": "宮",
+                            "confidence": 0.31
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 4,
+                                  "y": 236
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 236
+                                },
+                                {
+                                  "x": 38,
+                                  "y": 264
+                                },
+                                {
+                                  "x": 4,
+                                  "y": 264
+                                }
+                              ]
+                            },
+                            "text": "人",
+                            "confidence": 0.13
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 5,
+                                  "y": 268
+                                },
+                                {
+                                  "x": 39,
+                                  "y": 268
+                                },
+                                {
+                                  "x": 39,
+                                  "y": 288
+                                },
+                                {
+                                  "x": 5,
+                                  "y": 288
+                                }
+                              ]
+                            },
+                            "text": "长",
+                            "confidence": 0.11
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 6,
+                                  "y": 291
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 291
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 308
+                                },
+                                {
+                                  "x": 6,
+                                  "y": 308
+                                }
+                              ]
+                            },
+                            "text": "九",
+                            "confidence": 0.73
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 6,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 312
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 329
+                                },
+                                {
+                                  "x": 6,
+                                  "y": 329
+                                }
+                              ]
+                            },
+                            "text": "中",
+                            "confidence": 0.9
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 6,
+                                  "y": 333
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 333
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 350
+                                },
+                                {
+                                  "x": 6,
+                                  "y": 350
+                                }
+                              ]
+                            },
+                            "text": "呂",
+                            "confidence": 0.97
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ]
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 6,
+                                  "y": 354
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 354
+                                },
+                                {
+                                  "x": 40,
+                                  "y": 371
+                                },
+                                {
+                                  "x": 6,
+                                  "y": 371
+                                }
+                              ]
+                            },
+                            "text": "宮",
+                            "confidence": 0.93
+                          },
+                          {
+                            "property": {
+                              "detectedLanguages": [
+                                {
+                                  "languageCode": "zh"
+                                }
+                              ],
+                              "detectedBreak": {
+                                "type": "LINE_BREAK"
+                              }
+                            },
+                            "boundingBox": {
+                              "vertices": [
+                                {
+                                  "x": 7,
+                                  "y": 375
+                                },
+                                {
+                                  "x": 41,
+                                  "y": 375
+                                },
+                                {
+                                  "x": 41,
+                                  "y": 392
+                                },
+                                {
+                                  "x": 7,
+                                  "y": 392
+                                }
+                              ]
+                            },
+                            "text": "引",
+                            "confidence": 0.88
+                          }
+                        ],
+                        "confidence": 0.63
+                      }
+                    ],
+                    "confidence": 0.79
+                  }
+                ],
+                "blockType": "TEXT",
+                "confidence": 0.82
+              }
+            ]
+          }
+        ],
+        "text": "丘一名翠間枝與\n本宮正曲不同\n陸游詞\n客路苦思歸句愁似繭絲千緒很夢裏鏡\n|| 湖烟雨韻看山無重數制樽前消盡少年\n|狂句備著送春語韻花落燕飛庭戶數\n||年光如許嶺。\n一. 又一體\n紫釵記\n京兆選才人韻起送向長安蒲津制飄飄\n九宮大茂商詞宮人长九中呂宮引\n"
+      }
+    }
+  ]
+}
