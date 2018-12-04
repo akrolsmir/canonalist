@@ -1,16 +1,16 @@
 let downEvent;
 function mouseDown(e) {
-  switch(e.which) {
+  switch (e.which) {
     case 3: // Right mouse click
       downEvent = e;
   }
 }
 
 function mouseUp(e) {
-  switch(e.which) {
+  switch (e.which) {
     case 3: // Right mouse click
-      var clipWidth = e.offsetX - downEvent.offsetX;
-      var clipHeight = e.offsetY - downEvent.offsetY;
+      const clipWidth = e.offsetX - downEvent.offsetX;
+      const clipHeight = e.offsetY - downEvent.offsetY;
       // Resize the snippet canvas, then copy to it
       snippet.width = clipWidth;
       snippet.height = clipHeight
@@ -20,14 +20,14 @@ function mouseUp(e) {
         // Destination: x, y, width, height
         0, 0, clipWidth, clipHeight);
       // Send the base64 image to Google OCR API
-      var dataUrl = snippet.toDataURL("image/png");
-      var base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
-      googleOcr(base64);
+      const dataUrl = snippet.toDataURL("image/png");
+      const base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
+      requestOcr(base64);
   }
 }
 
-const ocrUrl = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
-function ocrRequest(base64) {
+const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
+function buildRequest(base64) {
   return `{
   "requests": [
     {
@@ -45,16 +45,17 @@ function ocrRequest(base64) {
 `;
 }
 
-const googleOcr = async (base64) => {
-  const response = await fetch(ocrUrl, {
+async function requestOcr(base64) {
+  const response = await fetch(OCR_URL, {
     method: 'POST',
-    body: ocrRequest(base64),
+    body: buildRequest(base64),
     headers: { 'Content-Type': 'application/json' }
   });
   const json = await response.json();
-  console.log(json);
-  var text = json.responses[0].textAnnotations[0].description;
-  lyricsTextField.value += text;
+  if (json.responses.length > 0) {
+    const text = json.responses[0].textAnnotations[0].description;
+    lyricsTextField.value += text;
+  }
 }
 
 /** Prevent right click menu from appearing. */
