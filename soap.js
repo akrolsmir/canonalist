@@ -7,19 +7,17 @@ const img = new Image();
 
 let annotations;
 
-function loadImage() {
+function loadImage(src) {
   img.onload = () => {
     // Resize canvas to fit the image
-    canvas.width = this.width;
-    canvas.height = this.height;
+    canvas.width = img.width;
+    canvas.height = img.height; 
 
     ctx.drawImage(img, 0, 0);
-
-    fetch("assets/chinese-censor-document.json")
-      .then(response => response.json())
-      .then(json => colorWords(json));
+    
+    requestOcr(canvas).then(json => colorWords(json));
   }
-  img.src = 'assets/chinese-censor.png';
+  img.src = src;
 }
 
 /** Draws blue boxes around each annotation. */
@@ -64,4 +62,25 @@ function getStartEnd(boundingPoly) {
   return [{ x: minX, y: minY }, { x: maxX, y: maxY }];
 }
 
-loadImage();
+/** Handle drag + dropped image */
+var dropzone = document.getElementById('dropzone');
+
+dropzone.ondragover = function (e) {
+  e.preventDefault();
+}
+
+dropzone.ondrop = function (e) {
+  e.preventDefault();
+  var files = e.dataTransfer.files;
+  replaceImage(files[0]);
+}
+
+function replaceImage(file) {
+  let reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = function () {
+    loadImage(reader.result);
+  }
+}
+
+loadImage('assets/chinese-censor.png');

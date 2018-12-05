@@ -1,4 +1,4 @@
 body {
-  display: grid;
-  grid-template-columns: 520px 300px 200px;
+  display: flex;
+  align-items: flex-start;
 }
