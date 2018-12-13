@@ -13,7 +13,7 @@ function drawSeparators(ctx) {
 
     whitePixels = colors.map(c => c > 240).reduce((a, b) => a + b);
     whitePercent = whitePixels / canvas.height;
-    if (whitePercent > 0.9) {
+    if (whitePercent > 0.95) {
       paint(pixels, column, [0, 0, 0]);
     }
 

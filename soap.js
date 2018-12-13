@@ -7,23 +7,44 @@ const img = new Image();
 
 let annotations;
 
-loadImage('assets/2880.png');
+// loadImage('assets/2880.png');
+loadPdf('assets/104.pdf');
 
 function loadImage(src) {
   img.onload = () => {
-    // Resize canvas to fit the image
     canvas.width = img.width;
     canvas.height = img.height;
 
     ctx.drawImage(img, 0, 0);
+
     drawSeparators(ctx);
-    
     requestOcr(canvas).then(json => colorWords(json));
   }
   img.src = src;
 }
 
-/** Draws blue boxes around each annotation. */
+function loadPdf(src) {
+  pdfjsLib.getDocument(src)
+    .then(pdf => pdf.getPage(46))
+    .then(page => {
+      const scale = 1.3;
+      const viewport = page.getViewport(scale);
+
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: ctx,
+        viewport: viewport
+      };
+      return page.render(renderContext);
+    }).then(() => {
+      drawSeparators(ctx);
+      requestOcr(canvas).then(json => colorWords(json));
+    });
+}
+
+/** Draws boxes around each annotation. */
 function colorWords(json) {
   annotations = json.responses[0].textAnnotations;
   // Remove the first (overarching) annotation.
@@ -69,7 +90,7 @@ function getStartEnd(boundingPoly) {
   return [{ x: minX, y: minY }, { x: maxX, y: maxY }];
 }
 
-/** Handle drag + dropped image */
+/** Handle drag + dropped image or PDF.*/
 var dropzone = document.getElementById('dropzone');
 
 dropzone.ondragover = function (e) {
@@ -85,7 +106,12 @@ dropzone.ondrop = function (e) {
 function replaceImage(file) {
   let reader = new FileReader();
   reader.readAsDataURL(file);
-  reader.onloadend = function () {
-    loadImage(reader.result);
+  reader.onloadend = () => {
+    const dataUrl = reader.result;
+    if (file.name.endsWith('pdf')) {
+      loadPdf(dataUrl);
+    } else {
+      loadImage(dataUrl);
+    }
   }
 }
