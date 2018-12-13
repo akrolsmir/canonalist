@@ -14,6 +14,7 @@ function loadImage(src) {
     canvas.height = img.height; 
 
     ctx.drawImage(img, 0, 0);
+    drawSeparators(ctx);
     
     requestOcr(canvas).then(json => colorWords(json));
   }
