@@ -7,11 +7,13 @@ const img = new Image();
 
 let annotations;
 
+loadImage('assets/2880.png');
+
 function loadImage(src) {
   img.onload = () => {
     // Resize canvas to fit the image
     canvas.width = img.width;
-    canvas.height = img.height; 
+    canvas.height = img.height;
 
     ctx.drawImage(img, 0, 0);
     drawSeparators(ctx);
@@ -24,16 +26,20 @@ function loadImage(src) {
 /** Draws blue boxes around each annotation. */
 function colorWords(json) {
   annotations = json.responses[0].textAnnotations;
+  // Remove the first (overarching) annotation.
+  annotations.splice(0, 1);
   for (const annotation of annotations) {
     const [start, end] = getStartEnd(annotation.boundingPoly);
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'yellow';
     ctx.strokeRect(start.x, start.y, end.x - start.x, end.y - start.y);
+    ctx.fillStyle = 'rgba(240, 240, 40, 0.2';
+    ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
   }
 }
 
-/** Copies the blue box's text into the textarea. */
+/** Copies the annotation box's text into the textarea. */
 function processClick(event) {
-  let lastText;
+  let lastText; // Since boxes may overlap, use the last one.
   for (const annotation of annotations) {
     const [start, end] = getStartEnd(annotation.boundingPoly);
     if (start.x <= event.offsetX && event.offsetX <= end.x &&
@@ -83,5 +89,3 @@ function replaceImage(file) {
     loadImage(reader.result);
   }
 }
-
-loadImage('assets/chinese-censor.png');
