@@ -14,7 +14,7 @@ function mouseUp(e) {
       // Resize the snippet canvas, then copy to it
       snippet.width = clipWidth;
       snippet.height = clipHeight
-      snippetCtx.drawImage(img,
+      snippetCtx.drawImage(canvas,
         // Source: x, y, width, hight
         downEvent.offsetX, downEvent.offsetY, clipWidth, clipHeight,
         // Destination: x, y, width, height

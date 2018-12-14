@@ -1,11 +1,14 @@
 const canvas = document.getElementById('canvas');
 const snippet = document.getElementById('snippet');
 const lyricsTextField = document.getElementById('lyrics');
+const pageNumText = document.getElementById('pagenum');
 const ctx = canvas.getContext('2d');
 const snippetCtx = snippet.getContext('2d');
 const img = new Image();
 
 let annotations;
+let pdf;
+let pageNum = 46;
 
 // loadImage('assets/2880.png');
 loadPdf('assets/104.pdf');
@@ -16,16 +19,21 @@ function loadImage(src) {
     canvas.height = img.height;
 
     ctx.drawImage(img, 0, 0);
-
-    drawSeparators(ctx);
-    requestOcr(canvas).then(json => colorWords(json));
   }
   img.src = src;
 }
 
 function loadPdf(src) {
   pdfjsLib.getDocument(src)
-    .then(pdf => pdf.getPage(46))
+    .then(result => {
+      pdf = result;
+      renderPdfPage();
+    });
+}
+
+function renderPdfPage() {
+  pageNumText.value = `Page ${pageNum}`;
+  pdf.getPage(pageNum)
     .then(page => {
       const scale = 1.3;
       const viewport = page.getViewport(scale);
@@ -38,10 +46,23 @@ function loadPdf(src) {
         viewport: viewport
       };
       return page.render(renderContext);
-    }).then(() => {
-      drawSeparators(ctx);
-      requestOcr(canvas).then(json => colorWords(json));
     });
+}
+
+function prevPage() {
+  pageNum--;
+  renderPdfPage();
+}
+
+function nextPage() {
+  pageNum++;
+  renderPdfPage();
+}
+
+function analyze() {
+  // TODO: drawSeparators is slow (~300ms). Optimize or move to async.
+  drawSeparators(ctx);
+  requestOcr(canvas).then(json => colorWords(json));
 }
 
 /** Draws boxes around each annotation. */

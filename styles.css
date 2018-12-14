@@ -1,4 +1,24 @@
 body {
+  display: grid;
+  grid-template-rows: 80px 350px 50px;
+}
+
+.toolbar {
+  grid-row: 1;
+  display: flex;
+}
+
+.toolbar > input {
+  font-size: 20pt;
+  text-align: center;
+}
+
+.editor {
+  grid-row: 2;
   display: flex;
   align-items: flex-start;
+}
+
+.editor > textarea {
+  font-size: 30pt;
 }

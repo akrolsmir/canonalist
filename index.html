@@ -1,18 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
 <head>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-	<body>
-	<div id="dropzone">
-	  <canvas id="canvas" width="520" height="800" 
-	    onclick="processClick(event)" onmousedown="mouseDown(event)"
-      onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)"
-      ></canvas>
-	</div>
-	<textarea name="lyrics" id="lyrics" 
-    rows="10" cols="20" style="font-size: 30pt"></textarea>
-  <canvas id="snippet" width="100" height="100"></canvas>
+
+<body>
+  <div class="toolbar">
+    <input type="button" id="nextpage" value="(= Prev" onclick="prevPage()">
+    <input type="text" id="pagenum" value="Page X" readonly>
+    <input type="button" id="prevpage" value="Next =)" onclick="nextPage()">
+    <input type="button" id="separator" value="Analyze" onclick="analyze()">
+  </div>
+  <div class="editor">
+    <div id="dropzone">
+      <canvas id="canvas" width="520" height="800"
+          onclick="processClick(event)" onmousedown="mouseDown(event)"
+          onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)">
+      </canvas>
+    </div>
+    <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
+    <canvas id="snippet" width="100" height="100"></canvas>
+  </div>
 </body>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
-<script type="application/javascript" src="right-click-ocr.js"></script>
-<script type="application/javascript" src="separator.js"></script>
-<script type="application/javascript" src="soap.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+<script src="right-click-ocr.js"></script>
+<script src="separator.js"></script>
+<script src="soap.js"></script>
