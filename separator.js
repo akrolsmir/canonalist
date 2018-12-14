@@ -2,24 +2,26 @@
 function drawSeparators(ctx) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const pixels = new Uint8ClampedArray(imageData.data);
+  let toPaint = [];
   for (let x = 0; x < canvas.width; x++) {
     const colors = [];
     const column = [];
     for (let y = 0; y < canvas.height; y++) {
-      const color = getGrayscale(pixels, pair(x, y));
+      const p = pair(x, y);
+      const color = getGrayscale(pixels, p);
+      column.push(p);
       colors.push(color);
-      column.push(pair(x, y));
     }
 
     whitePixels = colors.map(c => c > 240).reduce((a, b) => a + b);
     whitePercent = whitePixels / canvas.height;
     if (whitePercent > 0.95) {
-      paint(pixels, column, [0, 0, 0]);
+      toPaint = toPaint.concat(column);
     }
-
-    imageData.data.set(pixels);
-    ctx.putImageData(imageData, 0, 0);
   }
+  paint(pixels, toPaint, [0, 0, 0]);
+  imageData.data.set(pixels);
+  ctx.putImageData(imageData, 0, 0);
 }
 
 function pair(x, y) {
