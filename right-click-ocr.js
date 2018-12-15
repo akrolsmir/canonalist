@@ -14,7 +14,7 @@ function mouseUp(e) {
       // Resize the snippet canvas, then copy to it
       snippet.width = clipWidth;
       snippet.height = clipHeight
-      snippetCtx.drawImage(canvas,
+      snippetCtx.drawImage(img,
         // Source: x, y, width, hight
         downEvent.offsetX, downEvent.offsetY, clipWidth, clipHeight,
         // Destination: x, y, width, height
@@ -22,11 +22,38 @@ function mouseUp(e) {
       requestOcr(snippet)
         .then(json => {
           if (json.responses.length > 0) {
-            const text = json.responses[0].textAnnotations[0].description;
+            let text = json.responses[0].textAnnotations[0].description;
+            text = text.replace(/\s/g, ''); // Strip out all whitespace
+            const rect = {
+              x: downEvent.offsetX,
+              y: downEvent.offsetY,
+              width: clipWidth,
+              height: clipHeight
+            }
             lyricsTextField.value += text;
+            scanlate(text, rect);
           }
         });
   }
+}
+
+async function scanlate(text, rect) {
+  const json = await translate(text);
+  const english = json.data.translations[0].translatedText;
+  console.log(`Original: ${text}, Translated: ${english}`);
+
+  ctx.strokeStyle = 'rgba(40, 40, 240, 0.5'; // Transparent light blue
+  ctx.strokeRect(rect.x, rect.y, rect.width, rect.height);
+  ctx.fillStyle = 'white';
+  ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+  
+  ctx.fillStyle = 'black';
+  ctx.textAlign = 'center';
+  drawMultilineText(ctx, english, {
+    rect: rect,
+    font: "Patrick Hand",
+    minFontSize: 20
+  });
 }
 
 const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
@@ -42,11 +69,6 @@ function buildRequest(base64) {
           "type": "DOCUMENT_TEXT_DETECTION"
         },
       ],
-      "imageContext": {
-        "languageHints": [
-          "zh-TW"
-        ]
-      }
     }
   ]
 }
@@ -63,6 +85,25 @@ async function requestOcr(canvas) {
     headers: { 'Content-Type': 'application/json' }
   });
   return await response.json();
+}
+
+const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=***REMOVED***';
+function buildTranslateRequest(text) {
+  return `{
+  "q": "${text}",
+  "target": "en",
+  "format": "text",
+}
+`;
+}
+
+async function translate(text) {
+  const response = await fetch(TRANSLATE_URL, {
+    method: 'POST',
+    body: buildTranslateRequest(text),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  return response.json();
 }
 
 /** Prevent right click menu from appearing. */

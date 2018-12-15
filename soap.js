@@ -10,8 +10,8 @@ let annotations;
 let pdf;
 let pageNum = 46;
 
-// loadImage('assets/2880.png');
-loadPdf('assets/104.pdf');
+loadImage('assets/r (5).jpg');
+// loadPdf('assets/104.pdf');
 
 function loadImage(src) {
   img.onload = () => {
@@ -60,8 +60,6 @@ function nextPage() {
 }
 
 function analyze() {
-  // TODO: drawSeparators is slow (~300ms). Optimize or move to async.
-  drawSeparators(ctx);
   requestOcr(canvas).then(json => colorWords(json));
 }
 
