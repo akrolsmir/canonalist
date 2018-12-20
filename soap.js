@@ -2,6 +2,7 @@ const canvas = document.getElementById('canvas');
 const snippet = document.getElementById('snippet');
 const lyricsTextField = document.getElementById('lyrics');
 const pageNumText = document.getElementById('pagenum');
+const textLayers = document.getElementById('textlayers');
 const ctx = canvas.getContext('2d');
 const snippetCtx = snippet.getContext('2d');
 const img = new Image();

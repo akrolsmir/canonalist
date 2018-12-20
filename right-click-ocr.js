@@ -42,18 +42,21 @@ async function scanlate(text, rect) {
   const english = json.data.translations[0].translatedText;
   console.log(`Original: ${text}, Translated: ${english}`);
 
-  ctx.strokeStyle = 'rgba(40, 40, 240, 0.5'; // Transparent light blue
-  ctx.strokeRect(rect.x, rect.y, rect.width, rect.height);
   ctx.fillStyle = 'white';
   ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
   
-  ctx.fillStyle = 'black';
-  ctx.textAlign = 'center';
-  drawMultilineText(ctx, english, {
-    rect: rect,
-    font: "Patrick Hand",
-    minFontSize: 20
-  });
+  drawTextLayer(english, rect);
+}
+
+function drawTextLayer(text, rect) {
+  const textArea = document.createElement('textarea');
+  textArea.style =
+    `left:${rect.x}px;
+    top:${rect.y}px;
+    width:${rect.width}px;
+    height:${rect.height}px;`;
+  textArea.innerText = text;
+  textLayers.appendChild(textArea);
 }
 
 const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';

@@ -22,3 +22,20 @@ body {
 .editor > textarea {
   font-size: 30pt;
 }
+
+div#textlayers {
+  position: relative;
+}
+
+div#textlayers > textarea {
+  position: absolute;
+  font-family:'Patrick Hand';
+  font-size: 16pt;
+  text-align: center;
+
+  overflow: hidden;
+  /* border: none; */
+  outline: none;
+  background: transparent;
+  /* resize: none; */ /* remove the resize handle on the bottom right */
+}
