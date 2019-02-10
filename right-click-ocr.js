@@ -77,7 +77,7 @@ function drawTextLayer(text, rect) {
   textLayers.appendChild(textArea);
 }
 
-const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
+const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyA7ZlydINXmk61P2lz3sDi0ACSIwJEloUY';
 function buildRequest(base64) {
   return `{
   "requests": [
@@ -108,7 +108,7 @@ async function requestOcr(canvas) {
   return await response.json();
 }
 
-const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=***REMOVED***';
+const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7ZlydINXmk61P2lz3sDi0ACSIwJEloUY';
 function buildTranslateRequest(text) {
   return `{
   "q": "${text}",

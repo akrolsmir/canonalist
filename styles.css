@@ -27,11 +27,18 @@ div#textlayers {
   position: relative;
 }
 
+@font-face {
+  font-family: "Wild Words Roman";
+  src: url("assets/wildwordsroman.TTF");
+}
+
 div#textlayers > textarea {
   position: absolute;
-  font-family:'Patrick Hand';
-  font-size: 16pt;
   text-align: center;
+
+  font-family:'Wild Words Roman';
+  font-size: 12pt;
+  line-height: 1.2;
 
   overflow: hidden;
   /* border: none; */
