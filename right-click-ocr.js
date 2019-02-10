@@ -56,6 +56,24 @@ function drawTextLayer(text, rect) {
     width:${rect.width}px;
     height:${rect.height}px;`;
   textArea.innerText = text;
+  textArea.draggable = true;
+  let dragStartX, dragStartY;
+  textArea.ondragstart = (event) => {
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    textArea.style.opacity = '0.1';
+  }
+  textArea.ondragend = (event) => {
+    event.preventDefault();
+    textArea.style.opacity = '1.0';
+
+    const deltaX = event.clientX - dragStartX;
+    const deltaY = event.clientY - dragStartY;
+    const leftPixels = parseFloat(textArea.style.left, 10);
+    const topPixels = parseFloat(textArea.style.top, 10);
+    textArea.style.left = `${leftPixels + deltaX}px`
+    textArea.style.top = `${topPixels + deltaY}px`
+  }
   textLayers.appendChild(textArea);
 }
 

@@ -120,7 +120,9 @@ dropzone.ondragover = function (e) {
 dropzone.ondrop = function (e) {
   e.preventDefault();
   var files = e.dataTransfer.files;
-  replaceImage(files[0]);
+  if (files) {
+    replaceImage(files[0]);
+  }
 }
 
 function replaceImage(file) {
