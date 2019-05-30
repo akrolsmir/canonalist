@@ -14,7 +14,10 @@
     <input type="button" id="separator" value="Analyze" onclick="analyze()">
   </div>
   <div class="editor">
-    <div id="textlayers" style="z-index:101;"></div>
+    <div id="textlayers" style="z-index:102;">
+      <bubble-component v-for="bubble in bubbles" v-bind="bubble">
+      </bubble-component>
+    </div>
     <div id="dropzone">
       <canvas id="canvas" width="520" height="800"
           onclick="processClick(event)" onmousedown="mouseDown(event)"
@@ -26,6 +29,7 @@
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
 <script src="right-click-ocr.js"></script>
 <script src="separator.js"></script>
 <script src="soap.js"></script>

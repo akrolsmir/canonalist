@@ -1,3 +1,12 @@
+class Bubble {
+  constructor(id, rect, japanese, english) {
+    this.id = id;
+    this.rect = rect;
+    this.japanese = japanese;
+    this.english = english;
+  }
+}
+
 let downEvent;
 function mouseDown(e) {
   switch (e.which) {
@@ -5,6 +14,9 @@ function mouseDown(e) {
       downEvent = e;
   }
 }
+
+const snippet = document.getElementById('snippet');
+const snippetCtx = snippet.getContext('2d');
 
 function mouseUp(e) {
   switch (e.which) {
@@ -37,47 +49,77 @@ function mouseUp(e) {
   }
 }
 
+Vue.component('bubble-component', {
+  props: {
+    id: Number,
+    rect: Object,
+    japanese: String,
+    english: String
+  },
+  data() {
+    return {
+      dragStartX: 0,
+      dragStartY: 0,
+      opacity: '1.0'
+    }
+  },
+  methods: {
+    dragstart(event) {
+      this.dragStartX = event.clientX;
+      this.dragStartY = event.clientY;
+      this.opacity = '0.1';
+    },
+    dragend(event) {
+      event.preventDefault();
+      this.opacity = '1.0';
+
+      const deltaX = event.clientX - this.dragStartX;
+      const deltaY = event.clientY - this.dragStartY;
+      console.log(deltaX, deltaY);
+      this.rect.x += deltaX;
+      this.rect.y += deltaY;
+    },
+  },
+  computed: {
+    styleObject() {
+      return {
+        'z-index': '100',
+        'left': this.rect.x + 'px',
+        'top': this.rect.y + 'px',
+        'width': this.rect.width + 'px',
+        'height': this.rect.height + 'px',
+        'opacity': this.opacity,
+      }
+    }
+  },
+  template: `
+  <textarea :style="styleObject"
+    v-on:dragstart="dragstart"
+    v-on:dragend="dragend"
+    draggable="true">{{english}}</textarea>
+  `
+});
+
+const vueApp = new Vue({
+  el: '#textlayers',
+  data: {
+    bubbles: []
+  }
+});
+
 async function scanlate(text, rect) {
   const json = await translate(text);
   const english = json.data.translations[0].translatedText;
   console.log(`Original: ${text}, Translated: ${english}`);
+  const bubble = new Bubble(vueApp.bubbles.length, rect, text, english);
+  vueApp.bubbles.push(bubble);
 
+  // Clean japanese from the text bubble.
   ctx.fillStyle = 'white';
   ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
-  
-  drawTextLayer(english, rect);
 }
 
-function drawTextLayer(text, rect) {
-  const textArea = document.createElement('textarea');
-  textArea.style =
-    `left:${rect.x}px;
-    top:${rect.y}px;
-    width:${rect.width}px;
-    height:${rect.height}px;`;
-  textArea.innerText = text;
-  textArea.draggable = true;
-  let dragStartX, dragStartY;
-  textArea.ondragstart = (event) => {
-    dragStartX = event.clientX;
-    dragStartY = event.clientY;
-    textArea.style.opacity = '0.1';
-  }
-  textArea.ondragend = (event) => {
-    event.preventDefault();
-    textArea.style.opacity = '1.0';
-
-    const deltaX = event.clientX - dragStartX;
-    const deltaY = event.clientY - dragStartY;
-    const leftPixels = parseFloat(textArea.style.left, 10);
-    const topPixels = parseFloat(textArea.style.top, 10);
-    textArea.style.left = `${leftPixels + deltaX}px`
-    textArea.style.top = `${topPixels + deltaY}px`
-  }
-  textLayers.appendChild(textArea);
-}
-
-const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyA7ZlydINXmk61P2lz3sDi0ACSIwJEloUY';
+const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
 function buildRequest(base64) {
   return `{
   "requests": [
@@ -108,7 +150,7 @@ async function requestOcr(canvas) {
   return await response.json();
 }
 
-const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7ZlydINXmk61P2lz3sDi0ACSIwJEloUY';
+const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=***REMOVED***';
 function buildTranslateRequest(text) {
   return `{
   "q": "${text}",
