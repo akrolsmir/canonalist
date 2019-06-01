@@ -54,13 +54,14 @@ Vue.component('bubble-component', {
     id: Number,
     rect: Object,
     japanese: String,
-    english: String
+    english: String,
   },
   data() {
     return {
       dragStartX: 0,
       dragStartY: 0,
-      opacity: '1.0'
+      opacity: '1.0',
+      showControls: false,
     }
   },
   methods: {
@@ -75,35 +76,45 @@ Vue.component('bubble-component', {
 
       const deltaX = event.clientX - this.dragStartX;
       const deltaY = event.clientY - this.dragStartY;
-      console.log(deltaX, deltaY);
       this.rect.x += deltaX;
       this.rect.y += deltaY;
     },
   },
   computed: {
     styleObject() {
-      return {
+      const style =  {
         'z-index': '100',
         'left': this.rect.x + 'px',
         'top': this.rect.y + 'px',
         'width': this.rect.width + 'px',
         'height': this.rect.height + 'px',
         'opacity': this.opacity,
+      };
+      if (!this.showControls) {
+        style['border'] = 'none';
+        // Hide the bottom-right resize handle.
+        style['resize'] = 'none';
+        // Shift by 1px to adjust for the missing border.
+        style['left'] = (this.rect.x + 1) + 'px';
+        style['top'] = (this.rect.y + 1) + 'px';
       }
+      return style;
     }
   },
   template: `
   <textarea :style="styleObject"
     v-on:dragstart="dragstart"
     v-on:dragend="dragend"
+    v-on:focus="showControls = true"
+    v-on:blur="showControls = false"
     draggable="true">{{english}}</textarea>
   `
 });
 
 const vueApp = new Vue({
-  el: '#textlayers',
+  el: '.editor',
   data: {
-    bubbles: []
+    bubbles: [],
   }
 });
 

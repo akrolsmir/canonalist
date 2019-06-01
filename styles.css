@@ -41,8 +41,6 @@ div#textlayers > textarea {
   line-height: 1.2;
 
   overflow: hidden;
-  /* border: none; */
   outline: none;
   background: transparent;
-  /* resize: none; */ /* remove the resize handle on the bottom right */
 }
