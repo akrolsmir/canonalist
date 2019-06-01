@@ -8,7 +8,7 @@ let annotations;
 let pdf;
 let pageNum = 46;
 
-loadImage('assets/r (5).jpg');
+loadImage('assets/22.jpg');
 // loadPdf('assets/104.pdf');
 
 function loadImage(src) {
@@ -68,11 +68,35 @@ function colorWords(json) {
   annotations.splice(0, 1);
   for (const annotation of annotations) {
     const [start, end] = getStartEnd(annotation.boundingPoly);
-    ctx.strokeStyle = 'yellow';
-    ctx.strokeRect(start.x, start.y, end.x - start.x, end.y - start.y);
-    ctx.fillStyle = 'rgba(240, 240, 40, 0.2';
+    ctx.fillStyle = 'rgba(240, 240, 40, 0.2)';
     ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
   }
+
+  // Hierarchy of fullTextAnnotation is page > block > paragraph > word > symbol
+  // TODO: Maybe split by paragraph insteaad of block?
+  const blocks = json.responses[0].fullTextAnnotation.pages[0].blocks;
+  for (const block of blocks) {
+    const [start, end] = getStartEnd(block.boundingBox);
+    ctx.fillStyle = 'rgba(40, 240, 240, 0.2)';
+    ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
+
+    const japanese = extractText(block);
+    const rect = { x: start.x, y: start.y, width: end.x - start.x, height: end.y - start.y };
+    scanlate(japanese, rect)
+  }
+}
+
+
+function extractText(block) {
+  let result = "";
+  for (const paragraph of block.paragraphs) {
+    for (const word of paragraph.words) {
+      for (const symbol of word.symbols) {
+        result += symbol.text;
+      }
+    }
+  }
+  return result;
 }
 
 /** Copies the annotation box's text into the textarea. */
