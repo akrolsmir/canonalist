@@ -105,7 +105,7 @@ Vue.component('bubble-component', {
   <textarea :style="styleObject"
     v-on:dragstart="dragstart"
     v-on:dragend="dragend"
-    v-on:focus="showControls = true"
+    v-on:focus="showControls = true; $emit('bubble-focus', id)"
     v-on:blur="showControls = false"
     draggable="true">{{english}}</textarea>
   `
@@ -115,6 +115,18 @@ const vueApp = new Vue({
   el: '.editor',
   data: {
     bubbles: [],
+    bubble: {japanese: "JP", english: "EN"}
+  },
+  methods: {
+    showdata(bubbleId) {
+      console.log(bubbleId);
+      for (const bubble of this.bubbles) {
+        if (bubble.id == bubbleId) {
+          this.bubble = bubble;
+          return;
+        }
+      }
+    }
   }
 });
 

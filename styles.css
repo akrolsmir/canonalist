@@ -19,6 +19,12 @@ body {
   align-items: flex-start;
 }
 
+
+#bubbleData {
+  display: flex;
+  flex-direction: column;
+}
+
 .editor > textarea {
   font-size: 30pt;
 }

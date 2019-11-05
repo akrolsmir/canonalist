@@ -15,7 +15,7 @@
   </div>
   <div class="editor">
     <div id="textlayers" style="z-index:102;">
-      <bubble-component v-for="bubble in bubbles" v-bind="bubble">
+      <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
       </bubble-component>
     </div>
     <div id="dropzone">
@@ -23,6 +23,10 @@
           onclick="processClick(event)" onmousedown="mouseDown(event)"
           onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)">
       </canvas>
+    </div>
+    <div id="bubbleData">
+      <textarea v-model="bubble.japanese" rows="5"></textarea>
+      <textarea v-model="bubble.english" rows="5"></textarea>
     </div>
     <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
     <canvas id="snippet" width="100" height="100"></canvas>
