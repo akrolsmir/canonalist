@@ -96,7 +96,7 @@ Vue.component('bubble-component', {
 });
 
 const vueApp = new Vue({
-  el: '.editor',
+  el: '#editor',
   data: {
     bubbles: [],
     bubble: {japanese: "JP", english: "EN"},

@@ -8,31 +8,31 @@
 </head>
 
 <body>
-  <div class="editor">
-    <div class="toolbar">
+  <div id="editor">
+    <div id="toolbar">
       <button v-on:click="newImage">New Image</button>
       <button v-on:click="selectBox">Select JP area</button>
       <button v-on:click="detectJapanese">Detect all JP</button>
       <button v-on:click="makeBubbles">Translate to EN</button>
       <button v-on:click="saveImage">Save Image</button>
     </div>
-    <div class="mainarea">
-    <div id="textlayers" style="z-index:102;">
-      <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
-      </bubble-component>
-    </div>
-    <div id="dropzone">
-      <canvas ref="canvas" id="canvas" width="520" height="800"
-          onclick="processClick(event)" onmousedown="mouseDown(event)"
-          onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)">
-      </canvas>
+    <div id="scrollport">
+      <div id="textlayers" style="z-index:102;">
+        <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
+        </bubble-component>
+      </div>
+      <div id="dropzone">
+        <canvas ref="canvas" id="canvas" width="520" height="800"
+            onclick="processClick(event)" onmousedown="mouseDown(event)"
+            onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)">
+        </canvas>
+      </div>
     </div>
     <div id="bubbleData">
-      <textarea v-model="bubble.japanese" rows="5"></textarea>
-      <textarea v-model="bubble.english" rows="5"></textarea>
-    </div>
-    <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
-    <canvas id="snippet" width="100" height="100"></canvas>
+        <textarea v-model="bubble.japanese" rows="5"></textarea>
+        <textarea v-model="bubble.english" rows="5"></textarea>
+        <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
+        <canvas id="snippet" width="100" height="100"></canvas>  
     </div>
   </div>
 </body>

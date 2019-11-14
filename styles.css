@@ -1,35 +1,48 @@
-.editor {
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+#editor {
+  height: 100vh;
   display: grid;
-  grid-template-rows: 80px 350px 50px;
+  padding-left: 1em;
+  gap: 1em;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto auto 1fr;
 }
 
-.toolbar {
-  grid-row: 1;
+#toolbar {
+  /* Toolbar stretches across top row. */
+  grid-area: 1 / 1 / 1 / 4; 
   display: flex;
+  margin-top: 1em;
 }
 
-.toolbar > input {
-  font-size: 20pt;
+#toolbar > button {
   text-align: center;
+  height: 40px;
+  width: 200px;
 }
 
-.mainarea {
+#scrollport {
   grid-row: 2;
-  display: flex;
-  align-items: flex-start;
+  width: fit-content;
+  overflow: scroll;
+  border: 1px solid black;
 }
-
 
 #bubbleData {
+  grid-row: 2;
   display: flex;
   flex-direction: column;
 }
 
-.editor > textarea {
+#editor > textarea {
   font-size: 30pt;
 }
 
-div#textlayers {
+#textlayers {
   position: relative;
 }
 
