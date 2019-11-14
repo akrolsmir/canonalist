@@ -80,6 +80,16 @@ function colorWords(json) {
     ctx.fillStyle = 'rgba(40, 240, 240, 0.2)';
     ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
 
+    // const japanese = extractText(block);
+    // const rect = { x: start.x, y: start.y, width: end.x - start.x, height: end.y - start.y };
+    // scanlate(japanese, rect)
+  }
+  vueApp.blocks = blocks;
+}
+
+function scanlateAll(blocks) {
+  for (const block of blocks) {
+    const [start, end] = getStartEnd(block.boundingBox);
     const japanese = extractText(block);
     const rect = { x: start.x, y: start.y, width: end.x - start.x, height: end.y - start.y };
     scanlate(japanese, rect)

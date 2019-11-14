@@ -7,13 +7,15 @@
 </head>
 
 <body>
-  <div class="toolbar">
-    <input type="button" id="nextpage" value="(= Prev" onclick="prevPage()">
-    <input type="text" id="pagenum" value="Page X" readonly>
-    <input type="button" id="prevpage" value="Next =)" onclick="nextPage()">
-    <input type="button" id="separator" value="Analyze" onclick="analyze()">
-  </div>
   <div class="editor">
+    <div class="toolbar">
+      <button v-on:click="newImage">New Image</button>
+      <button v-on:click="selectBox">Select JP area</button>
+      <button v-on:click="detectJapanese">Detect all JP</button>
+      <button v-on:click="makeBubbles">Translate to EN</button>
+      <button v-on:click="saveImage">Save Image</button>
+    </div>
+    <div class="mainarea">
     <div id="textlayers" style="z-index:102;">
       <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
       </bubble-component>
@@ -30,6 +32,7 @@
     </div>
     <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
     <canvas id="snippet" width="100" height="100"></canvas>
+    </div>
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>

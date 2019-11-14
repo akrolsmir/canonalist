@@ -1,4 +1,4 @@
-body {
+.editor {
   display: grid;
   grid-template-rows: 80px 350px 50px;
 }
@@ -13,7 +13,7 @@ body {
   text-align: center;
 }
 
-.editor {
+.mainarea {
   grid-row: 2;
   display: flex;
   align-items: flex-start;

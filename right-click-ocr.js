@@ -115,17 +115,32 @@ const vueApp = new Vue({
   el: '.editor',
   data: {
     bubbles: [],
-    bubble: {japanese: "JP", english: "EN"}
+    bubble: {japanese: "JP", english: "EN"},
+    blocks: '',
   },
   methods: {
     showdata(bubbleId) {
-      console.log(bubbleId);
       for (const bubble of this.bubbles) {
         if (bubble.id == bubbleId) {
           this.bubble = bubble;
           return;
         }
       }
+    },
+    makeBubbles() {
+      scanlateAll(this.blocks);
+    },
+    detectJapanese() {
+      analyze();
+    },
+    newImage() {
+      alert('Drag and drop a raw manga page to get started!');
+    },
+    selectBox() {
+      alert('Right-click, hold, and drag over japanese text.');
+    },
+    saveImage() {
+      alert('Sorry, not working yet =(. For now you can take a screenshot!');
     }
   }
 });
