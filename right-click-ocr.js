@@ -49,6 +49,7 @@ function mouseUp(e) {
   }
 }
 
+Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.component('bubble-component', {
   props: {
     id: Number,
@@ -58,27 +59,9 @@ Vue.component('bubble-component', {
   },
   data() {
     return {
-      dragStartX: 0,
-      dragStartY: 0,
       opacity: '1.0',
       showControls: false,
     }
-  },
-  methods: {
-    dragstart(event) {
-      this.dragStartX = event.clientX;
-      this.dragStartY = event.clientY;
-      this.opacity = '0.1';
-    },
-    dragend(event) {
-      event.preventDefault();
-      this.opacity = '1.0';
-
-      const deltaX = event.clientX - this.dragStartX;
-      const deltaY = event.clientY - this.dragStartY;
-      this.rect.x += deltaX;
-      this.rect.y += deltaY;
-    },
   },
   computed: {
     styleObject() {
@@ -88,26 +71,24 @@ Vue.component('bubble-component', {
         'top': this.rect.y + 'px',
         'width': this.rect.width + 'px',
         'height': this.rect.height + 'px',
-        'opacity': this.opacity,
       };
       if (!this.showControls) {
         style['border'] = 'none';
         // Hide the bottom-right resize handle.
         style['resize'] = 'none';
-        // Shift by 1px to adjust for the missing border.
-        style['left'] = (this.rect.x + 1) + 'px';
-        style['top'] = (this.rect.y + 1) + 'px';
+        // TODO: Consider shifting by 1px for the border.
       }
       return style;
     }
   },
   template: `
-  <textarea :style="styleObject"
-    v-on:dragstart="dragstart"
-    v-on:dragend="dragend"
-    v-on:focus="showControls = true; $emit('bubble-focus', id)"
-    v-on:blur="showControls = false"
-    draggable="true">{{english}}</textarea>
+  <vue-draggable-resizable :x="rect.x" :y="rect.y" :w="rect.width" :h="rect.height" :drag-handle="'.drag-handle'">
+  <textarea class="bubbletext" :style="styleObject"
+  v-on:focus="showControls = true; $emit('bubble-focus', id)"
+  v-on:blur="showControls = false"
+  >{{english}}</textarea>
+  <div v-if="showControls" class="drag-handle">Drag Only Here</div>
+  </vue-draggable-resizable>
   `
 });
 

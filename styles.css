@@ -38,8 +38,7 @@ div#textlayers {
   src: url("assets/wildwordsroman.TTF");
 }
 
-div#textlayers > textarea {
-  position: absolute;
+textarea.bubbletext {
   text-align: center;
 
   font-family:'Wild Words Roman';
