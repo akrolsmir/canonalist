@@ -87,7 +87,9 @@ Vue.component('bubble-component', {
     <div class="drag-handle" v-if="showControls">
       <span class="typcn typcn-arrow-move"></span>
     </div>  
-    <textarea class="bubbletext" :style="styleObject"
+    <textarea class="bubbletext"
+      spellcheck="false"
+      :style="styleObject"
       v-on:focus="showControls = true; $emit('bubble-focus', id)"
       v-on:blur="showControls = false"
     >{{english}}</textarea>
