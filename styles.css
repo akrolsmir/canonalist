@@ -49,3 +49,10 @@ textarea.bubbletext {
   outline: none;
   background: transparent;
 }
+
+.drag-handle {
+  position: absolute;
+  top: -10px;
+  left: -10px; 
+  cursor: move;
+}

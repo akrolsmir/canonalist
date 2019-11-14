@@ -82,12 +82,15 @@ Vue.component('bubble-component', {
     }
   },
   template: `
-  <vue-draggable-resizable :x="rect.x" :y="rect.y" :w="rect.width" :h="rect.height" :drag-handle="'.drag-handle'">
-  <textarea class="bubbletext" :style="styleObject"
-  v-on:focus="showControls = true; $emit('bubble-focus', id)"
-  v-on:blur="showControls = false"
-  >{{english}}</textarea>
-  <div v-if="showControls" class="drag-handle">Drag Only Here</div>
+  <vue-draggable-resizable :resizable="false" :drag-handle="'.drag-handle'"
+    :x="rect.x" :y="rect.y" :w="rect.width" :h="rect.height">
+    <div class="drag-handle" v-if="showControls">
+      <span class="typcn typcn-arrow-move"></span>
+    </div>  
+    <textarea class="bubbletext" :style="styleObject"
+      v-on:focus="showControls = true; $emit('bubble-focus', id)"
+      v-on:blur="showControls = false"
+    >{{english}}</textarea>
   </vue-draggable-resizable>
   `
 });
