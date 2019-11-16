@@ -30,6 +30,7 @@ body {
   width: fit-content;
   overflow: scroll;
   border: 1px solid black;
+  position: relative;
 }
 
 #bubbleData {
@@ -42,8 +43,12 @@ body {
   font-size: 30pt;
 }
 
+#konva {
+  position: absolute;
+}
+
 #textlayers {
-  position: relative;
+  position: absolute;
 }
 
 @font-face {

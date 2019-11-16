@@ -15,6 +15,8 @@ function loadImage(src) {
   img.onload = () => {
     canvas.width = img.width;
     canvas.height = img.height;
+    vueApp.configKonva.width = img.width;
+    vueApp.configKonva.height = img.height;
 
     ctx.drawImage(img, 0, 0);
   }

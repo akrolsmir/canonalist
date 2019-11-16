@@ -16,16 +16,18 @@
       <button v-on:click="makeBubbles">Translate to EN</button>
       <button v-on:click="saveImage">Save Image</button>
     </div>
-    <div id="scrollport">
+    <div id="scrollport" v-on:mousedown="handleMouseDown" v-on:mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
         <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
         </bubble-component>
       </div>
+      <v-stage id="konva" ref="stage" :config="configKonva">
+        <v-layer ref="layer">
+          <v-rect :config="configRect"></v-rect>
+        </v-layer>
+      </v-stage>
       <div id="dropzone">
-        <canvas ref="canvas" id="canvas" width="520" height="800"
-            onclick="processClick(event)" onmousedown="mouseDown(event)"
-            onmouseup="mouseUp(event)" oncontextmenu="contextMenu(event)">
-        </canvas>
+        <canvas ref="canvas" id="canvas" width="520" height="800"></canvas>
       </div>
     </div>
     <div id="bubbleData">
@@ -39,6 +41,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.umd.min.js"></script>
+<script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
+<script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
 <script src="right-click-ocr.js"></script>
 <script src="separator.js"></script>
 <script src="soap.js"></script>

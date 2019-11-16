@@ -7,46 +7,37 @@ class Bubble {
   }
 }
 
-let downEvent;
-function mouseDown(e) {
-  switch (e.which) {
-    case 3: // Right mouse click
-      downEvent = e;
+// Normalize a rect to have positive width and height.
+function absoluteRect(rect) {
+  return {
+    x: rect.x + Math.min(0, rect.width),
+    y: rect.y + Math.min(0, rect.height),
+    width: Math.abs(rect.width),
+    height: Math.abs(rect.height),
   }
 }
 
 const snippet = document.getElementById('snippet');
 const snippetCtx = snippet.getContext('2d');
 
-function mouseUp(e) {
-  switch (e.which) {
-    case 3: // Right mouse click
-      const clipWidth = e.offsetX - downEvent.offsetX;
-      const clipHeight = e.offsetY - downEvent.offsetY;
+function extractAndScanlateJapaneseRect(rect) {
       // Resize the snippet canvas, then copy to it
-      snippet.width = clipWidth;
-      snippet.height = clipHeight
+      snippet.width = rect.width;
+      snippet.height = rect.height;
       snippetCtx.drawImage(img,
         // Source: x, y, width, hight
-        downEvent.offsetX, downEvent.offsetY, clipWidth, clipHeight,
+        rect.x, rect.y, rect.width, rect.height,
         // Destination: x, y, width, height
-        0, 0, clipWidth, clipHeight);
+        0, 0, rect.width, rect.height);
       requestOcr(snippet)
         .then(json => {
           if (json.responses.length > 0) {
             let text = json.responses[0].textAnnotations[0].description;
             text = text.replace(/\s/g, ''); // Strip out all whitespace
-            const rect = {
-              x: downEvent.offsetX,
-              y: downEvent.offsetY,
-              width: clipWidth,
-              height: clipHeight
-            }
             lyricsTextField.value += text;
             scanlate(text, rect);
           }
         });
-  }
 }
 
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
@@ -103,8 +94,44 @@ const vueApp = new Vue({
     bubbles: [],
     bubble: {japanese: "JP", english: "EN"},
     blocks: '',
+    configKonva: {
+      width: 200,
+      height: 200
+    },
+    configRect: {
+      x: 0, y: 0, width: 0, height: 0, fill: 'blue', opacity: 0.2
+    },
+    mousedownX: 0,
+    mousedownY: 0,
+    mode: '',
   },
   methods: {
+    handleMouseDown(event) {
+      if (this.mode == 'SELECT_JP') {
+        this.mousedownX = event.offsetX;
+        this.mousedownY = event.offsetY;
+        // console.log(event);
+        this.configRect.x = this.mousedownX;
+        this.configRect.y = this.mousedownY;
+        this.mode = 'SELECT_JP_SECOND_CLICK';
+      }
+      else if (this.mode == 'SELECT_JP_SECOND_CLICK') {
+        this.mode = '';
+        // A little magical, but configRect already has all the right attributes.
+        extractAndScanlateJapaneseRect(absoluteRect(this.configRect));
+        // Then hide the konva rectangle
+        this.configRect.width = 0;
+        this.configRect.height = 0;
+      }
+    },
+    handleMouseMove(event) {
+      if (this.mode == 'SELECT_JP_SECOND_CLICK') {
+        // Draw konva box from mousedownX & Y to this location;
+        // console.log(`Drawing ${event.offsetX}, ${event.offsetY} to ${this.mousedownX}, ${this.mousedownY}`);
+        this.configRect.width = event.offsetX - this.mousedownX;
+        this.configRect.height = event.offsetY - this.mousedownY;
+      }
+    },
     showdata(bubbleId) {
       for (const bubble of this.bubbles) {
         if (bubble.id == bubbleId) {
@@ -123,7 +150,9 @@ const vueApp = new Vue({
       alert('Drag and drop a raw manga page to get started!');
     },
     selectBox() {
-      alert('Right-click, hold, and drag over japanese text.');
+      this.mode = 'SELECT_JP';
+      // TODO set cursor to be cross
+      // alert('Right-click, hold, and drag over japanese text.');
     },
     saveImage() {
       alert('Sorry, not working yet =(. For now you can take a screenshot!');
@@ -191,9 +220,4 @@ async function translate(text) {
     headers: { 'Content-Type': 'application/json' }
   });
   return response.json();
-}
-
-/** Prevent right click menu from appearing. */
-function contextMenu(e) {
-  e.preventDefault();
 }
