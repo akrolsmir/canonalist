@@ -18,7 +18,8 @@
     </div>
     <div id="scrollport" v-on:mousedown="handleMouseDown" v-on:mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
-        <bubble-component v-for="bubble in bubbles" v-bind="bubble" v-on:bubble-focus="showdata">
+        <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]"
+          v-on:bubble-focus="updateSelectedId">
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
@@ -34,8 +35,8 @@
       </div>
     </div>
     <div id="bubbleData">
-        <textarea v-model="bubble.japanese" rows="5"></textarea>
-        <textarea v-model="bubble.english" rows="5"></textarea>
+        <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
+        <textarea v-model="selectedBubble.english" rows="5"></textarea>
         <textarea name="lyrics" id="lyrics" rows="10" cols="20"></textarea>
         <canvas id="snippet" width="100" height="100"></canvas>  
     </div>

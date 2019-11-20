@@ -43,10 +43,7 @@ function extractAndScanlateJapaneseRect(rect) {
 Vue.component('vue-draggable-resizable', VueDraggableResizable)
 Vue.component('bubble-component', {
   props: {
-    id: Number,
-    rect: Object,
-    japanese: String,
-    english: String,
+    value: Object,
   },
   data() {
     return {
@@ -56,13 +53,12 @@ Vue.component('bubble-component', {
   },
   computed: {
     styleObject() {
-      // TODO: reverse bind (change in textarea needs to affect bubble.)
       const style =  {
         'z-index': '100',
-        'left': this.rect.x + 'px',
-        'top': this.rect.y + 'px',
-        'width': this.rect.width + 'px',
-        'height': this.rect.height + 'px',
+        'left': this.value.rect.x + 'px',
+        'top': this.value.rect.y + 'px',
+        'width': this.value.rect.width + 'px',
+        'height': this.value.rect.height + 'px',
       };
       if (!this.showControls) {
         style['border'] = 'none';
@@ -73,18 +69,32 @@ Vue.component('bubble-component', {
       return style;
     }
   },
+  methods: {
+    // Adapted from https://simonkollross.de/posts/vuejs-using-v-model-with-objects-for-custom-components
+    update(key, value) {
+      this.$emit('input', { ...this.value, [key]: value })
+    },
+    // TODO also handle onResize. Might require resizable binding...
+    onDrag(x, y) {
+      const rectCopy = {...this.value.rect, x, y};
+      this.update('rect', rectCopy);
+    }
+  },
   template: `
   <vue-draggable-resizable :resizable="false" :drag-handle="'.drag-handle'"
-    :x="rect.x" :y="rect.y" :w="rect.width" :h="rect.height">
+    @dragging="onDrag"
+    :y="value.rect.y" :x="value.rect.x" :w="value.rect.width" :h="value.rect.height">
     <div class="drag-handle" v-if="showControls">
       <span class="typcn typcn-arrow-move"></span>
     </div>  
     <textarea class="bubbletext"
       spellcheck="false"
       :style="styleObject"
-      v-on:focus="showControls = true; $emit('bubble-focus', id)"
+      v-on:focus="showControls = true; $emit('bubble-focus', value.id)"
       v-on:blur="showControls = false"
-    >{{english}}</textarea>
+      :value="value.english"
+      @input="update('english', $event.target.value)"
+    ></textarea>
   </vue-draggable-resizable>
   `
 });
@@ -93,7 +103,6 @@ const vueApp = new Vue({
   el: '#editor',
   data: {
     bubbles: [],
-    bubble: {japanese: "JP", english: "EN"},
     blocks: '',
     configKonva: {
       width: 200,
@@ -106,8 +115,17 @@ const vueApp = new Vue({
     mousedownY: 0,
     mode: '',
     showKonvaText: false,
+    selectedId: -1,
   },
   computed: {
+    selectedBubble() {
+      for (const bubble of this.bubbles) {
+        if (bubble.id == this.selectedId) {
+          return bubble;
+        }
+      }
+      return {japanese: "JP", english: "EN"};
+    },
     configTexts() {
       return this.bubbles.map((bubble) => ({
         text: bubble.english,
@@ -150,13 +168,8 @@ const vueApp = new Vue({
         this.configRect.height = event.offsetY - this.mousedownY;
       }
     },
-    showdata(bubbleId) {
-      for (const bubble of this.bubbles) {
-        if (bubble.id == bubbleId) {
-          this.bubble = bubble;
-          return;
-        }
-      }
+    updateSelectedId(selectedId) {
+      this.selectedId = selectedId;
     },
     makeBubbles() {
       scanlateAll(this.blocks);
