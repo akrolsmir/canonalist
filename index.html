@@ -22,9 +22,12 @@
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
-        <v-layer ref="layer">
-          <v-rect :config="configRect"></v-rect>
+        <v-layer v-if="showKonvaText" ref="textLayer">
+            <v-text v-for="configText in configTexts" :config="configText"></v-text>
         </v-layer>
+        <v-layer ref="uiLayer">
+            <v-rect :config="configRect"></v-rect>
+          </v-layer>
       </v-stage>
       <div id="dropzone">
         <canvas ref="canvas" id="canvas" width="520" height="800"></canvas>

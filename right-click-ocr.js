@@ -56,6 +56,7 @@ Vue.component('bubble-component', {
   },
   computed: {
     styleObject() {
+      // TODO: reverse bind (change in textarea needs to affect bubble.)
       const style =  {
         'z-index': '100',
         'left': this.rect.x + 'px',
@@ -104,6 +105,23 @@ const vueApp = new Vue({
     mousedownX: 0,
     mousedownY: 0,
     mode: '',
+    showKonvaText: false,
+  },
+  computed: {
+    configTexts() {
+      return this.bubbles.map((bubble) => ({
+        text: bubble.english,
+        x: bubble.rect.x,
+        y: bubble.rect.y,
+        width: bubble.rect.width,
+
+        draggable: true,
+        fontFamily: "Wild Words Roman",
+        fontSize: 16,
+        lineHeight: 1.2,
+        align: 'center',
+      }));
+    }
   },
   methods: {
     handleMouseDown(event) {
@@ -155,7 +173,35 @@ const vueApp = new Vue({
       // alert('Right-click, hold, and drag over japanese text.');
     },
     saveImage() {
-      alert('Sorry, not working yet =(. For now you can take a screenshot!');
+      // Copy the main canvas into an offscreen one to save.
+      const offscreenCanvas = document.createElement('canvas');
+      offscreenCanvas.width = canvas.width;
+      offscreenCanvas.height = canvas.height;
+      offscreenCanvas.getContext('2d').drawImage(canvas, 0, 0);
+      
+      // Render the Konva text layer, then wait for Vue to update DOM.
+      this.showKonvaText = true;
+      Vue.nextTick(() => {
+        this.$refs.textLayer.getNode().toImage({
+          callback: (textLayer) => {
+            offscreenCanvas.getContext('2d').drawImage(textLayer, 0, 0);
+            this.showKonvaText = false;
+  
+            const finalUrl = offscreenCanvas.toDataURL();
+            // function from https://stackoverflow.com/a/15832662/512042
+            function downloadURI(uri, name) {
+              var link = document.createElement('a');
+              link.download = name;
+              link.href = uri;
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              delete link;
+            }
+            downloadURI(finalUrl, 'output.png');
+          }
+        });
+      });
     }
   }
 });
