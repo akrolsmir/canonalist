@@ -1,14 +1,10 @@
 const canvas = document.getElementById('canvas');
-const pageNumText = document.getElementById('pagenum');
 const ctx = canvas.getContext('2d');
 const img = new Image();
 
 let annotations;
-let pdf;
-let pageNum = 46;
 
 loadImage('assets/22.jpg');
-// loadPdf('assets/104.pdf');
 
 function loadImage(src) {
   img.onload = () => {
@@ -20,42 +16,6 @@ function loadImage(src) {
     ctx.drawImage(img, 0, 0);
   }
   img.src = src;
-}
-
-function loadPdf(src) {
-  pdfjsLib.getDocument(src)
-    .then(result => {
-      pdf = result;
-      renderPdfPage();
-    });
-}
-
-function renderPdfPage() {
-  pageNumText.value = `Page ${pageNum}`;
-  pdf.getPage(pageNum)
-    .then(page => {
-      const scale = 1.3;
-      const viewport = page.getViewport(scale);
-
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-
-      const renderContext = {
-        canvasContext: ctx,
-        viewport: viewport
-      };
-      return page.render(renderContext);
-    });
-}
-
-function prevPage() {
-  pageNum--;
-  renderPdfPage();
-}
-
-function nextPage() {
-  pageNum++;
-  renderPdfPage();
 }
 
 function analyze() {
@@ -141,8 +101,8 @@ function getStartEnd(boundingPoly) {
   return [{ x: minX, y: minY }, { x: maxX, y: maxY }];
 }
 
-/** Handle drag + dropped image or PDF.*/
-var dropzone = document.getElementById('dropzone');
+/** Handle drag + dropped image.*/
+var dropzone = document.getElementById('scrollport');
 
 dropzone.ondragover = function (e) {
   e.preventDefault();
@@ -161,10 +121,6 @@ function replaceImage(file) {
   reader.readAsDataURL(file);
   reader.onloadend = () => {
     const dataUrl = reader.result;
-    if (file.name.endsWith('pdf')) {
-      loadPdf(dataUrl);
-    } else {
-      loadImage(dataUrl);
-    }
+    loadImage(dataUrl);
   }
 }
