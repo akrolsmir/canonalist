@@ -1,5 +1,4 @@
 const canvas = document.getElementById('canvas');
-const lyricsTextField = document.getElementById('lyrics');
 const pageNumText = document.getElementById('pagenum');
 const ctx = canvas.getContext('2d');
 const img = new Image();
@@ -121,7 +120,6 @@ function processClick(event) {
       lastText = annotation.description;
     }
   }
-  lyricsTextField.value += lastText;
 }
 
 /** Convert a OCR rectangle into a pair of points. */

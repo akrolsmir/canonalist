@@ -34,7 +34,6 @@ function extractAndScanlateJapaneseRect(rect) {
           if (json.responses.length > 0) {
             let text = json.responses[0].textAnnotations[0].description;
             text = text.replace(/\s/g, ''); // Strip out all whitespace
-            lyricsTextField.value += text;
             scanlate(text, rect);
           }
         });
