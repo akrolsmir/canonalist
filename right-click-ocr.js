@@ -78,11 +78,18 @@ Vue.component('bubble-component', {
     onDrag(x, y) {
       const rectCopy = {...this.value.rect, x, y};
       this.update('rect', rectCopy);
+    },
+    onResize(x, y, width, height) {
+      const rect = {x, y, width, height};
+      this.update('rect', rect);
+
     }
   },
   template: `
-  <vue-draggable-resizable :resizable="false" :drag-handle="'.drag-handle'"
-    @dragging="onDrag"
+  <vue-draggable-resizable :drag-handle="'.drag-handle'"
+    @dragging="onDrag" @resizing="onResize"
+    :handles="['tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']"
+    :active="showControls"
     :y="value.rect.y" :x="value.rect.x" :w="value.rect.width" :h="value.rect.height">
     <div class="drag-handle" v-if="showControls">
       <span class="typcn typcn-arrow-move"></span>

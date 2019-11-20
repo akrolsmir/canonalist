@@ -66,11 +66,14 @@ textarea.bubbletext {
   overflow: hidden;
   outline: none;
   background: transparent;
+  border: none;
+  resize: none;
+  padding:  0;
 }
 
 .drag-handle {
   position: absolute;
-  top: -10px;
-  left: -10px; 
+  top: -15px;
+  left: -15px; 
   cursor: move;
 }
