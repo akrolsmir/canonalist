@@ -90,8 +90,8 @@ Vue.component('bubble-component', {
     <textarea class="bubbletext"
       spellcheck="false"
       :style="styleObject"
-      v-on:focus="showControls = true; $emit('bubble-focus', value.id)"
-      v-on:blur="showControls = false"
+      @focus="showControls = true; $emit('bubble-focus', value.id)"
+      @blur="showControls = false"
       :value="value.english"
       @input="update('english', $event.target.value)"
     ></textarea>

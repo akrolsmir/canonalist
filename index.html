@@ -10,16 +10,16 @@
 <body>
   <div id="editor">
     <div id="toolbar">
-      <button v-on:click="newImage">New Image</button>
-      <button v-on:click="selectBox">Select JP area</button>
-      <button v-on:click="detectJapanese">Detect all JP</button>
-      <button v-on:click="makeBubbles">Translate to EN</button>
-      <button v-on:click="saveImage">Save Image</button>
+      <button @click="newImage">New Image</button>
+      <button @click="selectBox">Select JP area</button>
+      <button @click="detectJapanese">Detect all JP</button>
+      <button @click="makeBubbles">Translate to EN</button>
+      <button @click="saveImage">Save Image</button>
     </div>
-    <div id="scrollport" v-on:mousedown="handleMouseDown" v-on:mousemove="handleMouseMove">
+    <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]"
-          v-on:bubble-focus="updateSelectedId">
+          @bubble-focus="updateSelectedId">
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
