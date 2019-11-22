@@ -168,7 +168,7 @@ async function scanlate(text, rect) {
   ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
 }
 
-const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=***REMOVED***';
+const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
 function buildRequest(base64) {
   return `{
   "requests": [
@@ -199,7 +199,7 @@ async function requestOcr(canvas) {
   return await response.json();
 }
 
-const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=***REMOVED***';
+const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
 function buildTranslateRequest(text) {
   return `{
   "q": "${text}",
