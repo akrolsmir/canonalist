@@ -146,7 +146,13 @@ const vueApp = new Vue({
           }
         });
       });
-    }
+    },
+    showHelp() {
+      runIntro(firstRunOnly = false);
+    },
+  },
+  mounted() {
+    runIntro(firstRunOnly = true);
   }
 });
 

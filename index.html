@@ -6,16 +6,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typicons.font@2.0.9/src/font/typicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
 </head>
 
 <body>
   <div id="editor">
     <div id="toolbar">
-      <button @click="newImage">New Image</button>
-      <button @click="selectBox">Select JP area</button>
-      <button @click="detectJapanese">Detect all JP</button>
-      <button @click="makeBubbles">Translate to EN</button>
-      <button @click="saveImage">Save Image</button>
+      <button id="detectjp" @click="detectJapanese">Detect all JP</button>
+      <button id="makebubbles" @click="makeBubbles">Translate to EN</button>
+      <button id="selectbox" @click="selectBox">Select JP area</button>
+      <button id="saveimage" @click="saveImage">Save Image</button>
+      <button id="helpbutton" @click="showHelp">Help</button>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
@@ -44,8 +45,10 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
 <script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
 <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
+<script src="intro.js"></script>
 <script src="bubble-vue.js"></script>
 <script src="main-vue.js"></script>
 <script src="image-background.js"></script>
