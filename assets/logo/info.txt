@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: vremenagrotesk
+font link: https://www.fontspring.com/fonts/abstrkt/vremena?utm_source=fontsquirrel.com&utm_medium=download_link&utm_campaign=vremena-grotesk#firstfreeproduct
+font author: ABSTRKT
+font author site: 
+
+
+icon designer: hariharan
+icon designer link: /hari75
+        
+{"bg":"#F9EFED","icon-gradient-0":"#A21F38","icon-gradient-1":"#D8806B","font":"#391117","slogan":"#4d252b"}
+      
