@@ -77,3 +77,13 @@ textarea.bubbletext {
   left: -15px; 
   cursor: move;
 }
+
+.vdr {
+  border: none;
+}
+
+.active.vdr {
+  margin-left: -1px;
+  margin-top: -1px;
+  border: 1px dashed gray;
+}

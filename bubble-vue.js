@@ -27,12 +27,6 @@ Vue.component('bubble-component', {
         'width': this.value.rect.width + 'px',
         'height': this.value.rect.height + 'px',
       };
-      if (!this.showControls) {
-        style['border'] = 'none';
-        // Hide the bottom-right resize handle.
-        style['resize'] = 'none';
-        // TODO: Consider shifting by 1px for the border.
-      }
       return style;
     }
   },
