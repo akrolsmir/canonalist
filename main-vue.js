@@ -63,6 +63,7 @@ const vueApp = new Vue({
         x: bubble.rect.x,
         y: bubble.rect.y,
         width: bubble.rect.width,
+        height: bubble.rect.height,
 
         draggable: true,
         fontFamily: "Wild Words Roman",
