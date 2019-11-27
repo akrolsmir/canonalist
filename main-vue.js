@@ -66,9 +66,9 @@ const vueApp = new Vue({
         height: bubble.rect.height,
 
         draggable: true,
-        fontFamily: "Wild Words Roman",
-        fontSize: 16,
-        lineHeight: 1.2,
+        fontFamily: bubble.fontFamily,
+        fontSize: bubble.fontSize,
+        lineHeight: bubble.lineHeight,
         align: 'center',
       }));
     }

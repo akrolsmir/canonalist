@@ -4,6 +4,9 @@ class Bubble {
     this.rect = rect;
     this.japanese = japanese;
     this.english = english;
+    this.fontSize = 16; // in px
+    this.fontFamily = 'Wild Words';
+    this.lineHeight = 1.2;
   }
 }
 
@@ -21,11 +24,11 @@ Vue.component('bubble-component', {
   computed: {
     styleObject() {
       const style =  {
-        'z-index': '100',
-        'left': this.value.rect.x + 'px',
-        'top': this.value.rect.y + 'px',
         'width': this.value.rect.width + 'px',
         'height': this.value.rect.height + 'px',
+        'font-size': this.value.fontSize + 'px',
+        'font-family': this.value.fontFamily,
+        'line-height': this.value.lineHeight,
       };
       return style;
     }

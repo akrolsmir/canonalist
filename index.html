@@ -42,6 +42,16 @@
         </a>
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
+        Line height:
+        <input type="number" v-model="selectedBubble.lineHeight" step="0.05">
+        Font size:
+        <input type="number" v-model="selectedBubble.fontSize">
+        Font family:
+        <select v-model="selectedBubble.fontFamily">
+          <option>Wild Words</option>
+          <option>Death Rattle</option>
+          <option>Akbar</option>
+        </select>
         <canvas id="snippet" width="100" height="100"></canvas>  
     </div>
   </div>
