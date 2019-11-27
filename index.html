@@ -21,11 +21,11 @@
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]"
-          @bubble-focus="updateSelectedId">
+          @bubble-focus="updateSelectedId" @bubble-unfocus="unfocusSelectedId">
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
-        <v-layer v-if="showKonvaText" ref="textLayer">
+        <v-layer ref="textLayer">
             <v-text v-for="configText in configTexts" :config="configText"></v-text>
         </v-layer>
         <v-layer ref="uiLayer">

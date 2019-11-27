@@ -45,8 +45,8 @@ const vueApp = new Vue({
     mousedownX: 0,
     mousedownY: 0,
     mode: '',
-    showKonvaText: false,
     selectedId: -1,
+    bubbleFocused: false,
   },
   computed: {
     selectedBubble() {
@@ -70,6 +70,10 @@ const vueApp = new Vue({
         fontSize: bubble.fontSize,
         lineHeight: bubble.lineHeight,
         align: 'center',
+        
+        // Hide Konva bubble if this is currently selected.
+        fill: this.bubbleFocused && (this.selectedId == bubble.id) ?
+          'transparent' : 'black',
       }));
     }
   },
@@ -101,7 +105,11 @@ const vueApp = new Vue({
       }
     },
     updateSelectedId(selectedId) {
+      this.bubbleFocused = true;
       this.selectedId = selectedId;
+    },
+    unfocusSelectedId() {
+      this.bubbleFocused = false;
     },
     makeBubbles() {
       scanlateAll(this.blocks);
@@ -124,28 +132,24 @@ const vueApp = new Vue({
       offscreenCanvas.height = canvas.height;
       offscreenCanvas.getContext('2d').drawImage(canvas, 0, 0);
       
-      // Render the Konva text layer, then wait for Vue to update DOM.
-      this.showKonvaText = true;
-      Vue.nextTick(() => {
-        this.$refs.textLayer.getNode().toImage({
-          callback: (textLayer) => {
-            offscreenCanvas.getContext('2d').drawImage(textLayer, 0, 0);
-            this.showKonvaText = false;
-  
-            const finalUrl = offscreenCanvas.toDataURL();
-            // function from https://stackoverflow.com/a/15832662/512042
-            function downloadURI(uri, name) {
-              var link = document.createElement('a');
-              link.download = name;
-              link.href = uri;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              delete link;
-            }
-            downloadURI(finalUrl, 'output.png');
+      // Render the Konva text layer onto the offscreen canvas.
+      this.$refs.textLayer.getNode().toImage({
+        callback: (textLayer) => {
+          offscreenCanvas.getContext('2d').drawImage(textLayer, 0, 0);
+
+          const finalUrl = offscreenCanvas.toDataURL();
+          // function from https://stackoverflow.com/a/15832662/512042
+          function downloadURI(uri, name) {
+            var link = document.createElement('a');
+            link.download = name;
+            link.href = uri;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            delete link;
           }
-        });
+          downloadURI(finalUrl, 'output.png');
+        }
       });
     },
     showHelp() {

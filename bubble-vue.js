@@ -29,6 +29,8 @@ Vue.component('bubble-component', {
         'font-size': this.value.fontSize + 'px',
         'font-family': this.value.fontFamily,
         'line-height': this.value.lineHeight,
+        // Show textarea bubble when currently selected.
+        'color': this.showControls ? 'black' : 'transparent',
       };
       return style;
     }
@@ -62,7 +64,7 @@ Vue.component('bubble-component', {
       spellcheck="false"
       :style="styleObject"
       @focus="showControls = true; $emit('bubble-focus', value.id)"
-      @blur="showControls = false"
+      @blur="showControls = false; $emit('bubble-unfocus')"
       :value="value.english"
       @input="update('english', $event.target.value)"
     ></textarea>
