@@ -52,17 +52,22 @@ body {
 }
 
 @font-face {
-  font-family: "Wild Words Roman";
-  src: url("assets/wildwordsroman.TTF");
+  font-family: "Wild Words";
+  src: url("assets/fonts/wildwordsroman.ttf");
+}
+
+@font-face {
+  font-family: "Death Rattle";
+  src: url("assets/fonts/deathrattlebb_reg.ttf");
+}
+
+@font-face {
+  font-family: "Akbar";
+  src: url("assets/fonts/akbar.ttf");
 }
 
 textarea.bubbletext {
   text-align: center;
-
-  font-family:'Wild Words Roman';
-  font-size: 16px;
-  line-height: 1.2;
-
   overflow: hidden;
   outline: none;
   background: transparent;
@@ -76,4 +81,14 @@ textarea.bubbletext {
   top: -15px;
   left: -15px; 
   cursor: move;
+}
+
+.vdr {
+  border: none;
+}
+
+.active.vdr {
+  margin-left: -1px;
+  margin-top: -1px;
+  border: 1px dashed gray;
 }
