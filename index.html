@@ -48,12 +48,15 @@
         <input type="number" v-model="selectedBubble.fontSize">
         Font family:
         <select v-model="selectedBubble.fontFamily">
-          <option>Wild Words</option>
-          <option>Death Rattle</option>
-          <option>Akbar</option>
+          <optgroup style="font-family:'Wild Words'"><option>Wild Words</option></optgroup>
+          <optgroup style="font-family:'Death Rattle'"><option>Death Rattle</option></optgroup>
+          <optgroup style="font-family:'Akbar'"><option>Akbar</option></optgroup>
         </select>
-        <canvas id="snippet" width="100" height="100"></canvas>  
-    </div>
+        <br><span style="font-family:'Wild Words'">Normal dialogue...</span>
+        <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
+        <span style="font-family:'Akbar'">Handwriting =)</span>
+        <canvas id="snippet" width="100" height="100"></canvas> 
+      </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
