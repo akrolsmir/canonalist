@@ -2,10 +2,12 @@ function runIntro(firstRunOnly = false) {
   if (firstRunOnly && introDone()) {
     return;
   }
+  firebase.analytics().logEvent('tutorial_begin');
 
   const intro = introJs();
   // Save a cookie when we finish or exit the intro tour.
   intro.oncomplete(function() {
+    firebase.analytics().logEvent('tutorial_complete');
     localStorage.setItem('introDone', 'true');
   })
   intro.onexit(function() {

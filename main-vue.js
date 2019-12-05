@@ -112,20 +112,24 @@ const vueApp = new Vue({
       this.bubbleFocused = false;
     },
     makeBubbles() {
+      firebase.analytics().logEvent('translate_en_clicked');
       scanlateAll(this.blocks);
     },
     detectJapanese() {
+      firebase.analytics().logEvent('detect_jp_clicked');
       analyze();
     },
     newImage() {
       alert('Drag and drop a raw manga page to get started!');
     },
     selectBox() {
+      firebase.analytics().logEvent('select_bubble_clicked');
       this.mode = 'SELECT_JP';
       // TODO set cursor to be cross
       // alert('Right-click, hold, and drag over japanese text.');
     },
     saveImage() {
+      firebase.analytics().logEvent('save_image_clicked');
       // Copy the main canvas into an offscreen one to save.
       const offscreenCanvas = document.createElement('canvas');
       offscreenCanvas.width = canvas.width;
@@ -153,6 +157,7 @@ const vueApp = new Vue({
       });
     },
     showHelp() {
+      firebase.analytics().logEvent('help_clicked');
       runIntro(firstRunOnly = false);
     },
   },

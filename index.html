@@ -66,6 +66,27 @@
 <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
 <script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
 <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDpldUROUvHFZY5XR_zZVr6Nap-Y91Rngk",
+    authDomain: "canonalist.firebaseapp.com",
+    databaseURL: "https://canonalist.firebaseio.com",
+    projectId: "canonalist",
+    storageBucket: "canonalist.appspot.com",
+    messagingSenderId: "819833086526",
+    appId: "1:819833086526:web:887b11d479cc7f90f9676f",
+    measurementId: "G-5Y582CPKY6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<!-- My code -->
 <script src="intro.js"></script>
 <script src="bubble-vue.js"></script>
 <script src="main-vue.js"></script>
