@@ -1,6 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
+  font-family: 'PT Sans', sans-serif;
 }
 
 #editor {
@@ -23,6 +24,16 @@ body {
   text-align: center;
   height: 40px;
   width: 160px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+#aboutlink {
+  padding-left: 180px;
+  padding-right: 20px;
+}
+
+.links{
+  font-size: 18px;
 }
 
 #scrollport {

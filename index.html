@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick+Hand">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typicons.font@2.0.9/src/font/typicons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
@@ -16,7 +16,9 @@
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
       <button id="selectbox" @click="selectBox">Select a Bubble</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
-      <button id="helpbutton" @click="showHelp">Help</button>
+      
+      <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
+      <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove">
       <div id="textlayers" style="z-index:102;">
@@ -37,9 +39,7 @@
       </div>
     </div>
     <div id="bubbleData">
-        <a href="http://scanlate.io">
-          <img src="assets/logo/vector/logo-256x64.svg" width="160px" height="40px">
-        </a>
+        <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="40px">
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
         Line height:
@@ -52,9 +52,11 @@
           <optgroup style="font-family:'Death Rattle'"><option>Death Rattle</option></optgroup>
           <optgroup style="font-family:'Akbar'"><option>Akbar</option></optgroup>
         </select>
-        <br><span style="font-family:'Wild Words'">Normal dialogue...</span>
+        <br>
+        <span style="font-family:'Wild Words'">Normal dialogue...</span>
         <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
         <span style="font-family:'Akbar'">Handwriting =)</span>
+        <br>
         <canvas id="snippet" width="100" height="100"></canvas> 
       </div>
   </div>
