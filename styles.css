@@ -1,5 +1,6 @@
 body {
-  margin: 0;
+  width: 1000px;
+  margin: 0 auto;
   height: 100vh;
   font-family: 'PT Sans', sans-serif;
 }
@@ -44,8 +45,13 @@ body {
   position: relative;
 }
 
-#bubbleData {
+#rightbar {
   grid-row: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+#bubbleData {
   display: flex;
   flex-direction: column;
 }
