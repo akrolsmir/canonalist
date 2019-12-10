@@ -86,7 +86,11 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  if(/localhost/.test(window.location.hostname)) {
+    console.log('Disabling analytics for local development.')
+  } else {
+    firebase.analytics();
+  }
 </script>
 
 <!-- My code -->
