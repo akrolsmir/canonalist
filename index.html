@@ -27,7 +27,11 @@
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
-        <v-layer ref="textLayer">
+        <!-- Note: Konva layers are ordered from bottom to top. -->
+        <v-layer ref="editLayer" :config="{visible: showEditLayer}">
+          <v-rect v-for="whiteRect in whiteRects" :config="whiteRect"></v-rect>
+        </v-layer>
+        <v-layer ref="textLayer" :config="{visible: showTextLayer}">
             <v-text v-for="configText in configTexts" :config="configText"></v-text>
         </v-layer>
         <v-layer ref="uiLayer">
@@ -60,7 +64,12 @@
         <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
         <span style="font-family:'Akbar'">Handwriting =)</span>
         <br>
-        <canvas id="snippet" width="100" height="100"></canvas>
+        <input type="checkbox" id="checkboxTextLayer" v-model="showTextLayer">
+        <label for="checkboxTextLayer">showTextLayer</label>
+        <input type="checkbox" id="checkboxEditLayer" v-model="showEditLayer">
+        <label for="checkboxEditLayer">showEditLayer</label>
+        <canvas id="snippet" width="100" height="100"></canvas> 
+      </div>
     </div>
   </div>
 </body>

@@ -47,6 +47,8 @@ const vueApp = new Vue({
     mode: '',
     selectedId: -1,
     bubbleFocused: false,
+    showTextLayer: true,
+    showEditLayer: true,
   },
   computed: {
     selectedBubble() {
@@ -173,9 +175,10 @@ async function scanlate(text, rect) {
   const bubble = new Bubble(vueApp.bubbles.length, rect, text, english);
   vueApp.bubbles.push(bubble);
 
-  // Clean japanese from the text bubble.
-  ctx.fillStyle = 'white';
-  ctx.fillRect(rect.x, rect.y, rect.width, rect.height);
+  // Draw a white box, to hide the Japanese text.
+  const whiteRect = new Konva.Rect({...rect, fill: 'white'});
+  vueApp.$refs.editLayer.getNode().getLayer().add(whiteRect);
+  vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
 }
 
 const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
