@@ -12,22 +12,22 @@ const snippet = document.getElementById('snippet');
 const snippetCtx = snippet.getContext('2d');
 
 function extractAndScanlateJapaneseRect(rect) {
-      // Resize the snippet canvas, then copy to it
-      snippet.width = rect.width;
-      snippet.height = rect.height;
-      snippetCtx.drawImage(img,
-        // Source: x, y, width, hight
-        rect.x, rect.y, rect.width, rect.height,
-        // Destination: x, y, width, height
-        0, 0, rect.width, rect.height);
-      requestOcr(snippet)
-        .then(json => {
-          if (json.responses.length > 0) {
-            let text = json.responses[0].textAnnotations[0].description;
-            text = text.replace(/\s/g, ''); // Strip out all whitespace
-            scanlate(text, rect);
-          }
-        });
+  // Resize the snippet canvas, then copy to it
+  snippet.width = rect.width;
+  snippet.height = rect.height;
+  snippetCtx.drawImage(img,
+    // Source: x, y, width, hight
+    rect.x, rect.y, rect.width, rect.height,
+    // Destination: x, y, width, height
+    0, 0, rect.width, rect.height);
+  requestOcr(snippet)
+    .then(json => {
+      if (json.responses.length > 0) {
+        let text = json.responses[0].textAnnotations[0].description;
+        text = text.replace(/\s/g, ''); // Strip out all whitespace
+        scanlate(text, rect);
+      }
+    });
 }
 
 const vueApp = new Vue({
@@ -57,7 +57,7 @@ const vueApp = new Vue({
           return bubble;
         }
       }
-      return {japanese: "JP", english: "EN"};
+      return { japanese: "JP", english: "EN" };
     },
     configTexts() {
       return this.bubbles.map((bubble) => ({
@@ -72,7 +72,7 @@ const vueApp = new Vue({
         fontSize: bubble.fontSize,
         lineHeight: bubble.lineHeight,
         align: 'center',
-        
+
         // Hide Konva bubble if this is currently selected.
         fill: this.bubbleFocused && (this.selectedId == bubble.id) ?
           'transparent' : 'black',
@@ -137,7 +137,7 @@ const vueApp = new Vue({
       offscreenCanvas.width = canvas.width;
       offscreenCanvas.height = canvas.height;
       offscreenCanvas.getContext('2d').drawImage(canvas, 0, 0);
-      
+
       // Render the Konva text layer onto the offscreen canvas.
       this.$refs.textLayer.getNode().toImage({
         callback: (textLayer) => {
@@ -176,7 +176,7 @@ async function scanlate(text, rect) {
   vueApp.bubbles.push(bubble);
 
   // Draw a white box, to hide the Japanese text.
-  const whiteRect = new Konva.Rect({...rect, fill: 'white'});
+  const whiteRect = new Konva.Rect({ ...rect, fill: 'white' });
   vueApp.$refs.editLayer.getNode().getLayer().add(whiteRect);
   vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
 }

@@ -15,7 +15,7 @@ function loadImage(src) {
 
     // Draw a small watermark on the bottom right
     const logoImage = new Image();
-    logoImage.onload = function() {
+    logoImage.onload = function () {
       // Original logo size: 521 x 90
       const logoWidth = 69;
       const logoHeight = 12;

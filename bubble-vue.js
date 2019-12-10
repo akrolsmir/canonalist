@@ -23,7 +23,7 @@ Vue.component('bubble-component', {
   },
   computed: {
     styleObject() {
-      const style =  {
+      const style = {
         'width': this.value.rect.width + 'px',
         'height': this.value.rect.height + 'px',
         'font-size': this.value.fontSize + 'px',
@@ -42,11 +42,11 @@ Vue.component('bubble-component', {
     },
     // TODO also handle onResize. Might require resizable binding...
     onDrag(x, y) {
-      const rectCopy = {...this.value.rect, x, y};
+      const rectCopy = { ...this.value.rect, x, y };
       this.update('rect', rectCopy);
     },
     onResize(x, y, width, height) {
-      const rect = {x, y, width, height};
+      const rect = { x, y, width, height };
       this.update('rect', rect);
 
     }
