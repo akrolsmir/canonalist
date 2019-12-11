@@ -48,31 +48,30 @@ function colorWords(json) {
   // Remove the first (overarching) annotation.
   annotations.splice(0, 1);
   for (const annotation of annotations) {
-    const [start, end] = getStartEnd(annotation.boundingPoly);
-    ctx.fillStyle = 'rgba(240, 240, 40, 0.2)';
-    ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
+    const rect = toRect(annotation.boundingPoly);
+    const clearBlue = 'rgba(240, 240, 40, 0.2)';
+    const blueRect = new Konva.Rect({ ...rect, fill: clearBlue });
+    vueApp.$refs.editLayer.getNode().getLayer().add(blueRect);
+    vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
   }
 
   // Hierarchy of fullTextAnnotation is page > block > paragraph > word > symbol
   // TODO: Maybe split by paragraph insteaad of block?
   const blocks = json.responses[0].fullTextAnnotation.pages[0].blocks;
   for (const block of blocks) {
-    const [start, end] = getStartEnd(block.boundingBox);
-    ctx.fillStyle = 'rgba(40, 240, 240, 0.2)';
-    ctx.fillRect(start.x, start.y, end.x - start.x, end.y - start.y);
-
-    // const japanese = extractText(block);
-    // const rect = { x: start.x, y: start.y, width: end.x - start.x, height: end.y - start.y };
-    // scanlate(japanese, rect)
+    const rect = toRect(block.boundingBox);
+    const clearYellow = 'rgba(40, 240, 240, 0.2)';
+    const yellowRect = new Konva.Rect({ ...rect, fill: clearYellow });
+    vueApp.$refs.editLayer.getNode().getLayer().add(yellowRect);
+    vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
   }
   vueApp.blocks = blocks;
 }
 
 function scanlateAll(blocks) {
   for (const block of blocks) {
-    const [start, end] = getStartEnd(block.boundingBox);
+    const rect = toRect(block.boundingBox);
     const japanese = extractText(block);
-    const rect = { x: start.x, y: start.y, width: end.x - start.x, height: end.y - start.y };
     scanlate(japanese, rect)
   }
 }
@@ -90,20 +89,8 @@ function extractText(block) {
   return result;
 }
 
-/** Copies the annotation box's text into the textarea. */
-function processClick(event) {
-  let lastText; // Since boxes may overlap, use the last one.
-  for (const annotation of annotations) {
-    const [start, end] = getStartEnd(annotation.boundingPoly);
-    if (start.x <= event.offsetX && event.offsetX <= end.x &&
-      start.y <= event.offsetY && event.offsetY <= end.y) {
-      lastText = annotation.description;
-    }
-  }
-}
-
-/** Convert a OCR rectangle into a pair of points. */
-function getStartEnd(boundingPoly) {
+/** Convert a OCR rectangle (4 points) into a rect (x, y, width, height). */
+function toRect(boundingPoly) {
   function helper(axis, func) {
     let result = boundingPoly.vertices[0][axis];
     for (let i = 1; i < 4; i++) {
@@ -118,7 +105,7 @@ function getStartEnd(boundingPoly) {
   const maxX = helper('x', Math.max);
   const maxY = helper('y', Math.max);
 
-  return [{ x: minX, y: minY }, { x: maxX, y: maxY }];
+  return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
 }
 
 /** Handle drag + dropped image.*/
