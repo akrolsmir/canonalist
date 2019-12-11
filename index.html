@@ -16,22 +16,22 @@
       <button id="detectjp" @click="detectJapanese">Detect Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
       <button id="selectbox" @click="selectBox">Select a Bubble</button>
+      <button id="paintTool" @click="paintTool">Paint</button>
+      <button id="eraseTool" @click="eraseTool">Erase</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
-    <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove">
-      <div id="textlayers" style="z-index:102;">
+    <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp">
+      <div id="textlayers" style="z-index:102;" v-show="showTextLayer">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
           @bubble-unfocus="unfocusSelectedId">
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
         <!-- Note: Konva layers are ordered from bottom to top. -->
-        <v-layer ref="editLayer" :config="{visible: showEditLayer}">
-          <v-rect v-for="whiteRect in whiteRects" :config="whiteRect"></v-rect>
-        </v-layer>
+        <v-layer ref="editLayer" :config="{visible: showEditLayer}"></v-layer>
         <v-layer ref="textLayer" :config="{visible: showTextLayer}">
           <v-text v-for="configText in configTexts" :config="configText"></v-text>
         </v-layer>
