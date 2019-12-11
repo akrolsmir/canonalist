@@ -17,7 +17,6 @@
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
       <button id="selectbox" @click="selectBox">Select a Bubble</button>
       <button id="paintTool" @click="paintTool">Paint</button>
-      <button id="eraseTool" @click="eraseTool">Erase</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
@@ -64,6 +63,16 @@
             <option>Akbar</option>
           </optgroup>
         </select>
+      </div>
+      <div id="brushData" v-show="/PAINT_TOOL/.test(mode)">
+        Brush color:
+        <select v-model="brush.color">
+          <option>Black</option>
+          <option>White</option>
+          <option>Erase</option>
+        </select>
+        Brush size:
+        <input type="number" v-model="brush.size">
       </div>
       <br>
       <h3>Font guide:</h3>

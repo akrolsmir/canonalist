@@ -56,6 +56,11 @@ body {
   flex-direction: column;
 }
 
+#brushData {
+  display: flex;
+  flex-direction: column;
+}
+
 #editor > textarea {
   font-size: 30pt;
 }

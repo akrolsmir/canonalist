@@ -49,6 +49,10 @@ const vueApp = new Vue({
     bubbleFocused: false,
     showTextLayer: true,
     showEditLayer: true,
+    brush: {
+      size: 10,
+      color: 'Black'
+    }
   },
   computed: {
     selectedBubble() {
@@ -97,15 +101,15 @@ const vueApp = new Vue({
         this.configRect.width = 0;
         this.configRect.height = 0;
       }
-      else if (this.mode == 'PAINT_TOOL' || this.mode == 'ERASE_TOOL') {
-        this.mode = this.mode + '_DOWN';
+      else if (this.mode == 'PAINT_TOOL') {
+        this.mode = 'PAINT_TOOL_DOWN';
         this.lastLine = new Konva.Line({
           lineJoin: 'round',
           lineCap: 'round',
-          stroke: 'black',
-          strokeWidth: 10,
+          stroke: this.brush.color,
+          strokeWidth: this.brush.size,
           globalCompositeOperation:
-            this.mode == 'PAINT_TOOL_DOWN' ? 'source-over' : 'destination-out',
+            this.brush.color == 'Erase' ? 'destination-out' : 'source-over',
           points: [event.offsetX, event.offsetY]
         });
         vueApp.$refs.editLayer.getNode().getLayer().add(this.lastLine);
@@ -118,7 +122,7 @@ const vueApp = new Vue({
         this.configRect.width = event.offsetX - this.mousedownX;
         this.configRect.height = event.offsetY - this.mousedownY;
       }
-      else if (this.mode == 'PAINT_TOOL_DOWN' || this.mode == 'ERASE_TOOL_DOWN') {
+      else if (this.mode == 'PAINT_TOOL_DOWN') {
         const newPoints = this.lastLine.points().concat([event.offsetX, event.offsetY]);
         this.lastLine.points(newPoints);
         vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
@@ -127,8 +131,6 @@ const vueApp = new Vue({
     handleMouseUp(event) {
       if (this.mode == 'PAINT_TOOL_DOWN') {
         this.mode = 'PAINT_TOOL';
-      } else if (this.mode == 'ERASE_TOOL_DOWN') {
-        this.mode = 'ERASE_TOOL';
       }
     },
     updateSelectedId(selectedId) {
@@ -157,10 +159,6 @@ const vueApp = new Vue({
     paintTool() {
       firebase.analytics().logEvent('paint_tool_clicked');
       this.mode = 'PAINT_TOOL';
-    },
-    eraseTool() {
-      firebase.analytics().logEvent('erase_tool_clicked');
-      this.mode = 'ERASE_TOOL';
     },
     saveImage() {
       firebase.analytics().logEvent('save_image_clicked');
