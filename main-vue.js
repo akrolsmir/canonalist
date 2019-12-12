@@ -185,7 +185,7 @@ const vueApp = new Vue({
       firebase.analytics().logEvent('paint_tool_clicked');
       this.mode = 'PAINT_TOOL';
     },
-    saveImage() {
+    async saveImage() {
       firebase.analytics().logEvent('save_image_clicked');
       // Copy the main canvas into an offscreen one to save.
       const offscreenCanvas = document.createElement('canvas');
@@ -193,24 +193,22 @@ const vueApp = new Vue({
       offscreenCanvas.height = canvas.height;
       offscreenCanvas.getContext('2d').drawImage(canvas, 0, 0);
 
-      // Render the Konva text layer onto the offscreen canvas.
-      this.$refs.textLayer.getNode().toImage({
-        callback: (textLayer) => {
-          offscreenCanvas.getContext('2d').drawImage(textLayer, 0, 0);
+      // Then draw on each layer.
+      const editLayerImage = await toImagePromise(this.$refs.editLayer);
+      offscreenCanvas.getContext('2d').drawImage(editLayerImage, 0, 0);
+      const textLayerImage = await toImagePromise(this.$refs.textLayer);
+      offscreenCanvas.getContext('2d').drawImage(textLayerImage, 0, 0);
 
-          const finalUrl = offscreenCanvas.toDataURL();
-          // function from https://stackoverflow.com/a/15832662/512042
-          function downloadURI(uri, name) {
-            var link = document.createElement('a');
-            link.download = name;
-            link.href = uri;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            delete link;
-          }
-          downloadURI(finalUrl, 'output.png');
-        }
+      // Download the offscreen canvas by creating a hidden link.
+      offscreenCanvas.toBlob(blob => {
+        const finalUrl = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.download = 'output.png';
+        link.href = finalUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        delete link;
       });
     },
     showHelp() {
@@ -222,6 +220,17 @@ const vueApp = new Vue({
     runIntro(firstRunOnly = true);
   }
 });
+
+/** Converts a Konva layer into a Promise that returns the layer's image. */
+function toImagePromise(layer) {
+  return new Promise((resolve, reject) => {
+    layer.getNode().toImage({
+      callback: (layerImage) => {
+        resolve(layerImage);
+      }
+    });
+  });
+}
 
 async function scanlate(text, rect) {
   const json = await translate(text);
