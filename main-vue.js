@@ -52,6 +52,11 @@ const vueApp = new Vue({
     brush: {
       size: 10,
       color: 'Black'
+    },
+    cursor: {
+      x: 0,
+      y: 0,
+      // TODO: move mousedown into here.
     }
   },
   computed: {
@@ -81,6 +86,16 @@ const vueApp = new Vue({
         fill: this.bubbleFocused && (this.selectedId == bubble.id) ?
           'transparent' : 'black',
       }));
+    },
+    brushCursor() {
+      return {
+        visible: /PAINT_TOOL/.test(this.mode),
+        x: this.cursor.x,
+        y: this.cursor.y,
+        radius: this.brush.size / 2,
+        stroke: 'black',
+        strokeWidth: 0.5, 
+      }
     }
   },
   methods: {
@@ -110,9 +125,10 @@ const vueApp = new Vue({
           strokeWidth: this.brush.size,
           globalCompositeOperation:
             this.brush.color == 'Erase' ? 'destination-out' : 'source-over',
-          points: [event.offsetX, event.offsetY]
+          points: [event.offsetX, event.offsetY, event.offsetX, event.offsetY]
         });
         vueApp.$refs.editLayer.getNode().getLayer().add(this.lastLine);
+        vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
       }
     },
     handleMouseMove(event) {
@@ -122,7 +138,16 @@ const vueApp = new Vue({
         this.configRect.width = event.offsetX - this.mousedownX;
         this.configRect.height = event.offsetY - this.mousedownY;
       }
+      else if (this.mode == 'PAINT_TOOL') {
+        // Move the cursor;
+        this.cursor.x = event.offsetX;
+        this.cursor.y = event.offsetY;
+      }
       else if (this.mode == 'PAINT_TOOL_DOWN') {
+        // Move the cursor;
+        this.cursor.x = event.offsetX;
+        this.cursor.y = event.offsetY;
+
         const newPoints = this.lastLine.points().concat([event.offsetX, event.offsetY]);
         this.lastLine.points(newPoints);
         vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
