@@ -16,9 +16,9 @@ function loadImage(src) {
     // Draw a small watermark on the bottom right
     const logoImage = new Image();
     logoImage.onload = function () {
-      // Original logo size: 521 x 90
-      const logoWidth = 69;
-      const logoHeight = 12;
+      // Original logo size: 140 x 32
+      const logoWidth = 105;
+      const logoHeight = 24;
       const image = new Konva.Image({
         x: img.width - logoWidth - 5,
         y: img.height - logoHeight - 5,
@@ -31,7 +31,7 @@ function loadImage(src) {
       vueApp.$refs.textLayer.getNode().getLayer().add(image);
       vueApp.$refs.textLayer.getNode().getLayer().batchDraw();
     };
-    logoImage.src = 'assets/logo/vector/default-monochrome-black.svg'
+    logoImage.src = 'assets/logo/vector/watermark.png'
 
     ctx.drawImage(img, 0, 0);
   }
