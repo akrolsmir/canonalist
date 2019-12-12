@@ -45,7 +45,7 @@
     </div>
     <div id="rightbar">
       <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="45px">
-      <div id="bubbleData" v-show="selectedId != -1">
+      <div id="bubbleData" class="panel" v-show="selectedId != -1">
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
         Line height:
@@ -65,7 +65,7 @@
           </optgroup>
         </select>
       </div>
-      <div id="brushData" v-show="/PAINT_TOOL/.test(mode)">
+      <div id="brushData" class="panel" v-show="/PAINT_TOOL/.test(mode)">
         Brush color:
         <select v-model="brush.color">
           <option>Black</option>
@@ -75,16 +75,21 @@
         Brush size:
         <input type="number" v-model="brush.size">
       </div>
-      <br>
-      <h3>Font guide:</h3>
-      <span style="font-family:'Wild Words'">Normal dialogue...</span>
-      <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
-      <span style="font-family:'Akbar'">Handwriting =)</span>
-      <br>
-      <input type="checkbox" id="checkboxTextLayer" v-model="showTextLayer">
-      <label for="checkboxTextLayer">showTextLayer</label>
-      <input type="checkbox" id="checkboxEditLayer" v-model="showEditLayer">
-      <label for="checkboxEditLayer">showEditLayer</label>
+      <div class="panel">
+        <h3>Font guide:</h3>
+        <span style="font-family:'Wild Words'">Normal dialogue...</span>
+        <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
+        <span style="font-family:'Akbar'">Handwriting =)</span>
+      </div>
+      <div class="panel">
+        <div>
+          <input type="checkbox" id="checkboxTextLayer" v-model="showTextLayer">
+          <label for="checkboxTextLayer">Show text layer</label>
+        </div>
+        <div>
+          <input type="checkbox" id="checkboxEditLayer" v-model="showEditLayer">
+          <label for="checkboxEditLayer">Show edit layer</label> </div>
+      </div>
       <canvas id="snippet" width="100" height="100"></canvas>
     </div>
   </div>

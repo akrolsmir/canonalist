@@ -51,16 +51,6 @@ body {
   flex-direction: column;
 }
 
-#bubbleData {
-  display: flex;
-  flex-direction: column;
-}
-
-#brushData {
-  display: flex;
-  flex-direction: column;
-}
-
 #editor > textarea {
   font-size: 30pt;
 }
@@ -113,4 +103,12 @@ textarea.bubbletext {
   margin-left: -1px;
   margin-top: -1px;
   border: 1px dashed gray;
+}
+
+.panel {
+  padding: 8px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #7e2632;
 }
