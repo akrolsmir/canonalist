@@ -116,3 +116,10 @@ textarea.bubbletext {
   flex-direction: column;
   border: 1px solid #7e2632;
 }
+
+h4 {
+  margin: 0;
+  margin-bottom: 6px;
+  color:gray;
+  font-size: 0.7em;
+}

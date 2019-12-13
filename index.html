@@ -16,7 +16,7 @@
       <button id="detectjp" @click="detectJapanese">Detect Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
       <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Select a Bubble</button>
-      <button id="paintTool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Paint</button>
+      <button id="paintTool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
@@ -46,6 +46,7 @@
     <div id="rightbar">
       <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="45px">
       <div id="bubbleData" class="panel" v-show="currentTool == 'TEXT' && selectedId != -1">
+        <h4>TEXT</h4>
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
         Line height:
@@ -66,6 +67,7 @@
         </select>
       </div>
       <div id="brushData" class="panel" v-show="currentTool == 'PAINT'">
+        <h4>BRUSH</h4>
         Brush color:
         <select v-model="brush.color">
           <option>Black</option>
@@ -75,13 +77,14 @@
         Brush size:
         <input type="number" v-model="brush.size">
       </div>
-      <div class="panel">
-        <h3>Font guide:</h3>
+      <div class="panel" v-show="currentTool == 'TEXT'">
+        <h4>FONT GUIDE</h4>
         <span style="font-family:'Wild Words'">Normal dialogue...</span>
         <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
         <span style="font-family:'Akbar'">Handwriting =)</span>
       </div>
       <div class="panel">
+        <h4>LAYERS</h4>
         <div>
           <input type="checkbox" id="checkboxTextLayer" v-model="showTextLayer">
           <label for="checkboxTextLayer">Show text layer</label>
