@@ -15,15 +15,15 @@
     <div id="toolbar">
       <button id="detectjp" @click="detectJapanese">Detect Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
-      <button id="selectbox" @click="selectBox">Select a Bubble</button>
-      <button id="paintTool" @click="paintTool">Paint</button>
+      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Select a Bubble</button>
+      <button id="paintTool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Paint</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp">
-      <div id="textlayers" style="z-index:102;" v-show="showTextLayer">
+      <div id="textlayers" style="z-index:102;" v-show="showTextLayer && currentTool == 'TEXT'">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
           @bubble-unfocus="unfocusSelectedId">
         </bubble-component>
@@ -45,7 +45,7 @@
     </div>
     <div id="rightbar">
       <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="45px">
-      <div id="bubbleData" class="panel" v-show="selectedId != -1">
+      <div id="bubbleData" class="panel" v-show="currentTool == 'TEXT' && selectedId != -1">
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
         Line height:
@@ -65,7 +65,7 @@
           </optgroup>
         </select>
       </div>
-      <div id="brushData" class="panel" v-show="/PAINT_TOOL/.test(mode)">
+      <div id="brushData" class="panel" v-show="currentTool == 'PAINT'">
         Brush color:
         <select v-model="brush.color">
           <option>Black</option>

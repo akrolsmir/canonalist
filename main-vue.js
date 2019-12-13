@@ -96,6 +96,15 @@ const vueApp = new Vue({
         stroke: 'black',
         strokeWidth: 0.5, 
       }
+    },
+    currentTool() {
+      if (/PAINT_TOOL/.test(this.mode)) {
+        return 'PAINT';
+      } else if (/SELECT_JP/.test(this.mode)) {
+        return 'TRANSLATE';
+      } else {
+        return 'TEXT';
+      }
     }
   },
   methods: {
@@ -177,13 +186,22 @@ const vueApp = new Vue({
       alert('Drag and drop a raw manga page to get started!');
     },
     selectBox() {
-      firebase.analytics().logEvent('select_bubble_clicked');
-      this.mode = 'SELECT_JP';
-      // TODO set cursor to be cross
+      if (this.currentTool == 'TRANSLATE') {
+        this.mode = '';
+        this.configRect.width = 0;
+      } else {
+        // TODO set cursor to be cross
+        firebase.analytics().logEvent('select_bubble_clicked');
+        this.mode = 'SELECT_JP';
+      }
     },
     paintTool() {
-      firebase.analytics().logEvent('paint_tool_clicked');
-      this.mode = 'PAINT_TOOL';
+      if (this.currentTool == 'PAINT') {
+        this.mode = ''
+      } else {
+        firebase.analytics().logEvent('paint_tool_clicked');
+        this.mode = 'PAINT_TOOL';
+      }
     },
     async saveImage() {
       firebase.analytics().logEvent('save_image_clicked');
