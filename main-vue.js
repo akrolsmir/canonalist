@@ -50,8 +50,8 @@ const vueApp = new Vue({
     showTextLayer: true,
     showEditLayer: true,
     brush: {
-      size: 10,
-      color: 'Black'
+      size: 20,
+      color: 'White'
     },
     cursor: {
       x: 0,
