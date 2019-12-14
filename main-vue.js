@@ -1,3 +1,6 @@
+// Disable shortcuts in different HTML forms.
+Vue.use(VueShortkey, { prevent: ['input', 'textarea', 'select'] })
+
 // Normalize a rect to have positive width and height.
 function absoluteRect(rect) {
   return {
@@ -57,6 +60,12 @@ const vueApp = new Vue({
       x: 0,
       y: 0,
       // TODO: move mousedown into here.
+    },
+    shortcuts: {
+      brush: ['b'],
+      erase: ['e'],
+      selectBubble: ['s'],
+      escape: ['esc'],
     }
   },
   computed: {
@@ -165,6 +174,25 @@ const vueApp = new Vue({
     handleMouseUp(event) {
       if (this.mode == 'PAINT_TOOL_DOWN') {
         this.mode = 'PAINT_TOOL';
+      }
+    },
+    handleShortcuts(event) {
+      switch (event.srcKey) {
+        case 'brush':
+          this.mode = 'PAINT_TOOL';
+          this.brush.color = 'White';
+          break;
+        case 'erase':
+          this.mode = 'PAINT_TOOL';
+          this.brush.color = 'Erase';
+          break;
+        case 'selectBubble': 
+          this.selectBox();
+          break;
+        case 'escape':
+          this.mode = '';
+          // TODO: Want to unfocus selected bubble, but swallowed by form...
+          break;
       }
     },
     updateSelectedId(selectedId) {

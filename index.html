@@ -12,7 +12,7 @@
 
 <body>
   <div id="editor">
-    <div id="toolbar">
+    <div id="toolbar" @shortkey="handleShortcuts" v-shortkey="shortcuts">
       <button id="detectjp" @click="detectJapanese">Detect Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
       <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Select a Bubble</button>
@@ -101,6 +101,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-shortkey@3.1.7/dist/index.min.js"></script>
 <script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
 <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
 <!-- Firebase -->
