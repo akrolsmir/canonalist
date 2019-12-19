@@ -1,5 +1,5 @@
 // Disable shortcuts in different HTML forms.
-Vue.use(VueShortkey, { prevent: ['input', 'textarea', 'select'] })
+Vue.use(VueShortkey, { prevent: ['textarea', 'select'] })
 
 // Normalize a rect to have positive width and height.
 function absoluteRect(rect) {
