@@ -1,6 +1,6 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-const img = new Image();
+let img = new Image();
 
 let annotations;
 
@@ -43,36 +43,39 @@ function toImagePromise(layer) {
   });
 }
 
-function loadImage(src) {
-  img.onload = () => {
-    canvas.width = img.width;
-    canvas.height = img.height;
-    vueApp.configKonva.width = img.width;
-    vueApp.configKonva.height = img.height;
+function onloadPromise(src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = reject;
+    image.src = src;
+  })
+}
 
-    // Draw a small watermark on the bottom right
-    const logoImage = new Image();
-    logoImage.onload = function () {
-      // Original logo size: 140 x 32
-      const logoWidth = 105;
-      const logoHeight = 24;
-      const image = new Konva.Image({
-        x: img.width - logoWidth - 5,
-        y: img.height - logoHeight - 5,
-        image: logoImage,
-        width: logoWidth,
-        height: logoHeight
-      });
-      // TODO needs more work when a new image is dropped.
-      vueApp.$refs.textLayer.getNode().getLayer().removeChildren();
-      vueApp.$refs.textLayer.getNode().getLayer().add(image);
-      vueApp.$refs.textLayer.getNode().getLayer().batchDraw();
-    };
-    logoImage.src = 'assets/logo/vector/watermark.png'
+async function loadImage(src) {
+  img = await onloadPromise(src);
+  canvas.width = img.width;
+  canvas.height = img.height;
+  vueApp.configKonva.width = img.width;
+  vueApp.configKonva.height = img.height;
+  ctx.drawImage(img, 0, 0);
 
-    ctx.drawImage(img, 0, 0);
-  }
-  img.src = src;
+  // Draw a small watermark on the bottom right
+  const logoImage = await onloadPromise('assets/logo/vector/watermark.png');
+  // Original logo size: 140 x 32
+  const logoWidth = 105;
+  const logoHeight = 24;
+  const image = new Konva.Image({
+    x: img.width - logoWidth - 5,
+    y: img.height - logoHeight - 5,
+    image: logoImage,
+    width: logoWidth,
+    height: logoHeight
+  });
+  // TODO needs more work when a new image is dropped.
+  vueApp.$refs.textLayer.getNode().getLayer().removeChildren();
+  vueApp.$refs.textLayer.getNode().getLayer().add(image);
+  vueApp.$refs.textLayer.getNode().getLayer().batchDraw();
 }
 
 function analyze() {
