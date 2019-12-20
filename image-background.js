@@ -206,26 +206,11 @@ function toRect(boundingPoly) {
   return { x: minX, y: minY, width: maxX - minX, height: maxY - minY };
 }
 
-/** Handle drag + dropped image.*/
-var dropzone = document.getElementById('scrollport');
-
-dropzone.ondragover = function (e) {
-  e.preventDefault();
-}
-
-dropzone.ondrop = function (e) {
-  e.preventDefault();
-  var files = e.dataTransfer.files;
-  if (files) {
-    replaceImage(files[0]);
-  }
-}
-
-function replaceImage(file) {
+function replaceImage(file, mainVue) {
   let reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onloadend = () => {
     const dataUrl = reader.result;
-    loadRaw(dataUrl, vueApp); // TODO remove reference
+    loadRaw(dataUrl, mainVue);
   }
 }

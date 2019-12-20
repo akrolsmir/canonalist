@@ -22,7 +22,8 @@
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
-    <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp">
+    <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
+        @dragover.prevent @drop.stop.prevent="handleDrop">
       <div id="textlayers" style="z-index:102;" v-show="showTextLayer && currentTool == 'TEXT'">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
           @bubble-unfocus="unfocusSelectedId">

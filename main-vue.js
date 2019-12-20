@@ -195,6 +195,12 @@ const vueApp = new Vue({
           break;
       }
     },
+    handleDrop(event) {
+      var files = event.dataTransfer.files;
+      if (files) {
+        replaceImage(files[0], this);
+      }
+    },
     updateSelectedId(selectedId) {
       this.bubbleFocused = true;
       this.selectedId = selectedId;
@@ -209,9 +215,6 @@ const vueApp = new Vue({
     detectJapanese() {
       firebase.analytics().logEvent('detect_jp_clicked');
       analyze(this);
-    },
-    newImage() {
-      alert('Drag and drop a raw manga page to get started!');
     },
     selectBox() {
       if (this.currentTool == 'TRANSLATE') {
