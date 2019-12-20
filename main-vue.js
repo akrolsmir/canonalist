@@ -149,8 +149,8 @@ const vueApp = new Vue({
         });
         vueApp.$refs.editLayer.getNode().getLayer().add(this.lastLine);
         vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
-        this.$refs.history.record(
-          new EditLayerDoable(this.lastLine, `Paint ${this.brush.color} ${this.brush.size}`));
+        const comment = `Paint - ${this.brush.color} ${this.brush.size}px`;
+        this.$refs.history.record(new EditLayerDoable(this.lastLine, comment));
       }
     },
     handleMouseMove(event) {
