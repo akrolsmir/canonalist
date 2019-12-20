@@ -18,6 +18,7 @@
       <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Select a Bubble</button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
       <button id="saveimage" @click="saveImage">Save Image</button>
+      <button id="sharePage" @click="sharePage">Share</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
@@ -103,6 +104,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/intro.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-shortkey@3.1.7/dist/index.min.js"></script>
+<script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
 <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
 <!-- Firebase -->
