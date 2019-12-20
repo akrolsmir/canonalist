@@ -208,7 +208,7 @@ const vueApp = new Vue({
     },
     detectJapanese() {
       firebase.analytics().logEvent('detect_jp_clicked');
-      analyze();
+      analyze(this);
     },
     newImage() {
       alert('Drag and drop a raw manga page to get started!');
@@ -241,6 +241,7 @@ const vueApp = new Vue({
     },
   },
   mounted() {
+      loadRaw('assets/22.jpg', this);
     runIntro(firstRunOnly = true);
   }
 });

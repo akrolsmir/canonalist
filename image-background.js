@@ -4,8 +4,6 @@ let img = new Image();
 
 let annotations;
 
-loadRaw('assets/22.jpg');
-
 async function cloudSave(mainVue, pageId) {
   const pageRef = firebase.storage().ref().child(pageId);
 
@@ -27,14 +25,14 @@ async function cloudLoad(mainVue, pageId) {
 
   // Load the raw layer.
   const rawUrl = await pageRef.child('raw-blob').getDownloadURL();
-  await loadRaw(rawUrl);
+  await loadRaw(rawUrl, mainVue);
 
   // Then redraw the edit layer.
   const editUrl = await pageRef.child('edit-blob').getDownloadURL();
   const editImage = await new Promise(resolve => Konva.Image.fromURL(editUrl, resolve));
-  vueApp.$refs.editLayer.getNode().getLayer().removeChildren();
-  vueApp.$refs.editLayer.getNode().getLayer().add(editImage);
-  vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+  mainVue.$refs.editLayer.getNode().getLayer().removeChildren();
+  mainVue.$refs.editLayer.getNode().getLayer().add(editImage);
+  mainVue.$refs.editLayer.getNode().getLayer().batchDraw();
 
   // Finally load the bubbles.
   const bubblesUrl = await pageRef.child('bubbles.txt').getDownloadURL();
@@ -66,9 +64,9 @@ async function getText(url) {
 async function exportImage(mainVue) {
   // Copy the main canvas into an offscreen one to save.
   const offscreenCanvas = document.createElement('canvas');
-  offscreenCanvas.width = canvas.width;
-  offscreenCanvas.height = canvas.height;
-  offscreenCanvas.getContext('2d').drawImage(canvas, 0, 0);
+  offscreenCanvas.width = mainVue.$refs.canvas.width;
+  offscreenCanvas.height = mainVue.$refs.canvas.height;
+  offscreenCanvas.getContext('2d').drawImage(mainVue.$refs.canvas, 0, 0);
 
   // Then draw on each layer.
   const editLayerImage = await toImagePromise(mainVue.$refs.editLayer);
@@ -111,12 +109,13 @@ function onloadPromise(src) {
   })
 }
 
-async function loadRaw(src) {
+async function loadRaw(src, mainVue) {
   img = await onloadPromise(src);
-  canvas.width = img.width;
-  canvas.height = img.height;
-  vueApp.configKonva.width = img.width;
-  vueApp.configKonva.height = img.height;
+  mainVue.$refs.canvas.width = img.width;
+  mainVue.$refs.canvas.height = img.height;
+  mainVue.configKonva.width = img.width;
+  mainVue.configKonva.height = img.height;
+  const ctx = mainVue.$refs.canvas.getContext('2d');
   ctx.drawImage(img, 0, 0);
 
   // Draw a small watermark on the bottom right
@@ -132,17 +131,17 @@ async function loadRaw(src) {
     height: logoHeight
   });
   // TODO needs more work when a new image is dropped.
-  vueApp.$refs.textLayer.getNode().getLayer().removeChildren();
-  vueApp.$refs.textLayer.getNode().getLayer().add(image);
-  vueApp.$refs.textLayer.getNode().getLayer().batchDraw();
+  mainVue.$refs.textLayer.getNode().getLayer().removeChildren();
+  mainVue.$refs.textLayer.getNode().getLayer().add(image);
+  mainVue.$refs.textLayer.getNode().getLayer().batchDraw();
 }
 
-function analyze() {
-  requestOcr(canvas).then(json => colorWords(json));
+function analyze(mainVue) {
+  requestOcr(mainVue.$refs.canvas).then(json => colorWords(json, mainVue));
 }
 
 /** Draws boxes around each annotation. */
-function colorWords(json) {
+function colorWords(json, mainVue) {
   annotations = json.responses[0].textAnnotations;
   // Remove the first (overarching) annotation.
   annotations.splice(0, 1);
@@ -150,8 +149,8 @@ function colorWords(json) {
     const rect = toRect(annotation.boundingPoly);
     const clearBlue = 'rgba(240, 240, 40, 0.2)';
     const blueRect = new Konva.Rect({ ...rect, fill: clearBlue });
-    vueApp.$refs.editLayer.getNode().getLayer().add(blueRect);
-    vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+    mainVue.$refs.editLayer.getNode().getLayer().add(blueRect);
+    mainVue.$refs.editLayer.getNode().getLayer().batchDraw();
   }
 
   // Hierarchy of fullTextAnnotation is page > block > paragraph > word > symbol
@@ -227,6 +226,6 @@ function replaceImage(file) {
   reader.readAsDataURL(file);
   reader.onloadend = () => {
     const dataUrl = reader.result;
-    loadRaw(dataUrl);
+    loadRaw(dataUrl, vueApp); // TODO remove reference
   }
 }
