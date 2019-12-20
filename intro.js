@@ -18,30 +18,34 @@ function runIntro(firstRunOnly = false) {
     steps: [
       {
         element: document.querySelector('#scrollport'),
-        intro: "Welcome to scanlate.io!<br/><br/>You can drag and drop your own manga page here."
+        intro: "Welcome to scanlate.io!<br/><br/>Drag and drop your own manga page here."
       },
       {
         element: document.querySelector('#detectjp'),
-        intro: "Automatically detect all bubbles with machine learning!<br/>(You may have to wait a bit.)",
+        intro: "Detect all bubbles with machine learning!<br/>(You may have to wait a bit.)",
       },
       {
         element: document.querySelector('#makebubbles'),
-        intro: "Then translate them all to English with this button."
+        intro: "Then translate them all to English."
       },
       {
         element: document.querySelector('#selectbox'),
-        intro: "Or use this tool to scanlate a single bubble.<br/>(Then click on a corner of the bubble, and on the opposite corner.)<br/><br/>Shortcut: s",
-      },
-      {
-        element: document.querySelector('#painttool'),
-        intro: "Draw strokes or erase mistakes with the brush tool!<br/><br/>Shortcuts: b, e"
+        intro: "Or use this tool to scanlate a single bubble.<br/>(Then click on a corner of the bubble, and on the opposite corner.)<br/><br/>Shortcut: [s]",
       },
       {
         intro: "Now edit, resize, and move the text boxes to your liking."
       },
       {
+        element: document.querySelector('#painttool'),
+        intro: "Draw strokes or erase mistakes with the brush tool!<br/><br/>Shortcuts: [b] or [e]"
+      },
+      {
         element: document.querySelector('#saveimage'),
-        intro: "Finally, save and download your work!"
+        intro: "When you're done, download the finished page..."
+      },
+      {
+        element: document.querySelector('#sharepage'),
+        intro: "Or save your work online, and share it with anyone!"
       }
     ]
   });
