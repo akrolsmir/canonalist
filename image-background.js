@@ -4,7 +4,64 @@ let img = new Image();
 
 let annotations;
 
-loadImage('assets/22.jpg');
+loadRaw('assets/22.jpg');
+
+async function cloudSave(mainVue, pageId) {
+  const pageRef = firebase.storage().ref().child(pageId);
+
+  // Save the bubbles as a JSON string. TODO: Consider Firestore instead.
+  pageRef.child('bubbles.txt').putString(JSON.stringify(mainVue.bubbles));
+
+  // Save the edit layer as a single image.
+  const editLayerImage = await toImagePromise(mainVue.$refs.editLayer);
+  const editLayerBlob = await toBlob(editLayerImage);
+  pageRef.child('edit-blob').put(editLayerBlob);
+
+  // Save the raw (original) image.
+  const rawBlob = await toBlob(img);
+  pageRef.child('raw-blob').put(rawBlob);
+}
+
+async function cloudLoad(mainVue, pageId) {
+  const pageRef = firebase.storage().ref().child(pageId);
+
+  // Load the raw layer.
+  const rawUrl = await pageRef.child('raw-blob').getDownloadURL();
+  await loadRaw(rawUrl);
+
+  // Then redraw the edit layer.
+  const editUrl = await pageRef.child('edit-blob').getDownloadURL();
+  const editImage = await new Promise(resolve => Konva.Image.fromURL(editUrl, resolve));
+  vueApp.$refs.editLayer.getNode().getLayer().removeChildren();
+  vueApp.$refs.editLayer.getNode().getLayer().add(editImage);
+  vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+
+  // Finally load the bubbles.
+  const bubblesUrl = await pageRef.child('bubbles.txt').getDownloadURL();
+  const bubblesText = await getText(bubblesUrl);
+  mainVue.bubbles = JSON.parse(bubblesText);
+}
+
+async function toBlob(image) {
+  const offscreenCanvas = document.createElement('canvas');
+  offscreenCanvas.width = image.width;
+  offscreenCanvas.height = image.height;
+  offscreenCanvas.getContext('2d').drawImage(image, 0, 0);
+  return new Promise(resolve => offscreenCanvas.toBlob(resolve, 'image/png'));
+}
+
+async function getText(url) {
+  return new Promise((resolve, reject) => {
+    const xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function () {
+      if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+        resolve(xmlHttp.responseText);
+      }
+    }
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+  });
+}
 
 async function exportImage(mainVue) {
   // Copy the main canvas into an offscreen one to save.
@@ -43,16 +100,18 @@ function toImagePromise(layer) {
   });
 }
 
+/** Converts an image src into a Promise that returns the loaded image. */
 function onloadPromise(src) {
   return new Promise((resolve, reject) => {
     const image = new Image();
+    image.crossOrigin = "Anonymous";
     image.onload = () => resolve(image);
     image.onerror = reject;
     image.src = src;
   })
 }
 
-async function loadImage(src) {
+async function loadRaw(src) {
   img = await onloadPromise(src);
   canvas.width = img.width;
   canvas.height = img.height;
@@ -168,6 +227,6 @@ function replaceImage(file) {
   reader.readAsDataURL(file);
   reader.onloadend = () => {
     const dataUrl = reader.result;
-    loadImage(dataUrl);
+    loadRaw(dataUrl);
   }
 }
