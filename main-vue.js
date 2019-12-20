@@ -66,6 +66,8 @@ const vueApp = new Vue({
       erase: ['e'],
       selectBubble: ['s'],
       escape: ['esc'],
+      undo: ['ctrl', 'z'],
+      redo: ['ctrl', 'shift', 'z'],
     }
   },
   computed: {
@@ -147,6 +149,8 @@ const vueApp = new Vue({
         });
         vueApp.$refs.editLayer.getNode().getLayer().add(this.lastLine);
         vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+        this.$refs.history.record(
+          new EditLayerDoable(this.lastLine, `Paint ${this.brush.color} ${this.brush.size}`));
       }
     },
     handleMouseMove(event) {
@@ -192,6 +196,12 @@ const vueApp = new Vue({
         case 'escape':
           this.mode = '';
           // TODO: Want to unfocus selected bubble, but swallowed by form...
+          break;
+        case 'undo':
+          this.$refs.history.undo();
+          break;
+        case 'redo':
+          this.$refs.history.redo();
           break;
       }
     },
