@@ -1,11 +1,9 @@
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
 let img = new Image();
 
-let annotations;
+const BUCKET='share-v1';
 
 async function cloudSave(mainVue, pageId) {
-  const pageRef = firebase.storage().ref().child(pageId);
+  const pageRef = firebase.storage().ref().child(BUCKET).child(pageId);
 
   // Save the bubbles as a JSON string. TODO: Consider Firestore instead.
   pageRef.child('bubbles.txt').putString(JSON.stringify(mainVue.bubbles));
@@ -21,7 +19,7 @@ async function cloudSave(mainVue, pageId) {
 }
 
 async function cloudLoad(mainVue, pageId) {
-  const pageRef = firebase.storage().ref().child(pageId);
+  const pageRef = firebase.storage().ref().child(BUCKET).child(pageId);
 
   // Load the raw layer.
   const rawUrl = await pageRef.child('raw-blob').getDownloadURL();
@@ -142,7 +140,7 @@ function analyze(mainVue) {
 
 /** Draws boxes around each annotation. */
 function colorWords(json, mainVue) {
-  annotations = json.responses[0].textAnnotations;
+  const annotations = json.responses[0].textAnnotations;
   // Remove the first (overarching) annotation.
   annotations.splice(0, 1);
   for (const annotation of annotations) {
@@ -173,7 +171,6 @@ function scanlateAll(blocks) {
     scanlate(japanese, rect)
   }
 }
-
 
 function extractText(block) {
   let result = "";
