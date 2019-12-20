@@ -82,6 +82,21 @@ button.selected {
   src: url("assets/fonts/akbar.ttf");
 }
 
+@font-face {
+  font-family: "Obelix Pro";
+  src: url("assets/fonts/ObelixPro-cyr.ttf");
+}
+
+@font-face {
+  font-family: "Laffayette Comic Pro";
+  src: url("assets/fonts/Laffayette\ Comic\ Pro.ttf");
+}
+
+@font-face {
+  font-family: "From Where You Are";
+  src: url("assets/fonts/FromWhereYouAre.ttf");
+}
+
 textarea.bubbletext {
   text-align: center;
   overflow: hidden;
