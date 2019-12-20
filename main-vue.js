@@ -66,7 +66,8 @@ const vueApp = new Vue({
       erase: ['e'],
       selectBubble: ['s'],
       escape: ['esc'],
-    }
+    },
+    shareId: '',
   },
   computed: {
     selectedBubble() {
@@ -242,15 +243,20 @@ const vueApp = new Vue({
       firebase.analytics().logEvent('share_page_clicked');
 
       const parsedUrl = new URL(window.location.href);
-      let pageId = parsedUrl.searchParams.get('share');
       // Generate a random id if the page does not already have one.
-      pageId = pageId ? pageId : shortid();
-      await cloudSave(this, pageId);
-      swal(
-        "Share this link!",
-        `${parsedUrl.origin}/?share=${pageId}`,
-        "success"
-      );
+      this.shareId = this.shareId ? this.shareId : shortid();
+      await cloudSave(this, this.shareId);
+
+      const link = document.createElement("input");
+      link.value = `${parsedUrl.origin}/?share=${this.shareId}`;
+      link.setAttribute('readonly', 'true');
+      link.setAttribute('onclick', 'this.select()');
+      link.setAttribute('size', '35');
+      swal({
+        title: "Your work is saved here:",
+        icon: "success",
+        content: link
+      });
     },
     showHelp() {
       firebase.analytics().logEvent('help_clicked');
@@ -259,9 +265,9 @@ const vueApp = new Vue({
   },
   mounted() {
     const parsedUrl = new URL(window.location.href);
-    const pageId = parsedUrl.searchParams.get('share');
-    if (pageId) {
-      cloudLoad(this, pageId);
+    this.shareId = parsedUrl.searchParams.get('share');
+    if (this.shareId) {
+      cloudLoad(this, this.shareId);
     } else {
       loadRaw('assets/22.jpg', this);
     }

@@ -5,6 +5,10 @@ body {
   font-family: 'PT Sans', sans-serif;
 }
 
+input, textarea, select {
+  font-family: 'PT Sans', sans-serif;
+}
+
 #editor {
   height: 100vh;
   display: grid;
