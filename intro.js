@@ -40,12 +40,12 @@ function runIntro(firstRunOnly = false) {
         intro: "Draw strokes or erase mistakes with the brush tool!<br/><br/>Shortcuts: [b] or [e]"
       },
       {
-        element: document.querySelector('#saveimage'),
-        intro: "When you're done, download the finished page..."
+        element: document.querySelector('#sharepage'),
+        intro: "When you're done, save your work online, and share it with anyone!"
       },
       {
-        element: document.querySelector('#sharepage'),
-        intro: "Or save your work online, and share it with anyone!"
+        element: document.querySelector('#saveimage'),
+        intro: "Or download the page as a .png image."
       }
     ]
   });
