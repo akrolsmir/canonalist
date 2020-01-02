@@ -2,12 +2,23 @@
 <meta charset="utf-8">
 
 <head>
+  <title>Scanlate online, with the help of ML!</title>
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typicons.font@2.0.9/src/font/typicons.min.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+
+  <meta name="description"
+    content="Translate manga online, with the help of ML!
+    scanlate.io lets you understand Japanese text, rewrite it in English,
+    and publish your work for others to read.">
 </head>
 
 <body>
@@ -24,7 +35,7 @@
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
-        @dragover.prevent @drop.stop.prevent="handleDrop">
+      @dragover.prevent @drop.stop.prevent="handleDrop">
       <div id="textlayers" style="z-index:102;" v-show="showTextLayer && currentTool == 'TEXT'">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
           @bubble-unfocus="unfocusSelectedId">
