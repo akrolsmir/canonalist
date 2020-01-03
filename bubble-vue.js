@@ -38,7 +38,21 @@ Vue.component('bubble-component', {
   methods: {
     // Adapted from https://simonkollross.de/posts/vuejs-using-v-model-with-objects-for-custom-components
     update(key, value) {
-      this.$emit('input', { ...this.value, [key]: value })
+      this.$emit('input', { ...this.value, [key]: value });
+      // Hack to whiten the background rect, first time text is entered.
+      if (key == 'english' && this.value.bgRect) {
+        if (!value) {
+          // Warn user if the bubble is empty of text.
+          this.value.bgRect.fill('red');
+          this.value.bgRect.alpha(0.2);            
+        }
+        else if (!this.value.english) {
+          // Paint over background once bubble is filled with text.
+          this.value.bgRect.fill('white');
+          this.value.bgRect.alpha(1);            
+        }
+        // PROBLEM: need a reference to MainVue to batchDraw()...
+      }
     },
     // TODO also handle onResize. Might require resizable binding...
     onDrag(x, y) {
