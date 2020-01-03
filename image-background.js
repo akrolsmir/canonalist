@@ -1,6 +1,6 @@
 let img = new Image();
 
-const BUCKET='share-v1';
+const BUCKET = 'share-v1';
 
 async function cloudSave(mainVue, pageId) {
   const pageRef = firebase.storage().ref().child(BUCKET).child(pageId);
@@ -143,11 +143,12 @@ function colorWords(json, mainVue) {
   const annotations = json.responses[0].textAnnotations;
   // Remove the first (overarching) annotation.
   annotations.splice(0, 1);
+  // Draw a yellow rectangle around each phrase.
   for (const annotation of annotations) {
     const rect = toRect(annotation.boundingPoly);
-    const clearBlue = 'rgba(240, 240, 40, 0.2)';
-    const blueRect = new Konva.Rect({ ...rect, fill: clearBlue });
-    mainVue.$refs.editLayer.getNode().getLayer().add(blueRect);
+    const clearYellow = 'rgba(240, 240, 40, 0.2)';
+    const yellowRect = new Konva.Rect({ ...rect, fill: clearYellow });
+    mainVue.$refs.editLayer.getNode().getLayer().add(yellowRect);
     mainVue.$refs.editLayer.getNode().getLayer().batchDraw();
   }
 
@@ -156,20 +157,21 @@ function colorWords(json, mainVue) {
   const blocks = json.responses[0].fullTextAnnotation.pages[0].blocks;
   for (const block of blocks) {
     const rect = toRect(block.boundingBox);
-    const clearYellow = 'rgba(40, 240, 240, 0.2)';
-    const yellowRect = new Konva.Rect({ ...rect, fill: clearYellow });
-    vueApp.$refs.editLayer.getNode().getLayer().add(yellowRect);
-    vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+    const clearBlue = 'rgba(40, 240, 240, 0.2)';
+    const blueRect = new Konva.Rect({ ...rect, fill: clearBlue });
+    mainVue.$refs.editLayer.getNode().getLayer().add(blueRect);
+    mainVue.$refs.editLayer.getNode().getLayer().batchDraw();
+
+    const japaneseText = extractText(block);
+    const bubble = bubblify(mainVue, rect, japaneseText);
+    bubble.bgRect = blueRect;
   }
-  vueApp.blocks = blocks;
 }
 
-function scanlateAll(blocks) {
-  for (const block of blocks) {
-    const rect = toRect(block.boundingBox);
-    const japanese = extractText(block);
-    scanlate(japanese, rect)
-  }
+function bubblify(mainVue, rect, japaneseText) {
+  const bubble = new Bubble(mainVue.bubbles.length, rect, japaneseText, '');
+  mainVue.bubbles.push(bubble);
+  return bubble;
 }
 
 function extractText(block) {

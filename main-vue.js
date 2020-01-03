@@ -28,7 +28,8 @@ function extractAndScanlateJapaneseRect(rect) {
       if (json.responses.length > 0) {
         let text = json.responses[0].textAnnotations[0].description;
         text = text.replace(/\s/g, ''); // Strip out all whitespace
-        scanlate(text, rect);
+        const bubble = bubblify(vueApp, rect, text);
+        translateBubble(bubble); // No need to await
       }
     });
 }
@@ -104,7 +105,7 @@ const vueApp = new Vue({
         y: this.cursor.y,
         radius: this.brush.size / 2,
         stroke: 'black',
-        strokeWidth: 0.5, 
+        strokeWidth: 0.5,
       }
     },
     currentTool() {
@@ -187,7 +188,7 @@ const vueApp = new Vue({
           this.mode = 'PAINT_TOOL';
           this.brush.color = 'Erase';
           break;
-        case 'selectBubble': 
+        case 'selectBubble':
           this.selectBox();
           break;
         case 'escape':
@@ -211,7 +212,7 @@ const vueApp = new Vue({
     },
     makeBubbles() {
       firebase.analytics().logEvent('translate_en_clicked');
-      scanlateAll(this.blocks);
+      translateAll(this.bubbles);
     },
     detectJapanese() {
       firebase.analytics().logEvent('detect_jp_clicked');
@@ -275,17 +276,29 @@ const vueApp = new Vue({
   }
 });
 
-async function scanlate(text, rect) {
-  const json = await translate(text);
-  const english = json.data.translations[0].translatedText;
-  console.log(`Original: ${text}, Translated: ${english}`);
-  const bubble = new Bubble(vueApp.bubbles.length, rect, text, english);
-  vueApp.bubbles.push(bubble);
+async function translateBubble(bubble) {
+  const json = await translate(bubble.japanese);
+  bubble.english = json.data.translations[0].translatedText;
 
+  if (bubble.bgRect) {
+    bubble.bgRect.fill('white');
+    bubble.bgRect.alpha(1);
+  } else {
   // Draw a white box, to hide the Japanese text.
-  const whiteRect = new Konva.Rect({ ...rect, fill: 'white' });
+  const whiteRect = new Konva.Rect({ ...bubble.rect, fill: 'white' });
   vueApp.$refs.editLayer.getNode().getLayer().add(whiteRect);
   vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+  }
+  vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+}
+
+function translateAll(bubbles) {
+  for (const bubble of bubbles) {
+    if (bubble.english.length == 0) {
+      // Note: we don't await here, to run all translates in parallel.
+      translateBubble(bubble);
+    }
+  }
 }
 
 const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
