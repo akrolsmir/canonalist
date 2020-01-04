@@ -92,9 +92,10 @@ const vueApp = new Vue({
         lineHeight: bubble.lineHeight,
         align: 'center',
 
-        // Hide Konva bubble if this is currently selected.
-        fill: this.bubbleFocused && (this.selectedId == bubble.id) ?
-          'transparent' : 'black',
+        // Hide Konva bubble if this is currently selected, or deleted.
+        fill: this.bubbleFocused && (this.selectedId == bubble.id)
+          || bubble.deleted
+          ? 'transparent' : 'black',
       }));
     },
     brushCursor() {
@@ -104,7 +105,7 @@ const vueApp = new Vue({
         y: this.cursor.y,
         radius: this.brush.size / 2,
         stroke: 'black',
-        strokeWidth: 0.5, 
+        strokeWidth: 0.5,
       }
     },
     currentTool() {
@@ -187,7 +188,7 @@ const vueApp = new Vue({
           this.mode = 'PAINT_TOOL';
           this.brush.color = 'Erase';
           break;
-        case 'selectBubble': 
+        case 'selectBubble':
           this.selectBox();
           break;
         case 'escape':

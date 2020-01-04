@@ -7,6 +7,7 @@ class Bubble {
     this.fontSize = 16; // in px
     this.fontFamily = 'Wild Words';
     this.lineHeight = 1.2;
+    this.deleted = false;
   }
 }
 
@@ -53,6 +54,7 @@ Vue.component('bubble-component', {
   },
   template: `
   <vue-draggable-resizable :drag-handle="'.drag-handle'"
+    v-show="!value.deleted"
     @dragging="onDrag" @resizing="onResize"
     :handles="['tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']"
     :active="showControls"

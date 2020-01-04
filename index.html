@@ -59,7 +59,7 @@
     <div id="rightbar">
       <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="45px">
       <div id="bubbleData" class="panel" v-show="currentTool == 'TEXT' && selectedId != -1">
-        <h4>TEXT</h4>
+        <h4>BUBBLE</h4>
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
         Line height:
@@ -87,6 +87,10 @@
             <option>From Where You Are</option>
           </optgroup>
         </select>
+        <div>
+          <label for="deleteSelected">Delete this bubble:</label>
+          <input type="checkbox" id="deleteSelected" v-model="selectedBubble.deleted">
+        </div>
       </div>
       <div id="brushData" class="panel" v-show="currentTool == 'PAINT'">
         <h4>BRUSH</h4>
