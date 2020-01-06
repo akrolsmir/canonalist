@@ -116,6 +116,11 @@ const vueApp = new Vue({
       } else {
         return 'TEXT';
       }
+    },
+    cursorStyle() {
+      if (this.currentTool == 'TRANSLATE') {
+        return {cursor: 'crosshair'};
+      }
     }
   },
   methods: {

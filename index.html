@@ -24,9 +24,9 @@
 <body>
   <div id="editor">
     <div id="toolbar" @shortkey="handleShortcuts" v-shortkey="shortcuts">
-      <button id="detectjp" @click="detectJapanese">Detect Japanese</button>
+      <button id="detectjp" @click="detectJapanese">Detect all Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
-      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Select a Bubble</button>
+      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Identify one bubble</button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
       <button id="sharepage" @click="sharePage">Save</button>
       <button id="saveimage" @click="saveImage">Export .png</button>
@@ -35,7 +35,7 @@
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
-      @dragover.prevent @drop.stop.prevent="handleDrop">
+      @dragover.prevent @drop.stop.prevent="handleDrop" :style="cursorStyle">
       <div id="textlayers" style="z-index:102;" v-show="showTextLayer && currentTool == 'TEXT'">
         <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
           @bubble-unfocus="unfocusSelectedId">
@@ -91,6 +91,10 @@
           <label for="deleteSelected">Delete this bubble:</label>
           <input type="checkbox" id="deleteSelected" v-model="selectedBubble.deleted">
         </div>
+      </div>
+      <div class="panel" v-show="currentTool == 'TRANSLATE'">
+        <h4>INSTRUCTIONS</h4>
+        Click in one corner of the bubble, then on the opposite (diagonal) corner.
       </div>
       <div id="brushData" class="panel" v-show="currentTool == 'PAINT'">
         <h4>BRUSH</h4>

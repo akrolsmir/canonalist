@@ -30,7 +30,7 @@ function runIntro(firstRunOnly = false) {
       },
       {
         element: document.querySelector('#selectbox'),
-        intro: "Or use this tool to scanlate a single bubble.<br/>(Then click on a corner of the bubble, and on the opposite corner.)<br/><br/>Shortcut: [s]",
+        intro: "Or use this tool to scanlate a single bubble.<br/><br/>Shortcut: [s]",
       },
       {
         intro: "Now edit, resize, and move the text boxes to your liking."
