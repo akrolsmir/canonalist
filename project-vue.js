@@ -10,6 +10,31 @@ Vue.component('project-component', {
     },
     clickPage(pageId) {
       this.$emit('change-page', pageId);
+    },
+    async deletePage(idToDelete) {
+      if (this.value.pages.length <= 1) {
+        // Disallow deletions when only one page left.
+        return;
+      }
+      const shouldDelete = await swal({
+        title: "Are you sure?",
+        icon: "warning",
+        buttons: ["Cancel", "Delete page"],
+        dangerMode: true,
+      });
+      if (shouldDelete) {
+        const index = this.value.pages.findIndex(page => page.id == idToDelete);
+        this.value.pages.splice(index, 1);
+        // If deleting the current page, also switch view to next page (or prev)
+        if (idToDelete == this.currentPageId) {
+          if (index == this.value.pages.length) {
+            this.clickPage(this.value.pages[index - 1].id);
+          } else {
+            this.clickPage(this.value.pages[index].id);
+          }
+        }
+        // TODO: Consider GC'ing the cloud reference
+      }
     }
   },
   template: `
@@ -21,6 +46,8 @@ Vue.component('project-component', {
         <a href="#" @click="clickPage(page.id)">
           {{ "Page " + (i + 1) + (page.id == currentPageId ? '*' : '') }}
         </a>
+        -- 
+        (<a href="#" @click="deletePage(page.id)">x</a>)
       </li>
     </ul>
   </div>
