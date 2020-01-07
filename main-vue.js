@@ -310,7 +310,7 @@ const vueApp = new Vue({
     this.projectId = parsedUrl.searchParams.get('project');
     if (this.projectId) {
       this.project = await loadProject(this.projectId);
-      cloudLoad(this, this.project.pages[0].id);
+      await this.handlePageChange(this.project.pages[0].id);
     } else {
       loadRaw('assets/22.jpg', this);
     }

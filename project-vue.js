@@ -1,6 +1,7 @@
 Vue.component('project-component', {
   props: {
     project: Object,
+    currentPageId: String,
   },
   methods: {
     clickPage(pageId) {
@@ -11,13 +12,13 @@ Vue.component('project-component', {
   <div class="panel">
     <h4>PROJECT</h4>
     <input type="text" v-model="project.name">
-    <ol>
-      <li v-for="page in project.pages">
+    <ul>
+      <li v-for="(page, i) in project.pages">
         <a href="#" @click="clickPage(page.id)">
-          {{ page.id }}
+          {{ "Page " + (i + 1) + (page.id == currentPageId ? '*' : '') }}
         </a>
       </li>
-    </ol>
+    </ul>
   </div>
   `
 });
