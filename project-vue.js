@@ -1,19 +1,6 @@
 Vue.component('project-component', {
   props: {
-    value: Object,
-  },
-  data() {
-    return {
-      pageIds: [
-        "yjxtFrIYV",
-        "4IcM39zjN",
-        "IE8X3ZSVC",
-        "oBmtRhWHT",
-        "pagefive"
-      ]
-    }
-  },
-  computed: {
+    project: Object,
   },
   methods: {
     clickPage(pageId) {
@@ -22,11 +9,12 @@ Vue.component('project-component', {
   },
   template: `
   <div class="panel">
-    <h4>PAGES</h4>
+    <h4>PROJECT</h4>
+    <input type="text" v-model="project.name">
     <ol>
-      <li v-for="pageId in pageIds">
-        <a href="#" @click="clickPage(pageId)">
-          {{ pageId }}
+      <li v-for="page in project.pages">
+        <a href="#" @click="clickPage(page.id)">
+          {{ page.id }}
         </a>
       </li>
     </ol>

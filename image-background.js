@@ -2,6 +2,18 @@ let img = new Image();
 
 const BUCKET='share-v1';
 
+async function loadProject(projectId) {
+  const db = firebase.firestore();
+  const doc = await db.collection("projects").doc(projectId).get();
+  return doc.data();
+}
+
+// Project structure: {name: 'xxx', id: 'xxx', pages: [{id: 'xxx'}, ...]}
+async function saveProject(project) {
+  const db = firebase.firestore();
+  await db.collection("projects").doc(project.id).set(project);
+}
+
 async function cloudSave(mainVue, pageId) {
   const pageRef = firebase.storage().ref().child(BUCKET).child(pageId);
 

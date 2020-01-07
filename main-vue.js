@@ -68,6 +68,13 @@ const vueApp = new Vue({
       escape: ['esc'],
     },
     shareId: '',
+    project: {
+      name: 'AwesomeSauce',
+      id: shortid(),
+      pages: [{id: shortid()}]
+    },
+    // Map of locally loaded images
+    localfiles: {}
   },
   computed: {
     selectedBubble() {
@@ -206,10 +213,24 @@ const vueApp = new Vue({
     handleDrop(event) {
       var files = event.dataTransfer.files;
       if (files) {
+        for (const file of files) {
+          const id = shortid();
+          this.project.pages.push({id});
+          this.localfiles[id] = file;
+        }
         replaceImage(files[0], this);
       }
     },
     handlePageChange(pageId) {
+      this.shareId = pageId;
+      // Switch to the local loaded file, if available
+      for (const page of this.project.pages) {
+        if (page.id == pageId && page.id in this.localfiles) {
+          replaceImage(this.localfiles[page.id], this);
+          return;
+        }
+      }
+      // Otherwise, download the page
       cloudLoad(this, pageId);
     },
     updateSelectedId(selectedId) {
@@ -256,9 +277,10 @@ const vueApp = new Vue({
       // Generate a random id if the page does not already have one.
       this.shareId = this.shareId ? this.shareId : shortid();
       await cloudSave(this, this.shareId);
+      await saveProject(this.project);
 
       const link = document.createElement("input");
-      link.value = `${parsedUrl.origin}/?share=${this.shareId}`;
+      link.value = `${parsedUrl.origin}/?project=${this.project.id}`;
       link.setAttribute('readonly', 'true');
       link.setAttribute('onclick', 'this.select()');
       link.setAttribute('size', '35');
@@ -273,11 +295,12 @@ const vueApp = new Vue({
       runIntro(firstRunOnly = false);
     },
   },
-  mounted() {
+  async mounted() {
     const parsedUrl = new URL(window.location.href);
-    this.shareId = parsedUrl.searchParams.get('share');
-    if (this.shareId) {
-      cloudLoad(this, this.shareId);
+    this.projectId = parsedUrl.searchParams.get('project');
+    if (this.projectId) {
+      this.project = await loadProject(this.projectId);
+      cloudLoad(this, this.project.pages[0].id);
     } else {
       loadRaw('assets/22.jpg', this);
     }
