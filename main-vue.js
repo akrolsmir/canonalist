@@ -80,6 +80,7 @@ const vueApp = new Vue({
     },
     configTexts() {
       return this.bubbles.map((bubble) => ({
+        id: bubble.id,
         text: bubble.english,
         x: bubble.rect.x,
         y: bubble.rect.y,
@@ -208,6 +209,9 @@ const vueApp = new Vue({
         replaceImage(files[0], this);
       }
     },
+    handlePageChange(pageId) {
+      cloudLoad(this, pageId);
+    },
     updateSelectedId(selectedId) {
       this.bubbleFocused = true;
       this.selectedId = selectedId;
@@ -285,7 +289,7 @@ async function scanlate(text, rect) {
   const json = await translate(text);
   const english = json.data.translations[0].translatedText;
   console.log(`Original: ${text}, Translated: ${english}`);
-  const bubble = new Bubble(vueApp.bubbles.length, rect, text, english);
+  const bubble = new Bubble(shortid(), rect, text, english);
   vueApp.bubbles.push(bubble);
 
   // Draw a white box, to hide the Japanese text.

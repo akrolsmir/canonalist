@@ -1,5 +1,5 @@
 body {
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto;
   height: 100vh;
   font-family: 'PT Sans', sans-serif;
@@ -18,9 +18,13 @@ input, textarea, select {
   grid-template-columns: auto auto 1fr;
 }
 
+#leftbar {
+  grid-area: 2 / 1;
+}
+
 #toolbar {
   /* Toolbar stretches across top row. */
-  grid-area: 1 / 1 / 1 / 4; 
+  grid-area: 1 / 2 / 1 / 4; 
   display: flex;
   margin-top: 1em;
 }

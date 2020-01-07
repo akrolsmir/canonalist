@@ -15,8 +15,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="assets/favicon/site.webmanifest">
 
-  <meta name="description"
-    content="Translate manga online, with the help of ML!
+  <meta name="description" content="Translate manga online, with the help of ML!
     scanlate.io lets you understand Japanese text, rewrite it in English,
     and publish your work for others to read.">
 </head>
@@ -26,7 +25,9 @@
     <div id="toolbar" @shortkey="handleShortcuts" v-shortkey="shortcuts">
       <button id="detectjp" @click="detectJapanese">Detect all Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
-      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">Identify one bubble</button>
+      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">
+        Identify one bubble
+      </button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
       <button id="sharepage" @click="sharePage">Save</button>
       <button id="saveimage" @click="saveImage">Export .png</button>
@@ -34,18 +35,21 @@
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
+    <div id="leftbar">
+      <project-component @change-page="handlePageChange"></project-component>
+    </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
       @dragover.prevent @drop.stop.prevent="handleDrop" :style="cursorStyle">
       <div id="textlayers" style="z-index:102;" v-show="showTextLayer && currentTool == 'TEXT'">
-        <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" @bubble-focus="updateSelectedId"
-          @bubble-unfocus="unfocusSelectedId">
+        <bubble-component v-for="(bubble, i) in bubbles" v-model="bubbles[i]" :key="bubble.id"
+          @bubble-focus="updateSelectedId" @bubble-unfocus="unfocusSelectedId">
         </bubble-component>
       </div>
       <v-stage id="konva" ref="stage" :config="configKonva">
         <!-- Note: Konva layers are ordered from bottom to top. -->
         <v-layer ref="editLayer" :config="{visible: showEditLayer}"></v-layer>
         <v-layer ref="textLayer" :config="{visible: showTextLayer}">
-          <v-text v-for="configText in configTexts" :config="configText"></v-text>
+          <v-text v-for="configText in configTexts" :config="configText" :key="configText.id"></v-text>
         </v-layer>
         <v-layer ref="uiLayer">
           <v-rect :config="configRect"></v-rect>
@@ -143,6 +147,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -167,5 +172,6 @@
 <!-- My code -->
 <script src="intro.js"></script>
 <script src="bubble-vue.js"></script>
+<script src="project-vue.js"></script>
 <script src="image-background.js"></script>
 <script src="main-vue.js"></script>
