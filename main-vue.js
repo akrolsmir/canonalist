@@ -1,42 +1,11 @@
-import {runIntro} from './intro.js';
-import {Bubble} from './bubble-vue.js';
-import {cloudLoad, cloudSave, loadProject, saveProject} from './firebase-network.js';
-import {loadRaw, colorWords, toRect, replaceImage, exportPng} from './image-background.js';
+import { runIntro } from './intro.js';
+import { Bubble } from './bubble-vue.js';
+import { cloudLoad, cloudSave, loadProject, saveProject } from './firebase-network.js';
+import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-background.js';
+import { translate, requestOcr } from './translate-network.js';
 
 // Disable shortcuts in different HTML forms.
 Vue.use(VueShortkey, { prevent: ['textarea', 'select'] })
-
-// Normalize a rect to have positive width and height.
-function absoluteRect(rect) {
-  return {
-    x: rect.x + Math.min(0, rect.width),
-    y: rect.y + Math.min(0, rect.height),
-    width: Math.abs(rect.width),
-    height: Math.abs(rect.height),
-  }
-}
-
-const snippet = document.getElementById('snippet');
-const snippetCtx = snippet.getContext('2d');
-
-function extractAndScanlateJapaneseRect(bgCanvas, rect) {
-  // Resize the snippet canvas, then copy to it
-  snippet.width = rect.width;
-  snippet.height = rect.height;
-  snippetCtx.drawImage(bgCanvas,
-    // Source: x, y, width, hight
-    rect.x, rect.y, rect.width, rect.height,
-    // Destination: x, y, width, height
-    0, 0, rect.width, rect.height);
-  requestOcr(snippet)
-    .then(json => {
-      if (json.responses.length > 0) {
-        let text = json.responses[0].textAnnotations[0].description;
-        text = text.replace(/\s/g, ''); // Strip out all whitespace
-        scanlate(text, rect);
-      }
-    });
-}
 
 const initialPageId = shortid();
 const vueApp = new Vue({
@@ -48,7 +17,7 @@ const vueApp = new Vue({
       width: 200,
       height: 200
     },
-    configRect: {
+    snippetRect: {
       x: 0, y: 0, width: 0, height: 0, fill: 'blue', opacity: 0.2
     },
     mousedownX: 0,
@@ -70,14 +39,14 @@ const vueApp = new Vue({
     shortcuts: {
       brush: ['b'],
       erase: ['e'],
-      selectBubble: ['s'],
+      snippet: ['s'],
       escape: ['esc'],
     },
     currentPageId: initialPageId,
     project: {
       name: 'AwesomeSauce',
       id: shortid(),
-      pages: [{id: initialPageId}]
+      pages: [{ id: initialPageId }]
     },
     // Map of locally loaded images
     localfiles: {}
@@ -125,35 +94,35 @@ const vueApp = new Vue({
     currentTool() {
       if (/PAINT_TOOL/.test(this.mode)) {
         return 'PAINT';
-      } else if (/SELECT_JP/.test(this.mode)) {
-        return 'TRANSLATE';
+      } else if (/SNIPPET/.test(this.mode)) {
+        return 'SNIPPET';
       } else {
         return 'TEXT';
       }
     },
     cursorStyle() {
-      if (this.currentTool == 'TRANSLATE') {
-        return {cursor: 'crosshair'};
+      if (this.currentTool == 'SNIPPET') {
+        return { cursor: 'crosshair' };
       }
     }
   },
   methods: {
     handleMouseDown(event) {
-      if (this.mode == 'SELECT_JP') {
+      if (this.mode == 'SNIPPET_START') {
         this.mousedownX = event.offsetX;
         this.mousedownY = event.offsetY;
         // console.log(event);
-        this.configRect.x = this.mousedownX;
-        this.configRect.y = this.mousedownY;
-        this.mode = 'SELECT_JP_SECOND_CLICK';
+        this.snippetRect.x = this.mousedownX;
+        this.snippetRect.y = this.mousedownY;
+        this.mode = 'SNIPPET_SECOND_CLICK';
       }
-      else if (this.mode == 'SELECT_JP_SECOND_CLICK') {
+      else if (this.mode == 'SNIPPET_SECOND_CLICK') {
         this.mode = '';
-        // A little magical, but configRect already has all the right attributes.
-        extractAndScanlateJapaneseRect(this.$refs.canvas, absoluteRect(this.configRect));
+        // A little magical, but snippetRect already has all the right attributes.
+        snippetToBubble(this.$refs.canvas, absoluteRect(this.snippetRect));
         // Then hide the konva rectangle
-        this.configRect.width = 0;
-        this.configRect.height = 0;
+        this.snippetRect.width = 0;
+        this.snippetRect.height = 0;
       }
       else if (this.mode == 'PAINT_TOOL') {
         this.mode = 'PAINT_TOOL_DOWN';
@@ -171,11 +140,11 @@ const vueApp = new Vue({
       }
     },
     handleMouseMove(event) {
-      if (this.mode == 'SELECT_JP_SECOND_CLICK') {
+      if (this.mode == 'SNIPPET_SECOND_CLICK') {
         // Draw konva box from mousedownX & Y to this location;
         // console.log(`Drawing ${event.offsetX}, ${event.offsetY} to ${this.mousedownX}, ${this.mousedownY}`);
-        this.configRect.width = event.offsetX - this.mousedownX;
-        this.configRect.height = event.offsetY - this.mousedownY;
+        this.snippetRect.width = event.offsetX - this.mousedownX;
+        this.snippetRect.height = event.offsetY - this.mousedownY;
       }
       else if (this.mode == 'PAINT_TOOL') {
         // Move the cursor;
@@ -207,8 +176,8 @@ const vueApp = new Vue({
           this.mode = 'PAINT_TOOL';
           this.brush.color = 'Erase';
           break;
-        case 'selectBubble':
-          this.selectBox();
+        case 'snippet':
+          this.snippetTool();
           break;
         case 'escape':
           this.mode = '';
@@ -222,7 +191,7 @@ const vueApp = new Vue({
       if (files) {
         for (const file of files) {
           const id = shortid();
-          this.project.pages.push({id});
+          this.project.pages.push({ id });
           this.localfiles[id] = file;
           firstId = firstId ? firstId : id;
         }
@@ -258,20 +227,20 @@ const vueApp = new Vue({
     },
     makeBubbles() {
       firebase.analytics().logEvent('translate_en_clicked');
-      scanlateAll(this.blocks);
+      makeAllBubbles(this.blocks);
     },
     detectJapanese() {
       firebase.analytics().logEvent('detect_jp_clicked');
       analyze(this);
     },
-    selectBox() {
-      if (this.currentTool == 'TRANSLATE') {
+    snippetTool() {
+      if (this.currentTool == 'SNIPPET') {
         this.mode = '';
-        this.configRect.width = 0;
+        this.snippetRect.width = 0;
       } else {
         // TODO set cursor to be cross
         firebase.analytics().logEvent('select_bubble_clicked');
-        this.mode = 'SELECT_JP';
+        this.mode = 'SNIPPET_START';
       }
     },
     paintTool() {
@@ -324,7 +293,43 @@ const vueApp = new Vue({
   }
 });
 
-async function scanlate(text, rect) {
+function analyze(mainVue) {
+  requestOcr(mainVue.$refs.canvas).then(json => colorWords(json, mainVue));
+}
+
+// Normalize a rect to have positive width and height.
+function absoluteRect(rect) {
+  return {
+    x: rect.x + Math.min(0, rect.width),
+    y: rect.y + Math.min(0, rect.height),
+    width: Math.abs(rect.width),
+    height: Math.abs(rect.height),
+  }
+}
+
+const snippet = document.getElementById('snippet');
+const snippetCtx = snippet.getContext('2d');
+
+function snippetToBubble(bgCanvas, rect) {
+  // Resize the snippet canvas, then copy to it
+  snippet.width = rect.width;
+  snippet.height = rect.height;
+  snippetCtx.drawImage(bgCanvas,
+    // Source: x, y, width, hight
+    rect.x, rect.y, rect.width, rect.height,
+    // Destination: x, y, width, height
+    0, 0, rect.width, rect.height);
+  requestOcr(snippet)
+    .then(json => {
+      if (json.responses.length > 0) {
+        let text = json.responses[0].textAnnotations[0].description;
+        text = text.replace(/\s/g, ''); // Strip out all whitespace
+        makeBubble(text, rect);
+      }
+    });
+}
+
+async function makeBubble(text, rect) {
   const json = await translate(text);
   const english = json.data.translations[0].translatedText;
   console.log(`Original: ${text}, Translated: ${english}`);
@@ -337,65 +342,11 @@ async function scanlate(text, rect) {
   vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
 }
 
-const OCR_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
-function buildRequest(base64) {
-  return `{
-  "requests": [
-    {
-      "image": {
-        "content": "${base64}"
-      },
-      "features": [
-        {
-          "type": "DOCUMENT_TEXT_DETECTION"
-        },
-      ],
-    }
-  ]
-}
-`;
-}
-
-async function requestOcr(canvas) {
-  // Send the base64 image to Google OCR API
-  const dataUrl = canvas.toDataURL("image/png");
-  const base64 = dataUrl.substring(dataUrl.indexOf(',') + 1);
-  const response = await fetch(OCR_URL, {
-    method: 'POST',
-    body: buildRequest(base64),
-    headers: { 'Content-Type': 'application/json' }
-  });
-  return await response.json();
-}
-
-const TRANSLATE_URL = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyBhkh5Yeu0aus70jWscv3KRFM6GJ3czp_c';
-function buildTranslateRequest(text) {
-  return `{
-  "q": "${text}",
-  "target": "en",
-  "format": "text",
-}
-`;
-}
-
-async function translate(text) {
-  const response = await fetch(TRANSLATE_URL, {
-    method: 'POST',
-    body: buildTranslateRequest(text),
-    headers: { 'Content-Type': 'application/json' }
-  });
-  return response.json();
-}
-
-function analyze(mainVue) {
-  requestOcr(mainVue.$refs.canvas).then(json => colorWords(json, mainVue));
-}
-
-function scanlateAll(blocks) {
+export function makeAllBubbles(blocks) {
   for (const block of blocks) {
     const rect = toRect(block.boundingBox);
     const japanese = extractText(block);
-    scanlate(japanese, rect)
+    makeBubble(japanese, rect)
   }
 }
 

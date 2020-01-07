@@ -25,7 +25,7 @@
     <div id="toolbar" @shortkey="handleShortcuts" v-shortkey="shortcuts">
       <button id="detectjp" @click="detectJapanese">Detect all Japanese</button>
       <button id="makebubbles" @click="makeBubbles">Translate to English</button>
-      <button id="selectbox" @click="selectBox" :class="{selected: currentTool == 'TRANSLATE'}">
+      <button id="selectbox" @click="snippetTool" :class="{selected: currentTool == 'SNIPPET'}">
         Identify one bubble
       </button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
@@ -52,7 +52,7 @@
           <v-text v-for="configText in configTexts" :config="configText" :key="configText.id"></v-text>
         </v-layer>
         <v-layer ref="uiLayer">
-          <v-rect :config="configRect"></v-rect>
+          <v-rect :config="snippetRect"></v-rect>
           <v-circle :config="brushCursor"></v-circle>
         </v-layer>
       </v-stage>
@@ -175,4 +175,5 @@
 <script type="module" src="project-vue.js"></script>
 <script type="module" src="image-background.js"></script>
 <script type="module" src="firebase-network.js  "></script>
+<script type="module" src="translate-network.js  "></script>
 <script type="module" src="main-vue.js"></script>
