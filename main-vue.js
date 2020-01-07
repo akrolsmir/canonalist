@@ -67,7 +67,7 @@ const vueApp = new Vue({
       selectBubble: ['s'],
       escape: ['esc'],
     },
-    shareId: '',
+    currentPageId: '',
     project: {
       name: 'AwesomeSauce',
       id: shortid(),
@@ -211,19 +211,29 @@ const vueApp = new Vue({
       }
     },
     handleDrop(event) {
-      var files = event.dataTransfer.files;
+      const files = event.dataTransfer.files;
+      let firstId;
       if (files) {
         for (const file of files) {
           const id = shortid();
           this.project.pages.push({id});
           this.localfiles[id] = file;
+          firstId = firstId ? firstId : id;
         }
-        replaceImage(files[0], this);
+        this.handlePageChange(firstId);
       }
     },
-    handlePageChange(pageId) {
-      this.shareId = pageId;
-      // Switch to the local loaded file, if available
+    async handlePageChange(pageId) {
+      if (this.currentPageId) {
+        // TODO: Prompt instead of autosaving?
+        // TODO: Don't need to reupload base image
+        // TODO: Unvisited localfiles have a page entry but aren't uploaded.
+        await cloudSave(this, this.currentPageId);
+        // Remove the local reference, so future loads use the cloud data.
+        delete this.localfiles[this.currentPageId];
+      }
+      this.currentPageId = pageId;
+      // Switch to the local loaded file, if available.
       for (const page of this.project.pages) {
         if (page.id == pageId && page.id in this.localfiles) {
           replaceImage(this.localfiles[page.id], this);
@@ -231,7 +241,7 @@ const vueApp = new Vue({
         }
       }
       // Otherwise, download the page
-      cloudLoad(this, pageId);
+      await cloudLoad(this, pageId);
     },
     updateSelectedId(selectedId) {
       this.bubbleFocused = true;
@@ -275,8 +285,8 @@ const vueApp = new Vue({
 
       const parsedUrl = new URL(window.location.href);
       // Generate a random id if the page does not already have one.
-      this.shareId = this.shareId ? this.shareId : shortid();
-      await cloudSave(this, this.shareId);
+      this.currentPageId = this.currentPageId ? this.currentPageId : shortid();
+      await cloudSave(this, this.currentPageId);
       await saveProject(this.project);
 
       const link = document.createElement("input");

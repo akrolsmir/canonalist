@@ -133,7 +133,7 @@ async function loadRaw(src, mainVue) {
   // Original logo size: 140 x 32
   const logoWidth = 105;
   const logoHeight = 24;
-  const image = new Konva.Image({
+  const watermark = new Konva.Image({
     x: img.width - logoWidth - 5,
     y: img.height - logoHeight - 5,
     image: logoImage,
@@ -142,8 +142,13 @@ async function loadRaw(src, mainVue) {
   });
   // TODO needs more work when a new image is dropped.
   mainVue.$refs.textLayer.getNode().getLayer().removeChildren();
-  mainVue.$refs.textLayer.getNode().getLayer().add(image);
+  mainVue.$refs.textLayer.getNode().getLayer().add(watermark);
   mainVue.$refs.textLayer.getNode().getLayer().batchDraw();
+
+  mainVue.$refs.editLayer.getNode().getLayer().removeChildren();
+  mainVue.$refs.editLayer.getNode().getLayer().batchDraw();
+
+  mainVue.bubbles = [];
 }
 
 function analyze(mainVue) {
