@@ -1,4 +1,4 @@
-function runIntro(firstRunOnly = false) {
+export function runIntro(firstRunOnly = false) {
   if (firstRunOnly && introDone()) {
     return;
   }
@@ -40,11 +40,11 @@ function runIntro(firstRunOnly = false) {
         intro: "Draw strokes or erase mistakes with the brush tool!<br/><br/>Shortcuts: [b] or [e]"
       },
       {
-        element: document.querySelector('#sharepage'),
+        element: document.querySelector('#saveproject'),
         intro: "When you're done, save your work online, and share it with anyone!"
       },
       {
-        element: document.querySelector('#saveimage'),
+        element: document.querySelector('#exportimage'),
         intro: "Or download the page as a .png image."
       }
     ]

@@ -29,8 +29,8 @@
         Identify one bubble
       </button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
-      <button id="sharepage" @click="sharePage">Save</button>
-      <button id="saveimage" @click="saveImage">Export .png</button>
+      <button id="saveproject" @click="saveProject">Save</button>
+      <button id="exportimage" @click="exportImage">Export .png</button>
 
       <a target="_blank" class="links" id="aboutlink" href="/about.html">About</a>
       <a href="#" class="links" @click="showHelp">Help</a>
@@ -170,8 +170,9 @@
 </script>
 
 <!-- My code -->
-<script src="intro.js"></script>
-<script src="bubble-vue.js"></script>
-<script src="project-vue.js"></script>
-<script src="image-background.js"></script>
-<script src="main-vue.js"></script>
+<script type="module" src="intro.js"></script>
+<script type="module" src="bubble-vue.js"></script>
+<script type="module" src="project-vue.js"></script>
+<script type="module" src="image-background.js"></script>
+<script type="module" src="firebase-network.js  "></script>
+<script type="module" src="main-vue.js"></script>

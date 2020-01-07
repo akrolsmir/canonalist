@@ -1,4 +1,4 @@
-class Bubble {
+export class Bubble {
   constructor(id, rect, japanese, english) {
     this.id = id;
     this.rect = rect;

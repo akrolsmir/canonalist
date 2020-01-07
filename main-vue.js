@@ -1,3 +1,8 @@
+import {runIntro} from './intro.js';
+import {Bubble} from './bubble-vue.js';
+import {cloudLoad, cloudSave, loadProject, saveProject} from './firebase-network.js';
+import {loadRaw, colorWords, toRect, replaceImage, exportPng} from './image-background.js';
+
 // Disable shortcuts in different HTML forms.
 Vue.use(VueShortkey, { prevent: ['textarea', 'select'] })
 
@@ -14,11 +19,11 @@ function absoluteRect(rect) {
 const snippet = document.getElementById('snippet');
 const snippetCtx = snippet.getContext('2d');
 
-function extractAndScanlateJapaneseRect(rect) {
+function extractAndScanlateJapaneseRect(bgCanvas, rect) {
   // Resize the snippet canvas, then copy to it
   snippet.width = rect.width;
   snippet.height = rect.height;
-  snippetCtx.drawImage(img,
+  snippetCtx.drawImage(bgCanvas,
     // Source: x, y, width, hight
     rect.x, rect.y, rect.width, rect.height,
     // Destination: x, y, width, height
@@ -33,6 +38,7 @@ function extractAndScanlateJapaneseRect(rect) {
     });
 }
 
+const initialPageId = shortid();
 const vueApp = new Vue({
   el: '#editor',
   data: {
@@ -67,11 +73,11 @@ const vueApp = new Vue({
       selectBubble: ['s'],
       escape: ['esc'],
     },
-    currentPageId: '',
+    currentPageId: initialPageId,
     project: {
       name: 'AwesomeSauce',
       id: shortid(),
-      pages: [{id: shortid()}]
+      pages: [{id: initialPageId}]
     },
     // Map of locally loaded images
     localfiles: {}
@@ -144,7 +150,7 @@ const vueApp = new Vue({
       else if (this.mode == 'SELECT_JP_SECOND_CLICK') {
         this.mode = '';
         // A little magical, but configRect already has all the right attributes.
-        extractAndScanlateJapaneseRect(absoluteRect(this.configRect));
+        extractAndScanlateJapaneseRect(this.$refs.canvas, absoluteRect(this.configRect));
         // Then hide the konva rectangle
         this.configRect.width = 0;
         this.configRect.height = 0;
@@ -276,11 +282,11 @@ const vueApp = new Vue({
         this.mode = 'PAINT_TOOL';
       }
     },
-    async saveImage() {
+    async exportImage() {
       firebase.analytics().logEvent('save_image_clicked');
-      await exportImage(this);
+      await exportPng(this);
     },
-    async sharePage() {
+    async saveProject() {
       firebase.analytics().logEvent('share_page_clicked');
 
       const parsedUrl = new URL(window.location.href);
@@ -302,7 +308,7 @@ const vueApp = new Vue({
     },
     showHelp() {
       firebase.analytics().logEvent('help_clicked');
-      runIntro(firstRunOnly = false);
+      runIntro(/*firstRunOnly = */false);
     },
   },
   async mounted() {
@@ -314,7 +320,7 @@ const vueApp = new Vue({
     } else {
       loadRaw('assets/22.jpg', this);
     }
-    runIntro(firstRunOnly = true);
+    runIntro(/*firstRunOnly = */true);
   }
 });
 
@@ -379,4 +385,28 @@ async function translate(text) {
     headers: { 'Content-Type': 'application/json' }
   });
   return response.json();
+}
+
+function analyze(mainVue) {
+  requestOcr(mainVue.$refs.canvas).then(json => colorWords(json, mainVue));
+}
+
+function scanlateAll(blocks) {
+  for (const block of blocks) {
+    const rect = toRect(block.boundingBox);
+    const japanese = extractText(block);
+    scanlate(japanese, rect)
+  }
+}
+
+function extractText(block) {
+  let result = "";
+  for (const paragraph of block.paragraphs) {
+    for (const word of paragraph.words) {
+      for (const symbol of word.symbols) {
+        result += symbol.text;
+      }
+    }
+  }
+  return result;
 }
