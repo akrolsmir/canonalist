@@ -36,7 +36,7 @@
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="leftbar">
-      <project-component @change-page="handlePageChange" :project="project" :current-page-id="currentPageId"></project-component>
+      <project-component @change-page="handlePageChange" v-model="project" :current-page-id="currentPageId"></project-component>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
       @dragover.prevent @drop.stop.prevent="handleDrop" :style="cursorStyle">
