@@ -15,7 +15,7 @@ export async function exportPng(mainVue) {
   offscreenCanvas.toBlob(blob => {
     const finalUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.download = 'output.png';
+    link.download = mainVue.$refs.project.currentPageFilename;
     link.href = finalUrl;
     document.body.appendChild(link);
     link.click();

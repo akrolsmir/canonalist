@@ -44,7 +44,7 @@ const vueApp = new Vue({
     },
     currentPageId: initialPageId,
     project: {
-      name: 'AwesomeSauce',
+      name: 'scanlate.io',
       id: shortid(),
       pages: [{ id: initialPageId }]
     },
@@ -104,7 +104,7 @@ const vueApp = new Vue({
       if (this.currentTool == 'SNIPPET') {
         return { cursor: 'crosshair' };
       }
-    }
+    },
   },
   methods: {
     handleMouseDown(event) {
@@ -135,8 +135,8 @@ const vueApp = new Vue({
             this.brush.color == 'Erase' ? 'destination-out' : 'source-over',
           points: [event.offsetX, event.offsetY, event.offsetX, event.offsetY]
         });
-        vueApp.$refs.editLayer.getNode().getLayer().add(this.lastLine);
-        vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+        this.$refs.editLayer.getNode().getLayer().add(this.lastLine);
+        this.$refs.editLayer.getNode().getLayer().batchDraw();
       }
     },
     handleMouseMove(event) {
@@ -158,7 +158,7 @@ const vueApp = new Vue({
 
         const newPoints = this.lastLine.points().concat([event.offsetX, event.offsetY]);
         this.lastLine.points(newPoints);
-        vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+        this.$refs.editLayer.getNode().getLayer().batchDraw();
       }
     },
     handleMouseUp(event) {
@@ -292,6 +292,7 @@ const vueApp = new Vue({
     runIntro(/*firstRunOnly = */true);
   }
 });
+window.vueApp = vueApp;
 
 function analyze(mainVue) {
   requestOcr(mainVue.$refs.canvas).then(json => colorWords(json, mainVue));

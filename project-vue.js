@@ -37,6 +37,20 @@ Vue.component('project-component', {
       }
     }
   },
+  computed: {
+    currentPageNum() {
+      for (const [i, page] of this.value.pages.entries()) {
+        if (page.id == this.currentPageId) {
+          return i + 1;
+        }
+      }
+      return 0;
+    },
+    currentPageFilename() {
+      const projectFilename = this.value.name.replace(/[^a-z0-9]/gi, '-');
+      return `${projectFilename}-${this.currentPageNum}.png`;
+    }
+  },
   template: `
   <div class="panel">
     <h4>PROJECT</h4>
