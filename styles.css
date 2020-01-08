@@ -1,5 +1,5 @@
 body {
-  width: 1200px;
+  width: 1500px;
   margin: 0 auto;
   height: 100vh;
   font-family: 'PT Sans', sans-serif;
@@ -15,7 +15,7 @@ input, textarea, select {
   padding-left: 1em;
   gap: 1em;
   grid-template-rows: auto 1fr;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: 200px auto 240px 1fr;
 }
 
 #leftbar {
@@ -24,7 +24,7 @@ input, textarea, select {
 
 #toolbar {
   /* Toolbar stretches across top row. */
-  grid-area: 1 / 2 / 1 / 4; 
+  grid-area: 1 / 2 / 1 / 5; 
   display: flex;
   margin-top: 1em;
 }
@@ -32,7 +32,7 @@ input, textarea, select {
 #toolbar > button {
   text-align: center;
   height: 40px;
-  width: 160px;
+  width: 120px;
   font-family: 'PT Sans', sans-serif;
 }
 
