@@ -8,6 +8,7 @@ export class Bubble {
     this.fontFamily = 'Wild Words';
     this.lineHeight = 1.2;
     this.deleted = false;
+    this.rotate = 0;
   }
 }
 
@@ -23,7 +24,12 @@ Vue.component('bubble-component', {
     }
   },
   computed: {
-    styleObject() {
+    frameStyle() {
+      return {
+        'transform': `rotate(${this.value.rotate}deg`,
+      }
+    },
+    textStyle() {
       const style = {
         'width': this.value.rect.width + 'px',
         'height': this.value.rect.height + 'px',
@@ -56,6 +62,7 @@ Vue.component('bubble-component', {
   <vue-draggable-resizable :drag-handle="'.drag-handle'"
     v-show="!value.deleted"
     @dragging="onDrag" @resizing="onResize"
+    :style="frameStyle"
     :handles="['tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']"
     :active="showControls"
     :y="value.rect.y" :x="value.rect.x" :w="value.rect.width" :h="value.rect.height">
@@ -64,7 +71,7 @@ Vue.component('bubble-component', {
     </div>  
     <textarea class="bubbletext"
       spellcheck="false"
-      :style="styleObject"
+      :style="textStyle"
       @focus="showControls = true; $emit('bubble-focus', value.id)"
       @blur="showControls = false; $emit('bubble-unfocus')"
       :value="value.english"

@@ -25,6 +25,7 @@ const vueApp = new Vue({
     mode: '',
     selectedId: -1,
     bubbleFocused: false,
+    bubbleAdvanced: false,
     showTextLayer: true,
     showEditLayer: true,
     brush: {
@@ -64,8 +65,8 @@ const vueApp = new Vue({
       return this.bubbles.map((bubble) => ({
         id: bubble.id,
         text: bubble.english,
-        x: bubble.rect.x,
-        y: bubble.rect.y,
+        x: bubble.rect.x + bubble.rect.width / 2,
+        y: bubble.rect.y + bubble.rect.height / 2,
         width: bubble.rect.width,
         height: bubble.rect.height,
 
@@ -74,6 +75,10 @@ const vueApp = new Vue({
         fontSize: bubble.fontSize,
         lineHeight: bubble.lineHeight,
         align: 'center',
+
+        rotation: bubble.rotate,
+        offsetX: bubble.rect.width / 2,
+        offsetY: bubble.rect.height / 2,
 
         // Hide Konva bubble if this is currently selected, or deleted.
         fill: this.bubbleFocused && (this.selectedId == bubble.id)
