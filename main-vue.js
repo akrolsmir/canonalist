@@ -1,5 +1,5 @@
 import { runIntro } from './intro.js';
-import { Bubble } from './bubble-vue.js';
+import { Bubble, configText } from './bubble-vue.js';
 import { cloudLoad, cloudSave, loadProject, saveProject } from './firebase-network.js';
 import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-background.js';
 import { translate, requestOcr } from './translate-network.js';
@@ -62,36 +62,11 @@ const vueApp = new Vue({
       return { japanese: "JP", english: "EN" };
     },
     configTexts() {
-      return this.bubbles.map((bubble) => {
-        // Populate bubble with default values (if we're loading old versions).
-        bubble = {...new Bubble(), ...bubble};
+      return this.bubbles
         // Hide the Konva text if bubble is currently selected, or deleted.
-        const hide = this.bubbleFocused && (this.selectedId == bubble.id)
-          || bubble.deleted;
-        return {
-          id: bubble.id,
-          text: bubble.english,
-          x: bubble.rect.x + bubble.rect.width / 2,
-          y: bubble.rect.y + bubble.rect.height / 2,
-          width: bubble.rect.width,
-          height: bubble.rect.height,
-
-          draggable: true,
-          fontFamily: bubble.fontFamily,
-          fontSize: bubble.fontSize,
-          lineHeight: bubble.lineHeight,
-          align: 'center',
-
-          rotation: bubble.rotate,
-          offsetX: bubble.rect.width / 2,
-          offsetY: bubble.rect.height / 2,
-
-          fill: hide ? 'transparent' : bubble.fill,
-          stroke: hide || bubble.strokeWidth == '0'
-            ? 'transparent' : bubble.stroke,
-          strokeWidth: bubble.strokeWidth,
-        }
-      });
+        .filter(bubble => !(bubble.deleted
+          || this.bubbleFocused && (this.selectedId == bubble.id)))
+        .map(configText);
     },
     brushCursor() {
       return {

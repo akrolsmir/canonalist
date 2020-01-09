@@ -84,6 +84,33 @@ Vue.component('bubble-component', {
   `
 });
 
+export function configText(bubble) {
+  // Populate bubble with default values (if we're loading old versions).
+  bubble = { ...new Bubble(), ...bubble };
+  return {
+    id: bubble.id,
+    text: bubble.english,
+    x: bubble.rect.x + bubble.rect.width / 2,
+    y: bubble.rect.y + bubble.rect.height / 2,
+    width: bubble.rect.width,
+    height: bubble.rect.height,
+
+    draggable: true,
+    fontFamily: bubble.fontFamily,
+    fontSize: bubble.fontSize,
+    lineHeight: bubble.lineHeight,
+    align: 'center',
+
+    rotation: bubble.rotate,
+    offsetX: bubble.rect.width / 2,
+    offsetY: bubble.rect.height / 2,
+
+    fill: bubble.fill,
+    stroke: bubble.strokeWidth == '0' ? 'transparent' : bubble.stroke,
+    strokeWidth: bubble.strokeWidth,
+  }
+}
+
 // Fix for Konva text stroke (https://github.com/konvajs/konva/issues/585)
 const originalFillStroke = Konva.Context.prototype.fillStrokeShape;
 Konva.Context.prototype.fillStrokeShape = function (shape) {
