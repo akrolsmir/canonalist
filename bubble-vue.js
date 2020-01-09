@@ -9,6 +9,9 @@ export class Bubble {
     this.lineHeight = 1.2;
     this.deleted = false;
     this.rotate = 0;
+    this.fill = 'black'
+    this.stroke = 'white';
+    this.strokeWidth = 0;
   }
 }
 
@@ -80,3 +83,18 @@ Vue.component('bubble-component', {
   </vue-draggable-resizable>
   `
 });
+
+// Fix for Konva text stroke (https://github.com/konvajs/konva/issues/585)
+const originalFillStroke = Konva.Context.prototype.fillStrokeShape;
+Konva.Context.prototype.fillStrokeShape = function (shape) {
+  if (shape instanceof Konva.Text) {
+    if (shape.getStrokeEnabled()) {
+      this._stroke(shape);
+    }
+    if (shape.getFillEnabled()) {
+      this._fill(shape);
+    }
+  } else {
+    originalFillStroke.call(this, shape);
+  }
+};

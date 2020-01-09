@@ -94,9 +94,11 @@
         </select>
         <button @click="bubbleAdvanced = !bubbleAdvanced">Advanced...</button>
         <div v-show="bubbleAdvanced" class="panel">
-          <!-- Stroke size, Stroke color, Fill color, Rasterize-->
+          <!-- TODO: stroke color, fill color, rasterize-->
           Rotate: {{ selectedBubble.rotate }}
           <input type="range" v-model='selectedBubble.rotate' min='0' max='360'>
+          Stroke width:
+          <input type="number" v-model="selectedBubble.strokeWidth">
           <div>
             <label for="deleteSelected">Delete this bubble:</label>
             <input type="checkbox" id="deleteSelected" v-model="selectedBubble.deleted">

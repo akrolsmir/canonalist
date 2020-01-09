@@ -62,29 +62,36 @@ const vueApp = new Vue({
       return { japanese: "JP", english: "EN" };
     },
     configTexts() {
-      return this.bubbles.map((bubble) => ({
-        id: bubble.id,
-        text: bubble.english,
-        x: bubble.rect.x + bubble.rect.width / 2,
-        y: bubble.rect.y + bubble.rect.height / 2,
-        width: bubble.rect.width,
-        height: bubble.rect.height,
+      return this.bubbles.map((bubble) => {
+        // Populate bubble with default values (if we're loading old versions).
+        bubble = {...new Bubble(), ...bubble};
+        // Hide the Konva text if bubble is currently selected, or deleted.
+        const hide = this.bubbleFocused && (this.selectedId == bubble.id)
+          || bubble.deleted;
+        return {
+          id: bubble.id,
+          text: bubble.english,
+          x: bubble.rect.x + bubble.rect.width / 2,
+          y: bubble.rect.y + bubble.rect.height / 2,
+          width: bubble.rect.width,
+          height: bubble.rect.height,
 
-        draggable: true,
-        fontFamily: bubble.fontFamily,
-        fontSize: bubble.fontSize,
-        lineHeight: bubble.lineHeight,
-        align: 'center',
+          draggable: true,
+          fontFamily: bubble.fontFamily,
+          fontSize: bubble.fontSize,
+          lineHeight: bubble.lineHeight,
+          align: 'center',
 
-        rotation: bubble.rotate,
-        offsetX: bubble.rect.width / 2,
-        offsetY: bubble.rect.height / 2,
+          rotation: bubble.rotate,
+          offsetX: bubble.rect.width / 2,
+          offsetY: bubble.rect.height / 2,
 
-        // Hide Konva bubble if this is currently selected, or deleted.
-        fill: this.bubbleFocused && (this.selectedId == bubble.id)
-          || bubble.deleted
-          ? 'transparent' : 'black',
-      }));
+          fill: hide ? 'transparent' : bubble.fill,
+          stroke: hide || bubble.strokeWidth == '0'
+            ? 'transparent' : bubble.stroke,
+          strokeWidth: bubble.strokeWidth,
+        }
+      });
     },
     brushCursor() {
       return {
