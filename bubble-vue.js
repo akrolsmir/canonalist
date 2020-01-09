@@ -111,6 +111,12 @@ export function configText(bubble) {
   }
 }
 
+export function cloneBubble(bubble) {
+  const copy = JSON.parse(JSON.stringify(bubble));
+  copy.id = shortid();
+  return copy;
+}
+
 // Fix for Konva text stroke (https://github.com/konvajs/konva/issues/585)
 const originalFillStroke = Konva.Context.prototype.fillStrokeShape;
 Konva.Context.prototype.fillStrokeShape = function (shape) {

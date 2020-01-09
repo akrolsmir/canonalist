@@ -1,5 +1,5 @@
 import { runIntro } from './intro.js';
-import { Bubble, configText } from './bubble-vue.js';
+import { Bubble, configText, cloneBubble } from './bubble-vue.js';
 import { cloudLoad, cloudSave, loadProject, saveProject } from './firebase-network.js';
 import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-background.js';
 import { translate, requestOcr } from './translate-network.js';
@@ -211,6 +211,14 @@ const vueApp = new Vue({
     },
     unfocusSelectedId() {
       this.bubbleFocused = false;
+    },
+    rasterizeSelected() {
+      const bubbleRaster = new Konva.Text(configText(this.selectedBubble));
+      vueApp.$refs.editLayer.getNode().getLayer().add(bubbleRaster);
+      vueApp.$refs.editLayer.getNode().getLayer().batchDraw();
+    },
+    duplicateSelected() {
+      this.bubbles.push(cloneBubble(this.selectedBubble));
     },
     makeBubbles() {
       firebase.analytics().logEvent('translate_en_clicked');
