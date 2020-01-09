@@ -303,7 +303,7 @@ function absoluteRect(rect) {
   }
 }
 
-const snippet = document.getElementById('snippet');
+const snippet = document.createElement('canvas');
 const snippetCtx = snippet.getContext('2d');
 
 function snippetToBubble(bgCanvas, rect) {
