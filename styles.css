@@ -140,9 +140,18 @@ textarea.bubbletext {
   border: 1px solid #7e2632;
 }
 
+.space > * + * {
+  /* Between each child: */
+  margin-top: 4px;
+}
+
 h4 {
   margin: 0;
   margin-bottom: 6px;
   color:gray;
   font-size: 0.7em;
+}
+
+input[type='number'] {
+  width: 5em;
 }

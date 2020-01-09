@@ -36,8 +36,8 @@
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="leftbar">
-      <project-component v-show="project.pages.length > 1" ref="project" @change-page="handlePageChange" v-model="project"
-        :current-page-id="currentPageId"></project-component>
+      <project-component v-show="project.pages.length > 1" ref="project" @change-page="handlePageChange"
+        v-model="project" :current-page-id="currentPageId"></project-component>
     </div>
     <div id="scrollport" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp"
       @dragover.prevent @drop.stop.prevent="handleDrop" :style="cursorStyle">
@@ -63,42 +63,47 @@
     </div>
     <div id="rightbar">
       <img src="assets/logo/vector/logo-256x64.svg" width="180px" height="45px">
-      <div id="bubbleData" class="panel" v-show="currentTool == 'TEXT' && selectedId != -1">
+      <div id="bubbleData" class="panel space" v-show="currentTool == 'TEXT' && selectedId != -1">
         <h4>BUBBLE</h4>
         <textarea v-model="selectedBubble.japanese" rows="5"></textarea>
         <textarea v-model="selectedBubble.english" rows="5"></textarea>
-        Line height:
-        <input type="number" v-model="selectedBubble.lineHeight" step="0.05">
-        Font size:
-        <input type="number" v-model="selectedBubble.fontSize">
-        Font family:
-        <select v-model="selectedBubble.fontFamily">
-          <optgroup style="font-family:'Wild Words'">
-            <option>Wild Words</option>
-          </optgroup>
-          <optgroup style="font-family:'Death Rattle'; font-size: 24px;">
-            <option>Death Rattle</option>
-          </optgroup>
-          <optgroup style="font-family:'Akbar'">
-            <option>Akbar</option>
-          </optgroup>
-          <optgroup style="font-family:'Obelix Pro'">
-            <option>Obelix Pro</option>
-          </optgroup>
-          <optgroup style="font-family:'Laffayette Comic Pro'">
-            <option>Laffayette Comic Pro</option>
-          </optgroup>
-          <optgroup style="font-family:'From Where You Are'">
-            <option>From Where You Are</option>
-          </optgroup>
-        </select>
+        <div>
+          Line height:
+          <input type="number" v-model="selectedBubble.lineHeight" step="0.05">
+        </div>
+        <div>
+          Font size:
+          <input type="number" v-model="selectedBubble.fontSize">
+        </div>
+        <div>
+          Font:
+          <select v-model="selectedBubble.fontFamily">
+            <optgroup style="font-family:'Wild Words'">
+              <option>Wild Words</option>
+            </optgroup>
+            <optgroup style="font-family:'Death Rattle'; font-size: 24px;">
+              <option>Death Rattle</option>
+            </optgroup>
+            <optgroup style="font-family:'Akbar'">
+              <option>Akbar</option>
+            </optgroup>
+            <optgroup style="font-family:'Obelix Pro'">
+              <option>Obelix Pro</option>
+            </optgroup>
+            <optgroup style="font-family:'Laffayette Comic Pro'">
+              <option>Laffayette Comic Pro</option>
+            </optgroup>
+            <optgroup style="font-family:'From Where You Are'">
+              <option>From Where You Are</option>
+            </optgroup>
+          </select>
+        </div>
         <button @click="bubbleAdvanced = !bubbleAdvanced">Advanced...</button>
-        <div v-show="bubbleAdvanced" class="panel">
+        <div v-show="bubbleAdvanced" class="panel space">
           <!-- TODO: stroke color, fill color-->
-          Rotate: {{ selectedBubble.rotate }}
-          <input type="range" v-model='selectedBubble.rotate' min='0' max='360'>
-          Stroke width:
-          <input type="number" v-model="selectedBubble.strokeWidth">
+          <div>Rotate: <input type="number" v-model="selectedBubble.rotate"></div>
+          <input type="range" v-model='selectedBubble.rotate' min='-180' max='180'>
+          <div>Stroke width: <input type="number" v-model="selectedBubble.strokeWidth"></div>
           <button @click="duplicateSelected">Duplicate</button>
           <button @click="rasterizeSelected">Rasterize</button>
           <div>
