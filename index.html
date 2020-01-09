@@ -104,15 +104,15 @@
           <div>Rotate: <input type="number" v-model="selectedBubble.rotate"></div>
           <input type="range" v-model='selectedBubble.rotate' min='-180' max='180'>
           <div>Stroke width: <input type="number" v-model="selectedBubble.strokeWidth"></div>
-          <button @click="duplicateSelected">Duplicate</button>
-          <button @click="rasterizeSelected">Rasterize</button>
+          <button @click="duplicateSelected">Duplicate bubble</button>
+          <button @click="rasterizeSelected">Rasterize text</button>
           <div>
             <label for="deleteSelected">Delete:</label>
             <input type="checkbox" id="deleteSelected" v-model="selectedBubble.deleted">
           </div>
         </div>
       </div>
-      <div class="panel" v-show="currentTool == 'TRANSLATE'">
+      <div class="panel" v-show="currentTool == 'SNIPPET'">
         <h4>INSTRUCTIONS</h4>
         Click in one corner of the bubble, then on the opposite (diagonal) corner.
       </div>
