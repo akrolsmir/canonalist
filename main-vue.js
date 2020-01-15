@@ -42,6 +42,8 @@ const vueApp = new Vue({
       erase: ['e'],
       snippet: ['s'],
       escape: ['esc'],
+      toggleText: ['1'],
+      toggleEdit: ['2'],
     },
     currentPageId: initialPageId,
     project: {
@@ -173,6 +175,12 @@ const vueApp = new Vue({
         case 'escape':
           this.mode = '';
           // TODO: Want to unfocus selected bubble, but swallowed by form...
+          break;
+        case 'toggleText': 
+          this.showTextLayer = !this.showTextLayer;
+          break;
+        case 'toggleEdit': 
+          this.showEditLayer = !this.showEditLayer;
           break;
       }
     },
