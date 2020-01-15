@@ -3,12 +3,13 @@
 
 <head>
   <title>Scanlate online, with the help of ML!</title>
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typicons.font@2.0.9/src/font/typicons.min.css">
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/vue-draggable-resizable@2.0.1/dist/VueDraggableResizable.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@2.9.3/introjs.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -36,6 +37,7 @@
       <a href="#" class="links" @click="showHelp">Help</a>
     </div>
     <div id="leftbar">
+      <login-component v-model="user"></login-component>
       <project-component v-show="project.pages.length > 1" ref="project" @change-page="handlePageChange"
         v-model="project" :current-page-id="currentPageId"></project-component>
     </div>
@@ -161,34 +163,17 @@
 <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDpldUROUvHFZY5XR_zZVr6Nap-Y91Rngk",
-    authDomain: "canonalist.firebaseapp.com",
-    databaseURL: "https://canonalist.firebaseio.com",
-    projectId: "canonalist",
-    storageBucket: "canonalist.appspot.com",
-    messagingSenderId: "819833086526",
-    appId: "1:819833086526:web:887b11d479cc7f90f9676f",
-    measurementId: "G-5Y582CPKY6"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  if (/localhost/.test(window.location.hostname)) {
-    console.log('Disabling analytics for local development.')
-  } else {
-    firebase.analytics();
-  }
-</script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
 <!-- My code -->
 <script type="module" src="intro.js"></script>
 <script type="module" src="bubble-vue.js"></script>
 <script type="module" src="project-vue.js"></script>
+<script type="module" src="login-vue.js"></script>
 <script type="module" src="image-background.js"></script>
 <script type="module" src="firebase-network.js  "></script>
 <script type="module" src="translate-network.js  "></script>

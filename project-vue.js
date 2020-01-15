@@ -53,7 +53,7 @@ Vue.component('project-component', {
   },
   template: `
   <div class="panel">
-    <h4>PROJECT</h4>
+    <h4>CURRENT PROJECT</h4>
     <input type="text" v-model="value.name" v-shortkey.avoid>
     <ul>
       <li v-for="(page, i) in value.pages">

@@ -15,7 +15,7 @@ input, textarea, select, button {
   padding-left: 1em;
   gap: 1em;
   grid-template-rows: auto 1fr;
-  grid-template-columns: 200px auto 240px 1fr;
+  grid-template-columns: 260px auto 240px 1fr;
 }
 
 #leftbar {

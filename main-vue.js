@@ -1,6 +1,6 @@
 import { runIntro } from './intro.js';
 import { Bubble, configText, cloneBubble } from './bubble-vue.js';
-import { cloudLoad, cloudSave, loadProject, saveProject } from './firebase-network.js';
+import { cloudLoad, cloudSave, loadProject, saveProject, projectUrl } from './firebase-network.js';
 import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-background.js';
 import { translate, requestOcr } from './translate-network.js';
 
@@ -48,6 +48,10 @@ const vueApp = new Vue({
       name: 'scanlate.io',
       id: shortid(),
       pages: [{ id: initialPageId }]
+    },
+    user: {
+      id: '',
+      projects: []
     },
     // Map of locally loaded images
     localfiles: {}
@@ -253,14 +257,13 @@ const vueApp = new Vue({
     async saveProject() {
       firebase.analytics().logEvent('share_page_clicked');
 
-      const parsedUrl = new URL(window.location.href);
-      // Generate a random id if the page does not already have one.
+      // Generate a random id if the page does not already have one. TODO: Still needed?
       this.currentPageId = this.currentPageId ? this.currentPageId : shortid();
       await cloudSave(this, this.currentPageId);
-      await saveProject(this.project);
+      await saveProject(this.project, this.user);
 
       const link = document.createElement("input");
-      link.value = `${parsedUrl.origin}/?project=${this.project.id}`;
+      link.value = projectUrl(this.project.id);
       link.setAttribute('readonly', 'true');
       link.setAttribute('onclick', 'this.select()');
       link.setAttribute('size', '35');
