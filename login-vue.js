@@ -35,5 +35,5 @@ Vue.component('login-component', {
     </div>
     <div id="firebaseui-auth-container"></div>
   </div>
-  `// TODO: fix Vue-Shortcut eating login keystrokes
+  `
 });

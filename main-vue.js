@@ -5,7 +5,7 @@ import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-ba
 import { translate, requestOcr } from './translate-network.js';
 
 // Disable shortcuts in different HTML forms.
-Vue.use(VueShortkey, { prevent: ['textarea', 'select'] })
+Vue.use(VueShortkey, { prevent: ['input', 'textarea', 'select'] })
 
 const initialPageId = shortid();
 const vueApp = new Vue({
