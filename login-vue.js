@@ -1,4 +1,4 @@
-import { projectUrl } from "./firebase-network.js";
+import { projectUrl, promptLogIn } from "./firebase-network.js";
 
 Vue.component('login-component', {
   props: {
@@ -14,17 +14,17 @@ Vue.component('login-component', {
       // Reset user id to indicate logged out.
       this.value.id = '';
     },
+    promptLogIn,
     projectUrl
   },
   computed: {
   },
   template: `
   <div class="panel space">
-    <h4>LOGIN</h4>
+    <h4>PROJECTS</h4>
     <div v-if="value.id">
       Welcome, {{ value.name }}!
-      <button @click="logOut">Log out.</button>
-      <h4>PROJECTS</h4>
+      <button @click="logOut">Log out</button>
       <ul>
         <li v-for="project in value.projects">
           <a :href="projectUrl(project.id)" target="_blank" rel="noopener noreferrer">
@@ -33,7 +33,9 @@ Vue.component('login-component', {
         </li>
       </ul>
     </div>
-    <div id="firebaseui-auth-container"></div>
+    <div v-else>
+      <button @click="promptLogIn">Log in</button>
+    </div>
   </div>
   `
 });

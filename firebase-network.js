@@ -1,4 +1,4 @@
-import {toImagePromise, loadRaw} from './image-background.js';
+import { toImagePromise, loadRaw } from './image-background.js';
 
 const BUCKET = 'share-v1';
 
@@ -88,7 +88,7 @@ export async function getUser(userId) {
   const db = firebase.firestore();
   const doc = await db.collection("users").doc(userId).get();
   const user = doc.data();
-  return user ? user : {id: userId, projects: []};
+  return user ? user : { id: userId, projects: [] };
 }
 
 // Your web app's Firebase configuration
@@ -110,27 +110,26 @@ if (/localhost/.test(window.location.hostname)) {
   firebase.analytics();
 }
 
+// Show user info, if previously logged in.
+firebase.auth().onAuthStateChanged(async function (user) {
+  if (user) {
+    vueApp.user = await getUser(user.uid);
+    vueApp.user.name = user.displayName;
+    vueApp.user.email = user.email;
+  }
+});
 
-function showLoginWidget() {
-  firebase.auth().onAuthStateChanged(async function (user) {
-    if (user) {
-      vueApp.user = await getUser(user.uid);
-      vueApp.user.name = user.displayName;
-      vueApp.user.email = user.email;
-    } else {
-      showSignIn();
-    }
-  });
-}
-
-showLoginWidget();
 
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
-function showSignIn() {
-  ui.start('#firebaseui-auth-container', {
+function showSignIn(selector, successCb) {
+  ui.reset();
+  ui.start(selector, {
     callbacks: {
       signInSuccessWithAuthResult: function (authResult, redirectUrl) {
         // User successfully signed in.
+        if (successCb) {
+          successCb();
+        }
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
         return false;
@@ -149,4 +148,28 @@ function showSignIn() {
 export function projectUrl(projectId) {
   const parsedUrl = new URL(window.location.href);
   return `${parsedUrl.origin}/?project=${projectId}`
+}
+
+/** Returns whether the user successfully logged in. */
+export async function promptLogIn() {
+  return new Promise((resolve, reject) => {
+    const firebaseDiv = document.createElement("div");
+    firebaseDiv.setAttribute('id', "firebase-div");
+    swal({
+      title: "Log in to save your work!",
+      button: "Cancel",
+      content: firebaseDiv,
+      closeOnClickOutside: false,
+    })
+      .then((cancel) => { if (cancel) { resolve(false); } });
+    showSignIn("#firebase-div", async () => {
+      swal.close();
+      // Load the user, in case we're immediately saving afterwards.
+      const user = firebase.auth().currentUser;
+      vueApp.user = await getUser(user.uid);
+      vueApp.user.name = user.displayName;
+      vueApp.user.email = user.email;
+      resolve(true);
+    });
+  });
 }

@@ -1,6 +1,6 @@
 import { runIntro } from './intro.js';
 import { Bubble, configText, cloneBubble } from './bubble-vue.js';
-import { cloudLoad, cloudSave, loadProject, saveProject, projectUrl } from './firebase-network.js';
+import { cloudLoad, cloudSave, loadProject, saveProject, projectUrl, promptLogIn } from './firebase-network.js';
 import { loadRaw, colorWords, toRect, replaceImage, exportPng } from './image-background.js';
 import { translate, requestOcr } from './translate-network.js';
 
@@ -252,11 +252,18 @@ const vueApp = new Vue({
     },
     async exportImage() {
       firebase.analytics().logEvent('save_image_clicked');
+
+      if (!this.user.id && !await promptLogIn()) {
+        return;
+      }
       await exportPng(this);
     },
     async saveProject() {
       firebase.analytics().logEvent('share_page_clicked');
 
+      if (!this.user.id && !await promptLogIn()) {
+        return;
+      }
       // Generate a random id if the page does not already have one. TODO: Still needed?
       this.currentPageId = this.currentPageId ? this.currentPageId : shortid();
       await cloudSave(this, this.currentPageId);
