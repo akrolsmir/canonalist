@@ -347,7 +347,7 @@ async function makeBubble(text, rect) {
   const json = await translate(text);
   const english = json.data.translations[0].translatedText;
   console.log(`Original: ${text}, Translated: ${english}`);
-  const bubble = new Bubble(shortid(), rect, text, english);
+  const bubble = new Bubble(shortid(), enlargeRect(rect), text, english);
   vueApp.bubbles.push(bubble);
 
   // Draw a white box, to hide the Japanese text.
@@ -362,6 +362,16 @@ export function makeAllBubbles(blocks) {
     const japanese = extractText(block);
     makeBubble(japanese, rect)
   }
+}
+
+// Widen the text bubbles to better fit english text
+function enlargeRect(rect) {
+    return {
+      x: rect.x - 20,
+      y: rect.y,
+      width: rect.width + 40,
+      height: rect.height,
+    }
 }
 
 function extractText(block) {
