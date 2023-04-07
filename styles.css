@@ -76,6 +76,11 @@ button.selected {
 }
 
 @font-face {
+  font-family: "Komika Slim";
+  src: url("assets/fonts/KOMIKASL.ttf");
+}
+
+@font-face {
   font-family: "Wild Words";
   src: url("assets/fonts/wildwordsroman.ttf");
 }
