@@ -80,11 +80,11 @@
         <div>
           Font:
           <select v-model="selectedBubble.fontFamily">
-            <optgroup style="font-family:'Komika Slim'">
-              <option>Komika Slim</option>
-            </optgroup>
             <optgroup style="font-family:'Wild Words'">
               <option>Wild Words</option>
+            </optgroup>
+            <optgroup style="font-family:'Komika Slim'">
+              <option>Komika Slim</option>
             </optgroup>
             <optgroup style="font-family:'Death Rattle'; font-size: 24px;">
               <option>Death Rattle</option>
@@ -135,6 +135,7 @@
       <div class="panel" v-show="currentTool == 'TEXT'">
         <h4>FONT GUIDE</h4>
         <span style="font-family:'Wild Words'">Dialogue...</span>
+        <span style="font-family:'Komika Slim'">Dialogue (éàô...)</span>
         <span style="font-family:'Death Rattle'; font-size:30px">Shouts!</span>
         <span style="font-family:'Akbar'">Handwriting =)</span>
         <span style="font-family:'Obelix Pro'">Emphasis</span>
