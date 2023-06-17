@@ -87,6 +87,8 @@ const vueApp = new Vue({
     currentTool() {
       if (/PAINT_TOOL/.test(this.mode)) {
         return 'PAINT';
+      } else if (/REMOVE/.test(this.mode)) {
+        return 'REMOVE';
       } else if (/SNIPPET/.test(this.mode)) {
         return 'SNIPPET';
       } else {
@@ -130,6 +132,32 @@ const vueApp = new Vue({
         });
         this.$refs.editLayer.getNode().getLayer().add(this.lastLine);
         this.$refs.editLayer.getNode().getLayer().batchDraw();
+      }
+      else if (this.mode == 'REMOVE_TOOL') {
+        const layer = this.$refs.editLayer.getNode().getLayer();
+        const children = layer.children;
+        const pointer = this.$refs.editLayer.getNode().getStage().getPointerPosition();
+        const pointerRect = new Konva.Rect({
+          x: pointer.x,
+          y: pointer.y,
+          width: 1,
+          height: 1
+        });
+        // Destroy child that intersect with the pointer,
+        // for a visual feedback.
+        children.forEach((child) => {
+            if (Konva.Util.haveIntersection(pointerRect.getClientRect(), child.getClientRect()) === true) {
+              child.destroy();
+            }
+          }
+        )
+        layer.batchDraw();
+        // Destroy blocks that intersect with the pointer,
+        // which is the actual removal.
+        this.blocks = [...this.blocks.filter((block) => {
+          const rect = new Konva.Rect({ ...toRect(block.boundingBox) });
+          return Konva.Util.haveIntersection(pointerRect.getClientRect(), rect.getClientRect()) === false
+        })];
       }
     },
     handleMouseMove(event) {
@@ -256,6 +284,13 @@ const vueApp = new Vue({
       } else {
         firebase.analytics().logEvent('paint_tool_clicked');
         this.mode = 'PAINT_TOOL';
+      }
+    },
+    removeTool() {
+      if (this.currentTool == 'REMOVE') {
+        this.mode = ''
+      } else {
+        this.mode = 'REMOVE_TOOL';
       }
     },
     async exportImage() {

@@ -30,6 +30,7 @@
         Identify one bubble
       </button>
       <button id="painttool" @click="paintTool" :class="{selected: currentTool == 'PAINT'}">Brush</button>
+      <button id="removetool" @click="removeTool" :class="{selected: currentTool == 'REMOVE'}">Remove</button>
       <button id="saveproject" @click="saveProject">Save</button>
       <button id="exportimage" @click="exportImage">Export .png</button>
 
