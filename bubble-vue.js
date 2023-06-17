@@ -5,7 +5,7 @@ export class Bubble {
     this.japanese = japanese;
     this.english = english;
     this.fontSize = 16; // in px
-    this.fontFamily = 'Wild Words';
+    this.fontFamily = 'Komika Slim';
     this.lineHeight = 1.2;
     this.deleted = false;
     this.rotate = 0;

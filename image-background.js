@@ -54,21 +54,21 @@ export async function loadRaw(src, mainVue) {
   const ctx = mainVue.$refs.canvas.getContext('2d');
   ctx.drawImage(img, 0, 0);
 
-  // Draw a small watermark on the bottom right
-  const logoImage = await onloadPromise('assets/logo/vector/watermark.png');
-  // Original logo size: 140 x 32
-  const logoWidth = 105;
-  const logoHeight = 24;
-  const watermark = new Konva.Image({
-    x: img.width - logoWidth - 5,
-    y: img.height - logoHeight - 5,
-    image: logoImage,
-    width: logoWidth,
-    height: logoHeight
-  });
+  // // Draw a small watermark on the bottom right
+  // const logoImage = await onloadPromise('assets/logo/vector/watermark.png');
+  // // Original logo size: 140 x 32
+  // const logoWidth = 105;
+  // const logoHeight = 24;
+  // const watermark = new Konva.Image({
+  //   x: img.width - logoWidth - 5,
+  //   y: img.height - logoHeight - 5,
+  //   image: logoImage,
+  //   width: logoWidth,
+  //   height: logoHeight
+  // });
   // TODO needs more work when a new image is dropped.
   mainVue.$refs.textLayer.getNode().getLayer().removeChildren();
-  mainVue.$refs.textLayer.getNode().getLayer().add(watermark);
+  // mainVue.$refs.textLayer.getNode().getLayer().add(watermark);
   mainVue.$refs.textLayer.getNode().getLayer().batchDraw();
 
   mainVue.$refs.editLayer.getNode().getLayer().removeChildren();
